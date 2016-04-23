@@ -1,0 +1,20 @@
+{
+  "name": "eTourney",
+  "version": "1.0.0",
+  "description": "An open eSports tournament hosting website.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "eSports",
+    "Game",
+    "tournaments"
+  ],
+  "author": "eTourney Team",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  }
+}
