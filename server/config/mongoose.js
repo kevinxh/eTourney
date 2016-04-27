@@ -4,7 +4,8 @@ var	config = require('./secret'),
 module.exports = function() {
   	var db = mongoose.connect(config.db);
 
-  	
+  	Registering the User model
+  	require('../models/user');
 
   	return db;
 };
