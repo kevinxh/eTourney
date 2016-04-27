@@ -4,7 +4,8 @@
   "description": "An open eSports tournament hosting website.",
   "main": "index.js",
   "scripts": {
-    "start": "sudo node index.js"
+    "start": "sudo node index.js",
+    "dev": "sudo nodemon index.js"
   },
   "keywords": [
     "eSports",
