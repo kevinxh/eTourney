@@ -1,7 +1,10 @@
 var express = require('express'),
   path = require('path'),
   bodyParser = require('body-parser'),
-  router = require('../routes/main.router');
+  session = require('express-session'),
+  passport = require('passport'),
+  router = require('../routes/main.router')
+  config = require('./secret');
 
 module.exports = function() {
 
@@ -17,6 +20,15 @@ module.exports = function() {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
+
+  app.use(session({
+    saveUninitialized: true,
+    resave: true,
+    secret: config.sessionSecret
+  }));
+
+  app.use(passport.initialize());
+  app.use(passport.session());
 
   app.use(router());
   
