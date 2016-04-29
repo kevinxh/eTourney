@@ -1,13 +1,8 @@
 var express = require('express');
 
-module.exports = function() {
-  	var router = express.Router();
-  	var index = require('../controllers/index.controller');
+var mainRouter = express.Router();
+var index = require('../controllers/index.controller');
  
-  	router.route('/')
-    	.get(index.render);
-
-	//then require other routes.
+mainRouter.get('/', index.render);
    
-  	return router;
-};
+module.exports = mainRouter;

@@ -1,8 +1,7 @@
-var express = require('express');
 var app = require('./server/server')();
+var express = require('express');
 
 var port = 80;
-
 app.listen(port, function(error) {
   if (error) {
     console.error(error);

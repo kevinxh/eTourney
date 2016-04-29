@@ -1,5 +1,5 @@
-var express = require('./config/express'),
-	mongoose = require('./config/mongoose'),
+var	mongoose = require('./config/mongoose'),
+	express = require('./config/express'),
 	Passport = require('./config/passport');
 
 module.exports = function() {

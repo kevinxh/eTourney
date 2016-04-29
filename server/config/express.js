@@ -3,11 +3,13 @@ var express = require('express'),
   bodyParser = require('body-parser'),
   session = require('express-session'),
   passport = require('passport'),
-  router = require('../routes/main.router')
   config = require('./secret');
 
-module.exports = function() {
+var mainRouter = require('../routes/main.router'),
+    authRouter = require('../routes/auth.router');
 
+module.exports = function() {
+    
   var app = express();
 
   if (process.env.NODE_ENV === 'development') {
@@ -30,7 +32,8 @@ module.exports = function() {
   app.use(passport.initialize());
   app.use(passport.session());
 
-  app.use(router());
+  app.use('/', mainRouter);
+  app.use('/auth', authRouter);
   
   return app;
 };

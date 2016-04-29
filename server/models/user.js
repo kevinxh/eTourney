@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
   name: {
     type: String,
-    required: 'Name is required',
+    //required: 'Name is required',
     validate: [
       function(name) {
         return (name.length >= 2 && name.length <= 16);
@@ -32,9 +32,10 @@ var UserSchema = new Schema({
   providerData: {},
   password: {
     type: String,
+    required: 'Password is required',
     validate: [
       function(password) {
-        return password.length >= 8;
+        return password.length >= 6;
       },
       'Password should be longer'
     ]
@@ -43,7 +44,7 @@ var UserSchema = new Schema({
     type: Date,
     default: Date.now
   }
-});
+}, { collection: 'User' });
 
 
 UserSchema.pre('save', function(next) {
@@ -81,6 +82,5 @@ UserSchema.statics.findUniqueEmail = function(email, suffix, callback) {
     }
   });
 };
-
 //Registering the User model
-mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
