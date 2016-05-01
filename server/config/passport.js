@@ -1,8 +1,9 @@
-var passport = require('passport'),
-    mongoose = require('mongoose');
+import passport from 'passport';
+import mongoose from 'mongoose';
+import passportJWT from './passport-jwt.js';
 
-module.exports = function() {
-    var User = mongoose.model('User');
+export default function() {
+  const User = mongoose.model('User');
 
-    require('./passport-jwt.js')(passport);
+  passportJWT(passport);
 };

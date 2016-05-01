@@ -1,12 +1,12 @@
-var	mongoose = require('./config/mongoose'),
-	express = require('./config/express'),
-	Passport = require('./config/passport');
+import mongoose from './config/mongoose';
+import express from './config/express';
+import Passport from './config/passport';
 
-module.exports = function() {
 
-	var db = mongoose();
-	var app = express();
-	var	passport = Passport();
+module.exports = function(){
+	const db = mongoose();
+	const app = express();
+	const	passport = Passport();
 
 	return app;
 };

@@ -1,7 +1,7 @@
-var path = require('path');
+import path from 'path';
 
-exports.render = function(req, res) {
+export  function Render(req, res) {
 
   res.sendFile(path.join(__dirname, '../../client/index.html'));
-  
+
 };
