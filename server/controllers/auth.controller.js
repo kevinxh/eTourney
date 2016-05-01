@@ -4,7 +4,7 @@ var User = require('mongoose').model('User'),
 
 exports.login = function(req, res) {
 
-	if (req.body.email && req.body.password)
+	if (req.body.email && req.body.password){
 		User.findOne({
 			email: req.body.email
 	  	}, function(err, user) {
