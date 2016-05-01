@@ -1,11 +1,10 @@
-var express = require('express'),
-	passport = require('passport');
+import express from 'express';
+import passport from 'passport';
+import {Login, Logout, Register} from '../controllers/auth.controller';
 
-var authRouter = express.Router();
-var auth = require('../controllers/auth.controller');
- 
-authRouter.post('/login',auth.login);
-authRouter.post('/logout',auth.logout);
-authRouter.post('/register',auth.register);
+const authRouter = express.Router();
+authRouter.post('/login',Login);
+authRouter.post('/logout',Logout);
+authRouter.post('/register',Register);
 
-module.exports = authRouter;
+export default authRouter;

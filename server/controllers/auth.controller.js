@@ -1,35 +1,29 @@
-var User = require('mongoose').model('User'),
-  passport = require('passport');
+import User from '../models/user';
+import passport from 'passport';
 
-exports.login = function(req, res) {
-	passport.authenticate('local')
-  
+export function Login (req, res){ passport.authenticate('local')
 };
 
-exports.logout = function(req, res) {
+export function Logout(req, res){ res.json({route:"logout"}); };
 
-  res.json({route:"logout"});
-  
-};
-
-exports.register = function(req, res) {
+export function Register(req, res){
 
   if (!req.user) {
 
   	if (!req.body.email || !req.body.password) {
     	res.json({success: false, msg: 'Please include your email and password.'});
   	} else {
-	    var user = new User({
+	    const user = new User({
 	      email: req.body.email,
 	      password: req.body.password,
 	      provider: 'local'
 	    });
 
-	    user.save(function(err) {
+	    user.save((err) => {
 	      if (err) {
 	        return res.json({success: false, err:err});
 	      }
-	      req.login(user, function(err) {
+	      req.login(user, (err) => {
 	        if (err) return next(err);
 	        return res.json({success: true, email:user.email});
 	      });
@@ -38,5 +32,5 @@ exports.register = function(req, res) {
   } else {
     return res.json({success: false, msg:'You already logged in.', email:req.user.email});
   }
-  
+
 };

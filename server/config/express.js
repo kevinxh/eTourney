@@ -1,16 +1,18 @@
-var express = require('express'),
-  path = require('path'),
-  bodyParser = require('body-parser'),
-  session = require('express-session'),
-  passport = require('passport'),
-  config = require('./secret');
+import express from 'express';
+import path from 'path'
+import bodyParser from 'body-parser';
+import session from 'express-session';
+import passport from 'passport';
+import morgan from 'morgan';
 
-var mainRouter = require('../routes/main.router'),
-    authRouter = require('../routes/auth.router');
+import config from './secret';
 
-module.exports = function() {
-    
-  var app = express();
+import mainRouter from '../routes/main.router';
+import authRouter from '../routes/auth.router';
+
+export default function() {
+
+  const app = express();
 
   if (process.env.NODE_ENV === 'development') {
     //
@@ -32,8 +34,10 @@ module.exports = function() {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  app.use(morgan('combined'));
+
   app.use('/', mainRouter);
   app.use('/auth', authRouter);
-  
+
   return app;
 };
