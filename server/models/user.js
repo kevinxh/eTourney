@@ -2,7 +2,7 @@ import mongoose,{Schema} from 'mongoose';
 import crypto from 'crypto';
 import bcrypt from 'bcrypt';
 
-const UserSchema = new Schema({
+let UserSchema = new Schema({
   name: {
     type: String,
     //required: 'Name is required',
@@ -41,7 +41,7 @@ const UserSchema = new Schema({
 }, { collection: 'User' });
 
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function(next)  {
   const user = this;
 
     if (user.isModified('password') || user.isNew) {
@@ -53,7 +53,7 @@ UserSchema.pre('save', (next) => {
     }
 });
 
-UserSchema.methods.hashPassword = (password, cb)  => {
+UserSchema.methods.hashPassword = function(password, cb)  {
     bcrypt.genSalt(10,  (err, salt) => {
         if (err)  return cb(err);
         bcrypt.hash(password, salt, (err, hash) => {
@@ -63,7 +63,7 @@ UserSchema.methods.hashPassword = (password, cb)  => {
     });
 };
 
-UserSchema.methods.authenticate = (password, cb)=> {
+UserSchema.methods.authenticate = function(password, cb) {
     bcrypt.compare(password, this.password, (err, isMatch) =>{
         if (err) return cb(err);
         cb(null, isMatch);

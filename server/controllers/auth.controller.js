@@ -63,9 +63,6 @@ export function Register(req, res){
 	      	password: req.body.password,
 	    	provider: 'local'
 	    });
-
-			console.log(user);
-
 	    user.save((err) => {
 		      	if (err) {
 		      		//todo: we should parse the errs and translate into our language.
