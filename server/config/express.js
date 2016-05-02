@@ -28,6 +28,8 @@ export default function() {
 
   app.use(morgan('combined'));
 
+  app.use(morgan('combined'));
+
   app.use('/', mainRouter);
   app.use('/auth', authRouter);
 
