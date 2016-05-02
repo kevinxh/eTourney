@@ -1,8 +1,9 @@
-var User = require('mongoose').model('User'),
-	config = require('../config/secret'),
-	jwt = require('jsonwebtoken');
+import User from '../models/user';
+import passport from 'passport';
+import jwt from 'jsonwebtoken';
+import config from '../config/secret';
 
-exports.login = function(req, res) {
+export function Login(req, res) {
 
 	if (!req.body.email || !req.body.password) {
     	return 	res.json({
@@ -10,11 +11,9 @@ exports.login = function(req, res) {
     				msg: 'Please enter your email and password.'
     			});
   	} else {
-		User.findOne({
-			email: req.body.email
-	  	}, function(err, user) {
+		User.findOne({ email: req.body.email }, (err, user)=> {
 	    	if (err) 	return 	res.json({
-	    							success: false, 
+	    							success: false,
 	    							msg: err
 	    						});
 
@@ -25,7 +24,7 @@ exports.login = function(req, res) {
 	      				});
 	    	} else {
 	      	// Check if password matches
-	      		user.authenticate(req.body.password, function(err, isMatch) {
+	      		user.authenticate(req.body.password, (err, isMatch) => {
 	        		if (isMatch) {
 	          			// Create token if the password matched and no error was thrown
 	          			var token = jwt.sign({email:user.email}, config.JwtSecret, {
@@ -34,7 +33,7 @@ exports.login = function(req, res) {
 			          	return 	res.json({
 			          				success: true,
 			          				email: user.email,
-			          				access_token: 'JWT '+token 
+			          				access_token: 'JWT '+token
 			          			});
 			        } else {
 			          	return 	res.json({
@@ -46,16 +45,12 @@ exports.login = function(req, res) {
 	    	}
 	  });
 	}
-  
+
 };
 
-exports.logout = function(req, res) {
+export function Logout(req, res){ res.json({route:"logout"}); };
 
-  res.json({route:"logout"});
-  
-};
-
-exports.register = function(req, res) {
+export function Register(req, res){
 
   	if (!req.body.email || !req.body.password) {
     	return 	res.json({
@@ -63,13 +58,12 @@ exports.register = function(req, res) {
     				msg: 'Please enter your email and password.'
     			});
   	} else {
-	    var user = new User({
+	    const user = new User({
 	      	email: req.body.email,
 	      	password: req.body.password,
 	    	provider: 'local'
 	    });
-
-	    user.save(function(err) {
+	    user.save((err) => {
 		      	if (err) {
 		      		//todo: we should parse the errs and translate into our language.
 		        	return 	res.json({
@@ -77,13 +71,13 @@ exports.register = function(req, res) {
 		        				msg:err
 		        			});
 		      	}
-		      	var token = jwt.sign({email:user.email}, config.JwtSecret, {
+		      	const token = jwt.sign({email:user.email}, config.JwtSecret, {
 	            				expiresIn: 10080 // a week in seconds
 	          				});
 	          	return 	res.json({
 	          				success: true,
 	          				email: user.email,
-	          				access_token: 'JWT '+token 
+	          				access_token: 'JWT '+token
 	          			});
 	    });
 	}

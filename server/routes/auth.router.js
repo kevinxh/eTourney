@@ -1,16 +1,15 @@
-var express = require('express'),
-	passport = require('passport');
+import express from 'express';
+import passport from 'passport';
+import {Login, Logout, Register} from '../controllers/auth.controller';
 
-var authRouter = express.Router();
-var auth = require('../controllers/auth.controller');
- 
-authRouter.post('/login',auth.login);
-authRouter.post('/logout',auth.logout);
-authRouter.post('/register',auth.register);
+const authRouter = express.Router();
+authRouter.post('/login',Login);
+authRouter.post('/logout',Logout);
+authRouter.post('/register',Register);
 
 //for testing jwt
-authRouter.get('/test', passport.authenticate('jwt', { session: false }), function(req, res) {
+authRouter.get('/test', passport.authenticate('jwt', { session: false }), (req, res) => {
   	res.send('It worked! you are:' + req.user.email);
 });
 
-module.exports = authRouter;
+export default authRouter;

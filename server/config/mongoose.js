@@ -1,9 +1,9 @@
-var	config = require('./secret'),
-	User = require('../models/user'),
-	mongoose = require('mongoose');
+import config from './secret';
+import User from '../models/user';
+import mongoose from 'mongoose';
 
-module.exports = function() {
-  	var db = mongoose.connect(config.db_connection_url);
+export default function() {
+  	const db = mongoose.connect(config.db_connection_url);
 
   	//Registering the User model
   	require('../models/user');
