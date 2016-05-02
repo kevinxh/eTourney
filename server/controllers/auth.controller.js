@@ -4,7 +4,12 @@ var User = require('mongoose').model('User'),
 
 exports.login = function(req, res) {
 
-	if (req.body.email && req.body.password){
+	if (!req.body.email || !req.body.password) {
+    	return 	res.json({
+    				success: false,
+    				msg: 'Please enter your email and password.'
+    			});
+  	} else {
 		User.findOne({
 			email: req.body.email
 	  	}, function(err, user) {
@@ -40,11 +45,6 @@ exports.login = function(req, res) {
 	      		});
 	    	}
 	  });
-	} else {
-		return 	res.json({
-			    	success: false,
-			        msg: 'Please enter your email and password.'
-			    });
 	}
   
 };
