@@ -1,11 +1,17 @@
-var express = require('express'),
-  path = require('path'),
-  bodyParser = require('body-parser'),
-  router = require('../routes/main.router');
+import express from 'express';
+import path from 'path'
+import bodyParser from 'body-parser';
+import passport from 'passport';
+import morgan from 'morgan';
 
-module.exports = function() {
+import config from './secret';
 
-  var app = express();
+import mainRouter from '../routes/main.router';
+import authRouter from '../routes/auth.router';
+
+export default function() {
+
+  const app = express();
 
   if (process.env.NODE_ENV === 'development') {
     //
@@ -18,7 +24,14 @@ module.exports = function() {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
-  app.use(router());
-  
+  app.use(passport.initialize());
+
+  app.use(morgan('combined'));
+
+  app.use(morgan('combined'));
+
+  app.use('/', mainRouter);
+  app.use('/auth', authRouter);
+
   return app;
 };

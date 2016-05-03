@@ -1,13 +1,8 @@
-var express = require('express');
+import express from 'express';
+import {Render} from'../controllers/index.controller';
 
-module.exports = function() {
-  	var router = express.Router();
-  	var index = require('../controllers/index.controller');
- 
-  	router.route('/')
-    	.get(index.render);
+const mainRouter = express.Router();
 
-	//then require other routes.
-   
-  	return router;
-};
+mainRouter.get('/', Render);
+
+export default mainRouter;
