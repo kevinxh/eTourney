@@ -12,13 +12,13 @@ export function Login(req, res) {
     			});
   	} else {
 		User.findOne({ email: req.body.email }, (err, user)=> {
-	    	if (err) 	return 	res.status(400).json({
+	    	if (err) 	return 	res.status(403).json({
 	    							success: false,
 	    							msg: err
 	    						});
 
 	    	if (!user) {
-	      		return 	res.status(400).json({
+	      		return 	res.status(401).json({
 	      					success: false,
 	      					msg: 'Authentication failed. User not found.'
 	      				});
@@ -66,7 +66,7 @@ export function Register(req, res){
 	    user.save((err) => {
 		      	if (err) {
 		      		//todo: we should parse the errs and translate into our language.
-		        	return 	res.status(400).json({
+		        	return 	res.status(401).json({
 		        				success: false,
 		        				msg:err
 		        			});
