@@ -1,16 +1,17 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/app';
-import reducers from './reducers/root-reducer';
+import configureStore from './store/configureStore'
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+module.hot.accept();
+const store = configureStore();
+
 
 ReactDom.render(
-	<Provider store={createStoreWithMiddleware(reducers)}>
+	<Provider store={store}>
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
 			</Route>
@@ -18,3 +19,4 @@ ReactDom.render(
 	</Provider>
 	,document.getElementById('app')
 );
+

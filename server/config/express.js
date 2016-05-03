@@ -5,6 +5,7 @@ import passport from 'passport';
 import morgan from 'morgan';
 
 import config from './secret';
+import dev from './dev';
 
 import mainRouter from '../routes/main.router';
 import authRouter from '../routes/auth.router';
@@ -19,14 +20,14 @@ export default function() {
     //
   }
 
+  dev(app);
+
   app.use(express.static(path.join(__dirname, '../../client/assets')));
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use(passport.initialize());
-
-  app.use(morgan('combined'));
 
   app.use(morgan('combined'));
 

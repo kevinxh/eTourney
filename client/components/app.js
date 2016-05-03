@@ -7,6 +7,7 @@ export default class App extends Component {
 			<div>
 				<Header />
 				this is our app!
+				try out the hot reloading man!!
 			</div>
 		);
 	}
