@@ -1,8 +1,7 @@
-import React from 'react'
-import { Route } from 'react-router'
-import App from './components/app'
+import React from 'react';
+import { Route } from 'react-router';
+import App from './components/app';
 
 export default (
-  <Route path="/" component={App}>
-  </Route>
-)
+  <Route path="/" component={App} />
+);

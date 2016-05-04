@@ -12,11 +12,11 @@ export default class Root extends Component {
           <Router history={history} routes={routes} />
         </div>
       </Provider>
-    )
+    );
   }
-};
+}
 
 Root.propTypes = {
   store: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 };
