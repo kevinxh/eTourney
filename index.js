@@ -1,7 +1,8 @@
 import express from 'express';
+import app from './server/server';
 const port = 8080;
 
-require('./server/server')().listen(port, (error) => {
+app().listen(port, (error) => {
   if (error) {
     console.error(error);
   } else {
