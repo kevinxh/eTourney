@@ -25,8 +25,6 @@ export function Login(req, res) {
       });
     }
 		// Check if password matches
-		console.log(user.password);
-		console.log(req.body.password);
     user.authenticate(req.body.password, (err2, isMatch) => {
       if (isMatch) {
       // Create token if the password matched and no error was thrown
