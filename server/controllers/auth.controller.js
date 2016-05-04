@@ -43,12 +43,6 @@ export function Login(req, res) {
         msg: 'Authentication failed. Passwords did not match.',
       });
     });
-
-    // for default error return
-    return res.json({
-      success: false,
-      msg: 'Something went wrong. Please contact the admins.'
-    });
   });
 }
 

@@ -5,6 +5,7 @@
       "comma-dangle": "off",
       "func-names": "off",
       "new-cap": "off",
-      "react/prefer-stateless-function": "off"
+      "react/prefer-stateless-function": "off",
+      "consistent-return": "off"
     }
 }

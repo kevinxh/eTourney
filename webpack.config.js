@@ -1,11 +1,12 @@
-import webpack from 'webpack';
-import path from 'path';
+const webpack = require('webpack');
+const path = require('path');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
     './client/index.js'
   ],
+  watch: true,
   output: {
     path: path.join(__dirname, './client/assets'),
     filename: 'bundle.js',
