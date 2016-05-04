@@ -1,3 +1,10 @@
 {
-    "extends": "eslint-config-airbnb"
+    "extends": "eslint-config-airbnb",
+    "rules" : {
+      "sort-imports": "off",
+      "comma-dangle": "off",
+      "func-names": "off",
+      "new-cap": "off",
+      "react/prefer-stateless-function": "off"
+    }
 }

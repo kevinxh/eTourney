@@ -6,7 +6,7 @@ const UserSchema = new Schema({
     type: String,
     // required: 'Name is required',
     validate: [
-      (name) => { return (name.length >= 2 && name.length <= 16); },
+      (name) => (name.length >= 2 && name.length <= 16),
       'Name length should be between 2 and 16 characters',
     ]
   },
@@ -15,7 +15,7 @@ const UserSchema = new Schema({
     lowercase: true,
     unique: true,
     index: true,
-    match: [/.+\@.+\..+/, "Please fill a valid e-mail address"],
+    match: [/.+@.+\..+/, 'Please fill a valid e-mail address'],
     required: 'Email is required',
   },
   // provider is for third party login method such as wechat, weibo login.
@@ -29,7 +29,7 @@ const UserSchema = new Schema({
     type: String,
     required: 'Password is required',
     validate: [
-      (password) => { return password.length >= 6; },
+      (password) => (password.length >= 6),
       'Password should be longer'
     ]
   },
@@ -40,13 +40,13 @@ const UserSchema = new Schema({
 }, { collection: 'User' });
 
 
-UserSchema.pre('save', function(next)  {
+UserSchema.pre('save', function (next) {
   const user = this;
   if (user.isModified('password') || user.isNew) {
     user.hashPassword(user.password, (err, hash) => {
       if (err) return next(err);
       user.password = hash;
-      next();
+      return next();
     });
   }
 });
@@ -54,8 +54,8 @@ UserSchema.pre('save', function(next)  {
 UserSchema.methods.hashPassword = (password, cb) => {
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return cb(err);
-    bcrypt.hash(password, salt, (err, hash) => {
-      if (err) return cb(err);
+    return bcrypt.hash(password, salt, (hashErr, hash) => {
+      if (hashErr) return cb(hashErr);
       return cb(null, hash);
     });
   });

@@ -11,13 +11,14 @@ export function Login(req, res) {
   }
 
   User.findOne({ email: req.body.email }, (err, user) => {
+    // if error finding an user
     if (err) {
       return res.json({
         success: false,
         msg: err,
       });
     }
-
+    // if no such user
     if (!user) {
       return res.json({
         success: false,
@@ -41,6 +42,12 @@ export function Login(req, res) {
         success: false,
         msg: 'Authentication failed. Passwords did not match.',
       });
+    });
+
+    // for default error return
+    return res.json({
+      success: false,
+      msg: 'Something went wrong. Please contact the admins.'
     });
   });
 }
