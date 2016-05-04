@@ -1,5 +1,5 @@
 import express from 'express';
-import {Render} from'../controllers/index.controller';
+import { Render } from '../controllers/index.controller';
 
 const mainRouter = express.Router();
 
