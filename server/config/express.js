@@ -18,8 +18,9 @@ export default function () {
   app.use(bodyParser.urlencoded({ extended: false }));
 
   app.use(passport.initialize());
-
-  app.use(morgan('combined'));
+  if (process.env.NODE_ENV !== 'test') {
+    app.use(morgan('combined'));
+  }
 
   app.use('/', mainRouter);
   app.use('/auth', authRouter);

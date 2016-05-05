@@ -1,12 +1,12 @@
 import { assert, expect } from 'chai';
 import request from 'request';
-import mongoose from '../../server/config/mongoose';
 import User from '../../server/models/user';
+import app from '../../server/server';
 
+process.env.NODE_ENV = 'test';
 
 describe('Auth System unit tests', function () {
   this.timeout(5000);
-  mongoose();
   const config = {
     validAuth: {
       email: 'test@gmail.com',
@@ -18,9 +18,15 @@ describe('Auth System unit tests', function () {
       testing: 'http://localhost:8080/auth/test'
     }
   };
+  let server = app();
+  before((done) => {
+    server = server.listen(8080);
+    done();
+  });
   after((done) => {
     User.remove({ email: config.validAuth.email }, () => {
       console.log('Testing account removed');
+      server.close();
       done();
     });
   });
@@ -126,21 +132,21 @@ describe('Auth System unit tests', function () {
   });
 
   describe('Test Authentication Routes', () => {
-    let tokenedRequest;
-    // set the JWTtoken before the tests here start
-    before((done) => {
-      request.post(config.endPoints.login, {
-        form: config.validAuth
-      }, (err, resp, body) => {
-        const parsedBody = JSON.parse(body);
-        assert(parsedBody.success === true, 'Should return true status');
-        expect(parsedBody).to.include.keys('access_token');
-        tokenedRequest = request.defaults({
-          headers: { Authorization: parsedBody.access_token }
-        });
-        done();
-      });
-    });
+    // let tokenedRequest;
+    // // set the JWTtoken before the tests here start
+    // before((done) => {
+    //   request.post(config.endPoints.login, {
+    //     form: config.validAuth
+    //   }, (err, resp, body) => {
+    //     const parsedBody = JSON.parse(body);
+    //     assert(parsedBody.success === true, 'Should return true status');
+    //     expect(parsedBody).to.include.keys('access_token');
+    //     tokenedRequest = request.defaults({
+    //       headers: { Authorization: parsedBody.access_token }
+    //     });
+    //     done();
+    //   });
+    // });
 
     it('with no JWTtoken or anything', (done) => {
       // Use default request object here
