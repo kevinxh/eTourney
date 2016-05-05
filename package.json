@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js --exec babel-node --presets=es2015 -- index.js",
-    "test": "./node_modules/mocha/bin/mocha ./test/server/auth.js"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register ./test/server/auth.js"
   },
   "keywords": [
     "eSports",

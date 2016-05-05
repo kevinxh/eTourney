@@ -1,5 +1,11 @@
 {
     "extends": "eslint-config-airbnb",
+    "globals": {
+      "describe" : true,
+      "it" : true,
+      "before" : true,
+      "after" : true
+    },
     "rules" : {
       "sort-imports": "off",
       "comma-dangle": "off",
