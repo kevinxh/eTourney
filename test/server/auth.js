@@ -5,6 +5,12 @@ import app from '../../server/server';
 
 process.env.NODE_ENV = 'test';
 
+function generateTokenedRequestObject(token) {
+  return request.defaults({
+    headers: { Authorization: token }
+  });
+}
+
 describe('Auth System unit tests', function () {
   // TODO: To make the tests faster, seperate webpack build from default app
   this.timeout(10000);
@@ -20,10 +26,15 @@ describe('Auth System unit tests', function () {
     }
   };
   let server = app();
+  let tokenedRequestObject;
+
+  // Before starting authentication tests
   before((done) => {
     server = server.listen(8080);
     done();
   });
+
+  // After completing all authentication tests
   after((done) => {
     User.remove({ email: config.validAuth.email }, () => {
       console.log('Testing account removed');
@@ -65,8 +76,11 @@ describe('Auth System unit tests', function () {
       request.post(config.endPoints.register, {
         form: config.validAuth
       }, (err, resp, body) => {
-        assert(JSON.parse(body).success === true,
+        const parsedBody = JSON.parse(body);
+        assert(parsedBody.success === true,
         'Should return true status and successfully register');
+        expect(parsedBody, 'should have token').to.include.keys('access_token');
+        tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
         done();
       });
     });
@@ -77,6 +91,12 @@ describe('Auth System unit tests', function () {
         // TODO: Valid error message needs to be used as validation here
         assert(JSON.parse(body).success === false,
         'Should fail registering and success status == false');
+        done();
+      });
+    });
+    it('should let registered user use its JWT token', (done) => {
+      tokenedRequestObject.get(config.endPoints.testing, (err, resp) => {
+        expect(resp.statusCode, 'Status Code should equal 200').to.equal(200);
         done();
       });
     });
@@ -126,29 +146,21 @@ describe('Auth System unit tests', function () {
         assert(parsedBody.success === true, 'Should return true status');
         assert(parsedBody.email === config.validAuth.email,
           'Should contain registered email');
-        expect(parsedBody).to.include.keys('access_token');
+        expect(parsedBody, 'Should include access token').to.include.keys('access_token');
+        tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
+        done();
+      });
+    });
+
+    it('should let logined user use its JWT token', (done) => {
+      tokenedRequestObject.get(config.endPoints.testing, (err, resp) => {
+        expect(resp.statusCode, 'Status Code should equal 200').to.equal(200);
         done();
       });
     });
   });
 
   describe('Test Authentication Routes', () => {
-    // let tokenedRequest;
-    // // set the JWTtoken before the tests here start
-    // before((done) => {
-    //   request.post(config.endPoints.login, {
-    //     form: config.validAuth
-    //   }, (err, resp, body) => {
-    //     const parsedBody = JSON.parse(body);
-    //     assert(parsedBody.success === true, 'Should return true status');
-    //     expect(parsedBody).to.include.keys('access_token');
-    //     tokenedRequest = request.defaults({
-    //       headers: { Authorization: parsedBody.access_token }
-    //     });
-    //     done();
-    //   });
-    // });
-
     it('with no JWTtoken or anything', (done) => {
       // Use default request object here
       request.get(config.endPoints.testing, (err, resp, body) => {
