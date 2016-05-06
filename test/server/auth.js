@@ -6,7 +6,8 @@ import app from '../../server/server';
 process.env.NODE_ENV = 'test';
 
 describe('Auth System unit tests', function () {
-  this.timeout(5000);
+  // TODO: To make the tests faster, seperate webpack build from default app
+  this.timeout(10000);
   const config = {
     validAuth: {
       email: 'test@gmail.com',
