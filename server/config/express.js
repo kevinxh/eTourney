@@ -19,7 +19,9 @@ export default function () {
 
   app.use(passport.initialize());
 
-  app.use(morgan('dev'));
+  if (process.env.NODE_ENV !== 'test') {
+    app.use(morgan('dev'));
+  }
 
   app.use('/', mainRouter);
   app.use('/auth', authRouter);
