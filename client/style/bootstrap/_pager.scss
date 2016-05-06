@@ -1,57 +1,54 @@
+//
+// Pager pagination
+// --------------------------------------------------
+
+
 .pager {
   padding-left: 0;
-  margin-top: $spacer-y;
-  margin-bottom: $spacer-y;
-  text-align: center;
+  margin: $line-height-computed 0;
   list-style: none;
-  @include clearfix();
-
+  text-align: center;
+  @include clearfix;
   li {
     display: inline;
-
     > a,
     > span {
       display: inline-block;
       padding: 5px 14px;
       background-color: $pager-bg;
-      border: $pager-border-width solid $pager-border-color;
+      border: 1px solid $pager-border;
       border-radius: $pager-border-radius;
     }
 
-    > a {
-      @include hover-focus {
-        text-decoration: none;
-        background-color: $pager-hover-bg;
-      }
+    > a:hover,
+    > a:focus {
+      text-decoration: none;
+      background-color: $pager-hover-bg;
+    }
+  }
+
+  .next {
+    > a,
+    > span {
+      float: right;
+    }
+  }
+
+  .previous {
+    > a,
+    > span {
+      float: left;
     }
   }
 
   .disabled {
-    > a {
-      @include plain-hover-focus {
-        color: $pager-disabled-color;
-        cursor: $cursor-disabled;
-        background-color: $pager-bg;
-      }
-    }
+    > a,
+    > a:hover,
+    > a:focus,
     > span {
       color: $pager-disabled-color;
-      cursor: $cursor-disabled;
       background-color: $pager-bg;
+      cursor: $cursor-disabled;
     }
-  }
-}
-
-.pager-next {
-  > a,
-  > span {
-    float: right;
-  }
-}
-
-.pager-prev {
-  > a,
-  > span {
-    float: left;
   }
 }

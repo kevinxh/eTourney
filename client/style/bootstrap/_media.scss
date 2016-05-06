@@ -1,51 +1,21 @@
-@if $enable-flex {
-  .media {
-    display: flex;
-    margin-bottom: $spacer;
-  }
-  .media-body {
-    flex: 1;
-  }
-  .media-middle {
-    align-self: center;
-  }
-  .media-bottom {
-    align-self: flex-end;
-  }
-} @else {
-  .media {
-    margin-top: 15px;
+.media {
+  // Proper spacing between instances of .media
+  margin-top: 15px;
 
-    &:first-child {
-      margin-top: 0;
-    }
-  }
-  .media,
-  .media-body {
-    overflow: hidden;
-    zoom: 1;
-  }
-  .media-body {
-    width: 10000px;
-  }
-  .media-left,
-  .media-right,
-  .media-body {
-    display: table-cell;
-    vertical-align: top;
-  }
-  .media-middle {
-    vertical-align: middle;
-  }
-  .media-bottom {
-    vertical-align: bottom;
+  &:first-child {
+    margin-top: 0;
   }
 }
 
+.media,
+.media-body {
+  zoom: 1;
+  overflow: hidden;
+}
 
-//
-// Images/elements as the media anchor
-//
+.media-body {
+  width: 10000px;
+}
 
 .media-object {
   display: block;
@@ -56,34 +26,40 @@
   }
 }
 
-
-//
-// Alignment
-//
-
-.media-right {
+.media-right,
+.media > .pull-right {
   padding-left: 10px;
 }
 
-.media-left {
+.media-left,
+.media > .pull-left {
   padding-right: 10px;
 }
 
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: top;
+}
 
-//
-// Headings
-//
+.media-middle {
+  vertical-align: middle;
+}
 
+.media-bottom {
+  vertical-align: bottom;
+}
+
+// Reset margins on headings for tighter default spacing
 .media-heading {
   margin-top: 0;
   margin-bottom: 5px;
 }
 
-
-//
 // Media list variation
 //
-
+// Undo default ul/ol styles
 .media-list {
   padding-left: 0;
   list-style: none;
