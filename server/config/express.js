@@ -19,7 +19,7 @@ export default function () {
 
   app.use(passport.initialize());
 
-  app.use(morgan('combined'));
+  app.use(morgan('dev'));
 
   app.use('/', mainRouter);
   app.use('/auth', authRouter);
