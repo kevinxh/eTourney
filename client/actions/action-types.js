@@ -1,4 +1,6 @@
 // This file declares all the action types.
 
-export const FIRST_ACTION = 'FIRST_ACTION';
-export const SECOND_ACTION = 'SECOND_ACTION';
+
+// Modal Actions
+export const MODAL_OPEN = 'MODAL_OPEN';
+export const MODAL_CLOSE = 'MODAL_CLOSE';
