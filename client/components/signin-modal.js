@@ -4,10 +4,12 @@ import { SIGNIN } from '../constants';
 import { MODAL_CLOSE } from '../actions/action-types';
 
 export default class SigninModal extends Component {
-
   render() {
     return (
-      <Modal show={this.props.show} onHide={() => this.props.onHide(SIGNIN, MODAL_CLOSE)}>
+      <Modal
+        show={this.props.show}
+        onHide={() => this.props.onHide(SIGNIN, MODAL_CLOSE)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Sign in form</Modal.Title>
         </Modal.Header>

@@ -19,15 +19,6 @@ import { MODAL_OPEN } from '../actions/action-types';
 require('../components/style/_header.scss');
 
 class Header extends Component {
-
-  openSigninModal() {
-    this.props.modalAction(SIGNIN, MODAL_OPEN);
-  }
-
-  openSignupModal() {
-    this.props.modalAction(SIGNUP, MODAL_OPEN);
-  }
-
   render() {
     return (
       <Navbar fluid fixedTop>
@@ -39,13 +30,27 @@ class Header extends Component {
         </NavbarHeader>
         <NavbarCollapse>
           <Nav pullRight>
-            <NavItem eventKey={1} onClick={()=>this.props.modalAction(SIGNIN, MODAL_OPEN)} href="#">Sign In</NavItem>
-            <NavItem eventKey={2} onClick={()=>this.props.modalAction(SIGNUP, MODAL_OPEN)} href="#">Sign Up</NavItem>
+            <NavItem
+              eventKey={1}
+              onClick={() => this.props.modalAction(SIGNIN, MODAL_OPEN)}
+              href="#"
+            >Sign In</NavItem>
+            <NavItem
+              eventKey={2}
+              onClick={() => this.props.modalAction(SIGNUP, MODAL_OPEN)}
+              href="#"
+            >Sign Up</NavItem>
           </Nav>
         </NavbarCollapse>
 
-        <SigninModal show={this.props.showSignin} onHide={this.props.modalAction} />
-        <SignupModal show={this.props.showSignup} onHide={this.props.modalAction} />
+        <SigninModal
+          show={this.props.showSignin}
+          onHide={this.props.modalAction}
+        />
+        <SignupModal
+          show={this.props.showSignup}
+          onHide={this.props.modalAction}
+        />
       </Navbar>
     );
   }
