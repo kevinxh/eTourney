@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import modalAction from '../actions/modal-actions';
+import { modalAction } from '../actions/modal-actions';
 
 import Nav from 'react-bootstrap/lib/Nav';
 import NavItem from 'react-bootstrap/lib/NavItem';
@@ -11,6 +11,7 @@ import NavbarToggle from 'react-bootstrap/lib/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
 import SigninModal from '../components/signin-modal';
+import SignupModal from '../components/signup-modal';
 
 import { SIGNIN, SIGNUP } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
@@ -28,7 +29,6 @@ class Header extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <Navbar fluid fixedTop>
         <NavbarHeader>
@@ -39,16 +39,23 @@ class Header extends Component {
         </NavbarHeader>
         <NavbarCollapse>
           <Nav pullRight>
-            <NavItem eventKey={1} onClick={ this.openSigninModal } href="#">Sign In</NavItem>
-            <NavItem eventKey={2} onClick={ this.openSignupModal } href="#">Sign Up</NavItem>
+            <NavItem eventKey={1} onClick={()=>this.props.modalAction(SIGNIN, MODAL_OPEN)} href="#">Sign In</NavItem>
+            <NavItem eventKey={2} onClick={()=>this.props.modalAction(SIGNUP, MODAL_OPEN)} href="#">Sign Up</NavItem>
           </Nav>
         </NavbarCollapse>
 
-        <SigninModal show={this.props.showSignin} />
+        <SigninModal show={this.props.showSignin} onHide={this.props.modalAction} />
+        <SignupModal show={this.props.showSignup} onHide={this.props.modalAction} />
       </Navbar>
     );
   }
 }
+
+Header.propTypes = {
+  showSignin: React.PropTypes.bool.isRequired,
+  showSignup: React.PropTypes.bool.isRequired,
+  modalAction: React.PropTypes.func.isRequired,
+};
 
 Header.defaultProps = {
   showSignin: false,
@@ -61,8 +68,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    showSignin: state.showSignin,
-    showSignup: state.showSignup,
+    showSignin: state.modal.showSignin,
+    showSignup: state.modal.showSignup,
   };
 }
 
