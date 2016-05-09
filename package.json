@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js --exec babel-node --presets=es2015 -- index.js",
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register ./test/server/auth.js"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register ./test/server/auth.js",
+    "hot" : "sudo babel-node --presets=es2015 -- index.js"
   },
   "keywords": [
     "eSports",
@@ -24,6 +25,7 @@
     "passport": "^0.3.2",
     "passport-jwt": "^2.0.0",
     "react": "^15.0.1",
+    "react-bootstrap": "^0.29.3",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
