@@ -4,6 +4,7 @@ import { browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import Root from './containers/Root';
+import rootSaga from './sagas';
 
 if (module.hot) {
     // accept itself
@@ -11,6 +12,7 @@ if (module.hot) {
 }
 
 const store = configureStore();
+store.runSaga(rootSaga);
 const history = syncHistoryWithStore(browserHistory, store);
 
 
