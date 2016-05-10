@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
 
 import SigninForm from './signin-form';
-import { SIGNIN } from '../../constants';
+import { SIGNIN_MODAL } from '../../constants';
 import { MODAL_CLOSE } from '../../actions/action-types';
 
 export default class SigninModal extends Component {
@@ -10,7 +10,7 @@ export default class SigninModal extends Component {
     return (
       <Modal
         show={this.props.show}
-        onHide={() => this.props.onHide(SIGNIN, MODAL_CLOSE)}
+        onHide={() => this.props.onHide(SIGNIN_MODAL, MODAL_CLOSE)}
       >
         <Modal.Header closeButton>
           <Modal.Title>Sign in form</Modal.Title>

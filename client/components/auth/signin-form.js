@@ -64,7 +64,7 @@ class SigninForm extends Component {
             />
           </Col>
         </FormGroup>
-
+        {this.props.error}
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Button onClick={this.handleClick}>
@@ -78,8 +78,26 @@ class SigninForm extends Component {
   }
 }
 
+SigninForm.propTypes = {
+  waiting: React.PropTypes.bool.isRequired,
+  isAuthenticated: React.PropTypes.bool.isRequired,
+};
+
+SigninForm.defaultProps = {
+  waiting: false,
+  isAuthenticated: false,
+};
+
+function mapStateToProps(state) {
+  return {
+    waiting: state.Auth.waiting,
+    error: state.Auth.error,
+    isAuthenticated: state.Auth.isAuthenticated,
+  };
+}
+
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({ userSignin }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(SigninForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);

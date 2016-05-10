@@ -1,4 +1,4 @@
 // This file declares all the vocabularies.
 
-export const SIGNIN = 'SIGNIN';
-export const SIGNUP = 'SIGNUP';
+export const SIGNIN_MODAL = 'SIGNIN_MODAL';
+export const SIGNUP_MODAL = 'SIGNUP_MODAL';

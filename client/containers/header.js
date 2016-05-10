@@ -13,7 +13,7 @@ import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
 import SigninModal from '../components/auth/signin-modal';
 import SignupModal from '../components/auth/signup-modal';
 
-import { SIGNIN, SIGNUP } from '../constants';
+import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
 require('../components/style/_header.scss');
@@ -32,12 +32,12 @@ class Header extends Component {
           <Nav pullRight>
             <NavItem
               eventKey={1}
-              onClick={() => this.props.modalAction(SIGNIN, MODAL_OPEN)}
+              onClick={() => this.props.modalAction(SIGNIN_MODAL, MODAL_OPEN)}
               href="#"
             >Sign In</NavItem>
             <NavItem
               eventKey={2}
-              onClick={() => this.props.modalAction(SIGNUP, MODAL_OPEN)}
+              onClick={() => this.props.modalAction(SIGNUP_MODAL, MODAL_OPEN)}
               href="#"
             >Sign Up</NavItem>
           </Nav>

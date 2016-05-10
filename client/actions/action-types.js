@@ -6,7 +6,8 @@ export const MODAL_OPEN = 'MODAL_OPEN';
 export const MODAL_CLOSE = 'MODAL_CLOSE';
 
 // Authentication Actions
-export const LOGIN_REQUEST = 'LOGIN_REQUEST';
-export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-export const LOGOUT = 'LOGOUT';
+export const SIGNIN_REQUEST = 'SIGNIN_REQUEST';
+export const SIGNIN_WAITING = 'SIGNIN_WAITING';
+export const SIGNIN_SUCCESS = 'SIGNIN_SUCCESS';
+export const SIGNIN_ERROR = 'SIGNIN_ERROR';
+export const SIGNOUT = 'SIGNOUT';

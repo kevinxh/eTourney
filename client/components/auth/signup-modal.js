@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
-import { SIGNUP } from '../../constants';
+import { SIGNUP_MODAL } from '../../constants';
 import { MODAL_CLOSE } from '../../actions/action-types';
 
 export default class SignupModal extends Component {
@@ -8,7 +8,7 @@ export default class SignupModal extends Component {
     return (
       <Modal
         show={this.props.show}
-        onHide={() => this.props.onHide(SIGNUP, MODAL_CLOSE)}
+        onHide={() => this.props.onHide(SIGNUP_MODAL, MODAL_CLOSE)}
       >
         <Modal.Header closeButton>
           <Modal.Title>Sign up form</Modal.Title>
