@@ -4,7 +4,7 @@ import config from '../config/secret';
 
 export function Login(req, res) {
   if (!req.body.email || !req.body.password) {
-    return res.json({
+    return res.status(400).json({
       success: false,
       msg: 'Please enter your email and password.',
     });
@@ -12,14 +12,14 @@ export function Login(req, res) {
   User.findOne({ email: req.body.email }, (err, user) => {
     // if error finding an user
     if (err) {
-      return res.json({
+      return res.status(403).json({
         success: false,
         msg: err,
       });
     }
     // if no such user
     if (!user) {
-      return res.json({
+      return res.status(401).json({
         success: false,
         msg: 'Authentication failed. User not found.'
       });
@@ -31,13 +31,13 @@ export function Login(req, res) {
         const token = jwt.sign({ email: user.email }, config.JwtSecret, {
           expiresIn: 10080, // a week in seconds
         });
-        return res.json({
+        return res.status(200).json({
           success: true,
           email: user.email,
           access_token: `JWT ${token}`,
         });
       }
-      return 	res.json({
+      return 	res.status(401).json({
         success: false,
         msg: 'Authentication failed. Passwords did not match.',
       });
@@ -49,7 +49,7 @@ export function Logout(req, res) { res.json({ route: 'logout' }); }
 
 export function Register(req, res) {
   if (!req.body.email || !req.body.password) {
-    return res.json({
+    return res.status(400).json({
       success: false,
       msg: 'Please enter your email and password.',
     });
@@ -62,7 +62,7 @@ export function Register(req, res) {
   user.save((err) => {
     if (err) {
     // todo: we should parse the errs and translate into our language.
-      return	res.json({
+      return	res.status(401).json({
         success: false,
         msg: err,
       });
@@ -70,7 +70,7 @@ export function Register(req, res) {
     const token = jwt.sign({ email: user.email }, config.JwtSecret, {
       expiresIn: 10080, // a week in seconds
     });
-    return res.json({
+    return res.status(201).json({
       success: true,
       email: user.email,
       access_token: `JWT ${token}`,
