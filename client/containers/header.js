@@ -10,8 +10,8 @@ import NavbarBrand from 'react-bootstrap/lib/NavbarBrand';
 import NavbarToggle from 'react-bootstrap/lib/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
-import SigninModal from '../components/signin-modal';
-import SignupModal from '../components/signup-modal';
+import SigninModal from '../components/auth/signin-modal';
+import SignupModal from '../components/auth/signup-modal';
 
 import { SIGNIN, SIGNUP } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
