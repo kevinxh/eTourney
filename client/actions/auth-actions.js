@@ -15,3 +15,5 @@ export const userSignup = (email, password) => {
     password,
   };
 };
+
+export const userSignout = () => { return { type: actionTypes.SIGNOUT } };
