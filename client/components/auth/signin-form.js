@@ -34,15 +34,16 @@ export default class SigninForm extends Component {
     console.log('password: ' + this.state.password);
     axios({
       method: 'post',
-      url: 'http://localhost:8080/auth/register',
+      url: 'http://localhost:8080/auth/login',
       data: {
         email: this.state.email,
-        password: '123'
+        password: this.state.password,
       }
     })
     .then(response => {
-      console.log('response data: ' + JSON.stringify(response.data));
+      console.log('response success: ' + response.data.success);
       console.log('response status: ' + response.status);
+      console.log('response access token: ' + response.data.access_token);
     });
   }
 
