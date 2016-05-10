@@ -7,3 +7,11 @@ export const userSignin = (email, password) => {
     password,
   };
 };
+
+export const userSignup = (email, password) => {
+  return {
+    type: actionTypes.SIGNUP_REQUEST,
+    email,
+    password,
+  };
+};

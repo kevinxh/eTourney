@@ -13,6 +13,18 @@ const userSignin = function (email, password) {
   }).then(response => response.data);
 };
 
+const userSignup = function (email, password) {
+  return axios({
+    method: 'post',
+    url: `${API_ROOT}/register`,
+    data: {
+      email,
+      password,
+    }
+  }).then(response => response.data);
+};
+
 export default {
-  userSignin
+  userSignin,
+  userSignup,
 };

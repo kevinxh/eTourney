@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
+import SignupForm from './signup-form';
 import { SIGNUP_MODAL } from '../../constants';
 import { MODAL_CLOSE } from '../../actions/action-types';
 
@@ -14,11 +15,8 @@ export default class SignupModal extends Component {
           <Modal.Title>Sign up form</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <h4>Sign up form</h4>
+          <SignupForm />
         </Modal.Body>
-        <Modal.Footer>
-          <h4>Sign up form</h4>
-        </Modal.Footer>
       </Modal>
     );
   }

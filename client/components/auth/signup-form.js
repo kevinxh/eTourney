@@ -8,9 +8,9 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Button from 'react-bootstrap/lib/Button';
 import Col from 'react-bootstrap/lib/Col';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
-import { userSignin } from '../../actions/auth-actions';
+import { userSignup } from '../../actions/auth-actions';
 
-class SigninForm extends Component {
+class SignupForm extends Component {
 
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class SigninForm extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.userSignin(this.state.email, this.state.password);
+    this.props.userSignup(this.state.email, this.state.password);
   }
 
   render() {
@@ -72,7 +72,7 @@ class SigninForm extends Component {
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Button type="submit" onClick={this.handleClick}>
-              Sign in
+              Sign up
             </Button>
           </Col>
         </FormGroup>
@@ -82,26 +82,26 @@ class SigninForm extends Component {
   }
 }
 
-SigninForm.propTypes = {
+SignupForm.propTypes = {
   waiting: React.PropTypes.bool.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
 };
 
-SigninForm.defaultProps = {
+SignupForm.defaultProps = {
   waiting: false,
   isAuthenticated: false,
 };
 
 function mapStateToProps(state) {
   return {
-    waiting: state.Auth.signin.waiting,
-    error: state.Auth.signin.error,
+    waiting: state.Auth.signup.waiting,
+    error: state.Auth.signup.error,
     isAuthenticated: state.Auth.isAuthenticated,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ userSignin }, dispatch);
+  return bindActionCreators({ userSignup }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

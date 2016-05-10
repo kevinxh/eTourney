@@ -18,9 +18,6 @@ export default class SigninModal extends Component {
         <Modal.Body>
           <SigninForm />
         </Modal.Body>
-        <Modal.Footer>
-          <h4>Sign in form</h4>
-        </Modal.Footer>
       </Modal>
     );
   }
