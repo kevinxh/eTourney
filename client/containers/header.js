@@ -73,8 +73,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    showSignin: state.modal.showSignin,
-    showSignup: state.modal.showSignup,
+    showSignin: state.Modal.showSignin,
+    showSignup: state.Modal.showSignup,
+    isAuthenticated: state.Auth.isAuthenticated,
   };
 }
 

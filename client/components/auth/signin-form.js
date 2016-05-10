@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Button from 'react-bootstrap/lib/Button';
 import Col from 'react-bootstrap/lib/Col';
-import API from '../../API';
+import { userSignin } from '../../actions/auth-actions';
 
-export default class SigninForm extends Component {
+class SigninForm extends Component {
 
   constructor(props) {
     super(props);
@@ -29,7 +31,7 @@ export default class SigninForm extends Component {
   }
 
   handleClick() {
-    API.AUTH.userSignin(this.state.email, this.state.password);
+    this.props.userSignin(this.state.email, this.state.password);
   }
 
   render() {
@@ -75,3 +77,9 @@ export default class SigninForm extends Component {
     );
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ userSignin }, dispatch);
+}
+
+export default connect(null, mapDispatchToProps)(SigninForm);

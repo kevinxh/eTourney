@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_ROOT = "http://localhost:8080/auth";
+const API_ROOT = 'http://localhost:8080/auth';
 
 const userSignin = function (email, password) {
   return axios({
@@ -10,12 +10,7 @@ const userSignin = function (email, password) {
       email,
       password,
     }
-  })
-  .then(response => {
-    console.log('response success: ' + response.data.success);
-    console.log('response status: ' + response.status);
-    console.log('response access token: ' + response.data.access_token);
-  });
+  }).then(response => response.data);
 };
 
 export default {
