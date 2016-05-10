@@ -5,8 +5,7 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Button from 'react-bootstrap/lib/Button';
 import Col from 'react-bootstrap/lib/Col';
-
-import axios from 'axios';
+import API from '../../API';
 
 export default class SigninForm extends Component {
 
@@ -30,21 +29,7 @@ export default class SigninForm extends Component {
   }
 
   handleClick() {
-    console.log('email: ' + this.state.email);
-    console.log('password: ' + this.state.password);
-    axios({
-      method: 'post',
-      url: 'http://localhost:8080/auth/login',
-      data: {
-        email: this.state.email,
-        password: this.state.password,
-      }
-    })
-    .then(response => {
-      console.log('response success: ' + response.data.success);
-      console.log('response status: ' + response.status);
-      console.log('response access token: ' + response.data.access_token);
-    });
+    API.AUTH.userSignin(this.state.email, this.state.password);
   }
 
   render() {
