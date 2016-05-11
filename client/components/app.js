@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from './header';
+import Header from '../containers/header';
 
 require('../style/main.scss');
 
