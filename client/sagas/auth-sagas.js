@@ -31,11 +31,10 @@ function* userSignupTask(email, password) {
   try {
     yield put({ type: actionTypes.SIGNUP_WAITING });
     const response = yield call(API.AUTH.userSignup, email, password);
-    yield put({ type: actionTypes.SIGNIN_SUCCESS });
+    yield put({ type: actionTypes.SIGNIN_SUCCESS, email: response.email });
     yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNUP_MODAL });
     return response.access_token;
   } catch (error) {
-    // todo: normalize mongodb validation errors 
     yield put({ type: actionTypes.SIGNUP_ERROR, error: error.data.msg });
   }
 }
