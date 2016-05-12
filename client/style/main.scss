@@ -7,3 +7,8 @@
 
 // Frameworks
 @import "./bootstrap";
+
+// Padd some space offseted by navbar
+body {
+  padding-top: $navbar-height;
+}
