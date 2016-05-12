@@ -11,8 +11,7 @@ function* userSigninTask(email, password) {
     yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNIN_MODAL });
     return response.access_token;
   } catch (error) {
-    console.log(error);
-    yield put({ type: actionTypes.SIGNIN_ERROR, error });
+    yield put({ type: actionTypes.SIGNIN_ERROR, error: error.data.msg });
   }
 }
 
@@ -36,7 +35,8 @@ function* userSignupTask(email, password) {
     yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNUP_MODAL });
     return response.access_token;
   } catch (error) {
-    yield put({ type: actionTypes.SIGNUP_ERROR, error });
+    // todo: normalize mongodb validation errors 
+    yield put({ type: actionTypes.SIGNUP_ERROR, error: error.data.msg });
   }
 }
 
