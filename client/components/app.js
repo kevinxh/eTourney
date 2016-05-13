@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../containers/header';
-import GameSublist from '../containers/sub_list';
-
+import GameSublist from '../containers/mainpage_fav_tournament_list';
+import BigTournament from '../containers/mainpage_big_tournament';
 require('../style/main.scss');
 
 export default class App extends Component {
@@ -9,34 +9,10 @@ export default class App extends Component {
     return (
       <div>
         <Header />
-        this is our app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!sdfjsdlkfjsdlkfjsdlkfjsdlfjsflk
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdour app!
-        try out the hot sdfsdfds sdfsdfsjdfoiweowe88328!!
-        <GameSublist/>
+      <BigTournament/>
+      <GameSublist/>
         {this.props.children}
+
 
       </div>
 		);
