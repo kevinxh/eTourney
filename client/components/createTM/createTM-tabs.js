@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
+import TabChoose from './tab-choose';
 
 export default class CreateTMtabs extends Component {
 
@@ -51,7 +52,7 @@ export default class CreateTMtabs extends Component {
         onSelect={this.onSelect}
         id="createTM"
       >
-        <Tab eventKey={1} title="Tab 1">Tab 1 content</Tab>
+        <Tab eventKey={1} title="Tab 1"><TabChoose /></Tab>
         <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}>Tab 2 content</Tab>
         <Tab eventKey={3} title="Tab 3" disable={this.state.tabState.tab3}>Tab 3 content</Tab>
       </Tabs>
