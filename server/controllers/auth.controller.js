@@ -61,10 +61,10 @@ export function Register(req, res) {
   });
   user.save((err) => {
     if (err) {
-    // todo: we should parse the errs and translate into our language.
+      const parsedErr = parseValErr(err);
       return	res.status(401).json({
         success: false,
-        msg: err,
+        msg: parsedErr,
       });
     }
     const token = jwt.sign({ email: user.email }, config.JwtSecret, {
@@ -76,4 +76,15 @@ export function Register(req, res) {
       access_token: `JWT ${token}`,
     });
   });
+}
+
+function parseValErr(err) {
+  if (err.code === 11000) {
+    return 'Email already in use.';
+  } else if (typeof err.errors.email !== 'undefined') {
+    return err.errors.email.message;
+  } else if (typeof err.errors.password !== 'undefined') {
+    return err.errors.password.message;
+  }
+  return 'Unknown error, please try again later';
 }

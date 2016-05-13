@@ -6,6 +6,7 @@ import morgan from 'morgan';
 import dev from './dev';
 import mainRouter from '../routes/main.router';
 import authRouter from '../routes/auth.router';
+import { Render } from '../controllers/index.controller';
 
 export default function () {
   const app = express();
@@ -25,6 +26,7 @@ export default function () {
 
   app.use('/', mainRouter);
   app.use('/auth', authRouter);
+  app.get('*', Render);
 
   return app;
 }

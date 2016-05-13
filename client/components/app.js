@@ -36,6 +36,8 @@ export default class App extends Component {
         try out the hot sdour app!
         try out the hot sdfsdfds sdfsdfsjdfoiweowe88328!!
         <GameSublist/>
+        {this.props.children}
+
       </div>
 		);
   }

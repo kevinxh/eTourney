@@ -67,6 +67,9 @@ class SigninForm extends Component {
           </Col>
         </FormGroup>
         <Col smOffset={2} sm={10}>
+          <div className="has-error">
+            <HelpBlock>{this.props.error}</HelpBlock>
+          </div>
         </Col>
         <FormGroup>
           <Col smOffset={2} sm={10}>
