@@ -54,10 +54,9 @@ describe('Auth System unit tests', function () {
     });
     it('with invalid email form (eg. without "@")', (done) => {
       request.post(config.endPoints.register, {
-        form: { email: 'aljkljalksjdl', password: 'lelja' }
+        form: { email: 'aljkljalksjdl', password: 'leljaas' }
       }, (err, resp, body) => {
-        assert(JSON.parse(body).msg.errors.email.properties.message
-        === 'Please fill a valid e-mail address',
+        assert(JSON.parse(body).msg === 'Please fill a valid e-mail address',
         'Should return "Please fill a valid e-mail address"');
         done();
       });
@@ -66,13 +65,12 @@ describe('Auth System unit tests', function () {
       request.post(config.endPoints.register, {
         form: { email: 'test@gmail.com', password: 'as.1' }
       }, (err, resp, body) => {
-        assert(JSON.parse(body).msg.errors.password.properties.message
-        === 'Password should be longer',
+        assert(JSON.parse(body).msg === 'Password should be longer',
         'Should return "Password should be longer"');
         done();
       });
     });
-    it('should succeed with valid email and valid password (eg. without "@")', (done) => {
+    it('should succeed with valid email and valid password', (done) => {
       request.post(config.endPoints.register, {
         form: config.validAuth
       }, (err, resp, body) => {
