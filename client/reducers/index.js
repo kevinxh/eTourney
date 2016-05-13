@@ -3,8 +3,8 @@ import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import Modal from './modal-reducer';
 import Auth from './auth-reducer';
-import mainPageGames from './reducer_fav_tournament';
-import bigtournament from './reducer_big_tournament_mainpage';
+import mainPageGames from './reducer_mainpage_fav_tournament_list';
+import bigtournament from './reducer_mainpage_fav_tournament_big';
 
 const rootReducer = combineReducers({
   routing,
