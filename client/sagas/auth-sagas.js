@@ -7,16 +7,11 @@ function* userSigninTask(email, password) {
   try {
     yield put({ type: actionTypes.SIGNIN_WAITING });
     const response = yield call(API.AUTH.userSignin, email, password);
-    console.log(JSON.stringify(response));
-    if (response.success === false) {
-      yield put({ type: actionTypes.SIGNIN_ERROR, error: response.msg });
-    } else {
-      yield put({ type: actionTypes.SIGNIN_SUCCESS, email: response.email });
-      yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNIN_MODAL });
-      return response.access_token;
-    }
+    yield put({ type: actionTypes.SIGNIN_SUCCESS, email: response.email });
+    yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNIN_MODAL });
+    return response.access_token;
   } catch (error) {
-    yield put({ type: actionTypes.SIGNIN_ERROR, error });
+    yield put({ type: actionTypes.SIGNIN_ERROR, error: error.data.msg });
   }
 }
 
@@ -36,15 +31,11 @@ function* userSignupTask(email, password) {
   try {
     yield put({ type: actionTypes.SIGNUP_WAITING });
     const response = yield call(API.AUTH.userSignup, email, password);
-    if (response.success === false) {
-      yield put({ type: actionTypes.SIGNUP_ERROR, error: response.msg });
-    } else {
-      yield put({ type: actionTypes.SIGNIN_SUCCESS });
-      yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNUP_MODAL });
-      return response.access_token;
-    }
+    yield put({ type: actionTypes.SIGNIN_SUCCESS, email: response.email });
+    yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNUP_MODAL });
+    return response.access_token;
   } catch (error) {
-    yield put({ type: actionTypes.SIGNUP_ERROR, error });
+    yield put({ type: actionTypes.SIGNUP_ERROR, error: error.data.msg });
   }
 }
 
