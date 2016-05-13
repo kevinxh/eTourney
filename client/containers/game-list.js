@@ -18,7 +18,7 @@ class GameList extends Component {
   render() {
     return (
       <Grid>
-        <h1 className="text-center">Game List</h1>
+        <h2 className="text-center">Choose your game</h2>
         <Row className="show-grid">
           {this.renderGames()}
         </Row>
@@ -28,7 +28,7 @@ class GameList extends Component {
 }
 
 GameList.propTypes = {
-  games: React.PropTypes.array.isRequired
+  games: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state) {
