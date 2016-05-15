@@ -23,16 +23,18 @@ class TabChoose extends Component {
   render() {
     return (<div>
       <Col sm={6}>
-        left
+        <h>Create your Tournament</h> <br />
+        <p>Instruction</p>
       </Col>
       <Col sm={6}>
-      <FormGroup controlId="formControlsSelect">
-      <ControlLabel>Select</ControlLabel>
-      <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
-        <option value="select">select</option>
-        <option value="HearthStone">HearthStone</option>
-      </FormControl>
-    </FormGroup>
+        <FormGroup controlId="formControlsSelect">
+          <ControlLabel>Select</ControlLabel>
+          <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
+            <option value="Please Select" selected disabled>Please Selected--</option>
+            <option value="League of Legend">League of Legend</option>
+            <option value="HearthStone">HearthStone</option>
+          </FormControl>
+        </FormGroup>
       </Col>
     </div>);
   }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import TabChoose from './tab-choose';
+import TabSetting from './tab-setting';
 
 export default class CreateTMtabs extends Component {
 
@@ -37,7 +38,7 @@ export default class CreateTMtabs extends Component {
   }
 
   onSelect(event){
-    console.log(event);
+  //  console.log(event);
     if(this.state.tabState[`tab${event}`]){
     this.setState({selectedTab:event});
   }
@@ -53,7 +54,7 @@ export default class CreateTMtabs extends Component {
         id="createTM"
       >
         <Tab eventKey={1} title="Tab 1"><TabChoose /></Tab>
-        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}>Tab 2 content</Tab>
+        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSetting /></Tab>
         <Tab eventKey={3} title="Tab 3" disable={this.state.tabState.tab3}>Tab 3 content</Tab>
       </Tabs>
       <button onClick={()=> this.handleTabState(`tab${this.state.selectedTab+1}`,this.state.selectedTab+1)}>next</button>
