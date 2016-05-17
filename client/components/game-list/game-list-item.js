@@ -7,7 +7,8 @@ class GameListItem extends Component {
   render() {
     return (
       <div className="text-center game-list-item">
-        <div><a href={'#'.concat(this.props.game.name)}><Image src="http://lorempixel.com/200/300" thumbnail /></a></div>
+        <div><a href={'#'.concat(this.props.game.name)}><Image src="http://placehold.it/200x300" thumbnail /></a></div>
+        <br />
         <a href={'#'.concat(this.props.game.name)}>{this.props.game.name}</a>
       </div>
     );
