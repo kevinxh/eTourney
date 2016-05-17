@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
 import { modalAction } from '../actions/modal-actions';
 import { userSignout } from '../actions/auth-actions';
 
@@ -60,11 +61,22 @@ class Header extends Component {
       <Navbar fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
-            <a href="#">React-Bootstrap</a>
+            <a href="/">React-Bootstrap</a>
           </NavbarBrand>
           <NavbarToggle />
         </NavbarHeader>
         <NavbarCollapse>
+          <Nav pullLeft>
+            <li role="presentation">
+              <Link to="/find">Find Tournament</Link>
+            </li>
+            <li role="presentation">
+              <Link to="/create">Create Tournament</Link>
+            </li>
+            <li role="presentation">
+              <Link to="/features">Features</Link>
+            </li>
+          </Nav>
             {this.renderUserNav()}
         </NavbarCollapse>
 
