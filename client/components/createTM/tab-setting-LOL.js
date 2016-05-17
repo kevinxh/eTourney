@@ -4,7 +4,7 @@ import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Col from 'react-bootstrap/lib/Col';
 
-export default class TabSetting extends Component {
+export default class TabSettingLOL extends Component {
   render() {
     return (
       <div>

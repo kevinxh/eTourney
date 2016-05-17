@@ -6,8 +6,10 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import { selectGame } from '../../actions/createTM-actions';
+import { LeagueOfLegend } from '../../constants/games';
+import { HearthStone } from '../../constants/games';
 
-class TabChoose extends Component {
+class TabSelectGame extends Component {
 
   constructor(props) {
     super(props);
@@ -31,8 +33,8 @@ class TabChoose extends Component {
             <ControlLabel>Select</ControlLabel>
             <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
               <option value="Please Select" selected disabled>Please Selected--</option>
-              <option value="League of Legend">League of Legend</option>
-              <option value="HearthStone">HearthStone</option>
+              <option value='LeagueOfLegend'>League of Legend</option>
+              <option value='HearthStone'>HearthStone</option>
             </FormControl>
           </FormGroup>
         </Col>
@@ -44,4 +46,4 @@ function mapDispatchToProps(dispatch){
   return bindActionCreators({ selectGame }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(TabChoose);
+export default connect(null, mapDispatchToProps)(TabSelectGame);

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
-import TabChoose from './tab-choose';
-import TabSetting from './tab-setting';
-import TabSetting1 from './tab-setting1';
+import TabSelectGame from './tab-select-game';
+import TabSettingLOL from './tab-setting-LOL';
+import TabSettingHS from './tab-setting-HS';
+import { LeagueOfLegend } from '../../constants/games';
+import { HearthStone } from '../../constants/games';
 
 class CreateTMtabs extends Component {
 
@@ -56,14 +58,14 @@ class CreateTMtabs extends Component {
           onSelect={this.onSelect}
           id="createTM"
         >
-          <Tab eventKey={1} title="Tab 1"><TabChoose /></Tab>
-          <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSetting /></Tab>
+          <Tab eventKey={1} title="Tab 1"><TabSelectGame /></Tab>
+          <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSettingLOL /></Tab>
           <Tab eventKey={3} title="Tab 3" disable={this.state.tabState.tab3}>Tab 3 content</Tab>
         </Tabs>
-        <button onClick={()=> this.handleTabState(`tab${this.state.selectedTab+1}`,this.state.selectedTab+1)}>next</button>
+        <button>next</button>
         </div>);
     }
-    else if(this.props.Selectedgame.game=="League of Legend"){
+    else if(this.props.Selectedgame.game=='LeagueOfLegend'){
     return (<div>
       <Tabs
         defaultActiveKey={1}
@@ -71,15 +73,15 @@ class CreateTMtabs extends Component {
         onSelect={this.onSelect}
         id="createTM"
       >
-        <Tab eventKey={1} title="Tab 1"><TabChoose /></Tab>
-        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSetting /></Tab>
+        <Tab eventKey={1} title="Tab 1"><TabSelectGame /></Tab>
+        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSettingLOL /></Tab>
         <Tab eventKey={3} title="Tab 3" disable={this.state.tabState.tab3}>Tab 3 content</Tab>
       </Tabs>
       <button onClick={()=> this.handleTabState(`tab${this.state.selectedTab+1}`,this.state.selectedTab+1)}>next</button>
       </div>);
     }
 
-    else if(this.props.Selectedgame.game=="HearthStone"){
+    else if(this.props.Selectedgame.game=='HearthStone'){
     return (<div>
       <Tabs
         defaultActiveKey={1}
@@ -87,8 +89,8 @@ class CreateTMtabs extends Component {
         onSelect={this.onSelect}
         id="createTM"
       >
-        <Tab eventKey={1} title="Tab 1"><TabChoose /></Tab>
-        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSetting1 /></Tab>
+        <Tab eventKey={1} title="Tab 1"><TabSelectGame /></Tab>
+        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}><TabSettingHS /></Tab>
         <Tab eventKey={3} title="Tab 3" disable={this.state.tabState.tab3}>Tab 3 content</Tab>
       </Tabs>
       <button onClick={()=> this.handleTabState(`tab${this.state.selectedTab+1}`,this.state.selectedTab+1)}>next</button>
