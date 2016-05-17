@@ -8,7 +8,6 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <GameList />
         <Header />
         {this.props.children}
       </div>
