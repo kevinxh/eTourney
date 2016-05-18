@@ -1,5 +1,5 @@
 import express from 'express';
-import passport from 'passport';
+import { JWTAuthentication } from '../config/passport-jwt.js';
 import { Login, Logout, Register } from '../controllers/auth.controller';
 
 const authRouter = express.Router();
@@ -8,7 +8,7 @@ authRouter.post('/logout', Logout);
 authRouter.post('/register', Register);
 
 // for testing jwt
-authRouter.get('/test', passport.authenticate('jwt', { session: false }), (req, res) => {
+authRouter.get('/test', JWTAuthentication, (req, res) => {
   res.send(`It worked! you are: ${req.user.email}`);
 });
 
