@@ -4,9 +4,7 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import morgan from 'morgan';
 import dev from './dev';
-import mainRouter from '../routes/main.router';
-import authRouter from '../routes/auth.router';
-import { Render } from '../controllers/index.controller';
+import router from '../routes';
 
 export default function () {
   const app = express();
@@ -24,9 +22,7 @@ export default function () {
     app.use(morgan('dev'));
   }
 
-  app.use('/', mainRouter);
-  app.use('/auth', authRouter);
-  app.get('*', Render);
+  app.use('/', router);
 
   return app;
 }
