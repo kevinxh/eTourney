@@ -6,8 +6,8 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import { selectGame } from '../../actions/createTM-actions';
-import { LeagueOfLegend } from '../../constants/games';
-import { HearthStone } from '../../constants/games';
+import { LEAGUEOFLEGEND } from '../../constants/games';
+import { HEARTHSTONE } from '../../constants/games';
 
 class TabSelectGame extends Component {
 
@@ -18,31 +18,32 @@ class TabSelectGame extends Component {
   }
 
   onChange() {
-
-  const game=document.getElementById('formControlsSelect').value;
-  this.props.selectGame(game);
+    const game=document.getElementById('formControlsSelect').value;
+    this.props.selectGame(game);
   }
   render() {
-      return (<div>
-        <Col sm={6}>
-          <h>Create your Tournament</h> <br />
-          <p>Instruction</p>
-        </Col>
-        <Col sm={6}>
-          <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Select</ControlLabel>
-            <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
-              <option value="Please Select" selected disabled>Please Selected--</option>
-              <option value='LeagueOfLegend'>League of Legend</option>
-              <option value='HearthStone'>HearthStone</option>
-            </FormControl>
-          </FormGroup>
-        </Col>
-      </div>);
+    return (<div>
+      <Col sm={6}>
+        <h>Create your Tournament</h> <br />
+        <p>Instruction</p>
+      </Col>
+      <Col sm={6}>
+        <FormGroup controlId="formControlsSelect">
+          <ControlLabel>Select</ControlLabel>
+          <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
+            <option value="Please Select" selected disabled>Please Selected--</option>
+            <option value={LEAGUEOFLEGEND}>League of Legend</option>
+            <option value={HEARTHSTONE}>HearthStone</option>
+          </FormControl>
+        </FormGroup>
+      </Col>
+    
+      next</button>
+    </div>);
   }
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return bindActionCreators({ selectGame }, dispatch);
 }
 
