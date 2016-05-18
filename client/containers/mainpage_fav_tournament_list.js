@@ -21,7 +21,7 @@ class SubList extends Component{
     return this.props.mainPageGames.map(
       (game)=>{
         return(
-          <Col xs={6} md={4} key={game.game}>
+          <Col xs={6} md={3} key={game.game}>
             <Thumbnail  >
               <h3>{game.game}</h3>
               <p>{game.game}</p>
@@ -30,15 +30,6 @@ class SubList extends Component{
               </p>
             </Thumbnail>
           </Col>
-
-
-
-
-
-
-
-
-
         );
       }
     );
@@ -51,14 +42,12 @@ class SubList extends Component{
     return (
       <div>
       <Grid>
-        <Row>
+      <Row>
           {this.renderSubList()}
 
-        </Row>
+      </Row>  
       </Grid>
       </div>
-
-
     );
 
   }
