@@ -3,15 +3,13 @@ import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import Modal from './modal-reducer';
 import Auth from './auth-reducer';
-import mainPageGames from './reducer_mainpage_fav_tournament_list';
-import bigtournament from './reducer_mainpage_fav_tournament_big';
+import Hot from './hot-reducer';
 
 const rootReducer = combineReducers({
   routing,
   Modal,
   Auth,
-  mainPageGames,
-  bigtournament,
+  Hot,
 });
 
 export default rootReducer;

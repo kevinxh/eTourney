@@ -17,4 +17,4 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const SIGNOUT = 'SIGNOUT';
-export const FAV_TM_SELECT = 'FAV_TM_SELECT';
+export const HOT_SELECT = 'HOT_SELECT';
