@@ -20,3 +20,4 @@ export const SIGNOUT = 'SIGNOUT';
 
 
 export const SELECT_GAME = 'SELECT_GAME';
+export const FAV_TM_SELECT = 'FAV_TM_SELECT';

@@ -6,9 +6,7 @@ const initialGameList = [
   { name: 'GOATA2', id: 3 },
   { name: 'abc', id: 4 },
   { name: 'AB', id: 5 },
-  { name: '123', id: 6 },
-  { name: 'asdasd', id: 7 },
-  { name: 'zxc', id: 8 },
+  { name: '123', id: 6 }
 ];
 
 export default function (state = initialGameList, action){
