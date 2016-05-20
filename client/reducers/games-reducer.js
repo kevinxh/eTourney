@@ -1,3 +1,5 @@
+import { SELECT_GAME } from '../actions/actions-types';
+
 const initialGameList = [
   { name: 'HurtStone' },
   { name: 'CSPRO' },
@@ -10,5 +12,11 @@ const initialGameList = [
 ];
 
 export default function (state = initialGameList, action){
-  return state;
+  switch (action) {
+    // case SELECT_GAME:
+      // return
+      // break;
+    default:
+      return state;
+  }
 }
