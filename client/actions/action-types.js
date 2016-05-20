@@ -18,5 +18,5 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const SIGNOUT = 'SIGNOUT';
 
-// GameList Actions
+
 export const SELECT_GAME = 'SELECT_GAME';

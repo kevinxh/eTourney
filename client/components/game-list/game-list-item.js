@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Image } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 class GameListItem extends Component {
   componentWillMount() {
@@ -7,9 +8,9 @@ class GameListItem extends Component {
   render() {
     return (
       <div className="text-center game-list-item">
-        <div><a href={'#'.concat(this.props.game.name)}><Image src="http://placehold.it/200x300" thumbnail /></a></div>
+        <div><Link to={`/find/${this.props.game.id}`}><Image src="http://placehold.it/200x300" thumbnail /></Link></div>
         <br />
-        <a href={'#'.concat(this.props.game.name)}>{this.props.game.name}</a>
+        <Link to={`/find/${this.props.game.id}`}>{this.props.game.name}</Link>
       </div>
     );
   }
