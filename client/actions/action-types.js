@@ -18,6 +18,8 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const SIGNOUT = 'SIGNOUT';
 
-
 export const SELECT_GAME = 'SELECT_GAME';
-export const FAV_TM_SELECT = 'FAV_TM_SELECT';
+export const FETCH_GAME = 'FETCH_GAME';
+
+
+export const HOT_SELECT = 'HOT_SELECT';
