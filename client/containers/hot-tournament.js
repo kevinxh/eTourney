@@ -12,7 +12,7 @@ class HotTournament extends Component {
         <HotDisplay tournament={this.props.hotDisplay} />
         <HotList
           hotTournaments={this.props.hotTournaments}
-          selectTournament={this.props.hotSelect}
+          selectTournamentt={this.props.hotSelect}
         />
       </div>
     );

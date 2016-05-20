@@ -18,7 +18,7 @@ export default class HotList extends Component {
                 <h3>{tournament}</h3>
                 <p>{tournament}</p>
                 <p>
-                  <Button onClick ={()=>this.props.selectTournament(tournament)} bsStyle="primary">Button</Button>&nbsp;
+                  <Button onClick ={()=>this.props.selectTournamentt(tournament)} bsStyle="primary">Button</Button>&nbsp;
                 </p>
               </Thumbnail>
             </Col>
