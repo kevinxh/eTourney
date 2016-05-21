@@ -9,7 +9,7 @@ router.get('/', Render);
 router.use('/auth', authRouter);
 
 //REST APIs
-router.use('/api/tournament', tournamentRouter);
+router.use('/api/tournaments', tournamentRouter);
 
 router.get('*', Render);
 
