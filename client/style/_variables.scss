@@ -3,7 +3,7 @@
 
 // Table of Contents
 //
-// 1. Bootstrap overrides
+// 1. Header
 // 2.
 //
 //
@@ -11,3 +11,36 @@
 // General variable structure
 //
 // Variable format should follow the `$component-modifier-state-property` order.
+
+
+// 1. Header
+// Basics of a navbar
+$header-height:                    70px !default;
+$header-margin-bottom:             $line-height-computed !default;
+$header-border-radius:             $border-radius-base !default;
+$header-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
+$header-padding-vertical:          (($header-height - $line-height-computed) / 2) !default;
+$header-collapse-max-height:       340px !default;
+
+$header-default-color:             #777 !default;
+$header-default-bg:                rgba(12,13,14,0.86) !default;
+$header-default-border:            darken($header-default-bg, 6.5%) !default;
+
+// Navbar links
+$header-default-link-color:                #777 !default;
+$header-default-link-hover-color:          #333 !default;
+$header-default-link-hover-bg:             transparent !default;
+$header-default-link-active-color:         #555 !default;
+$header-default-link-active-bg:            darken($header-default-bg, 6.5%) !default;
+$header-default-link-disabled-color:       #ccc !default;
+$header-default-link-disabled-bg:          transparent !default;
+
+// Navbar brand label
+$header-default-brand-color:               $header-default-link-color !default;
+$header-default-brand-hover-color:         darken($header-default-brand-color, 10%) !default;
+$header-default-brand-hover-bg:            transparent !default;
+
+// Navbar toggle
+$header-default-toggle-hover-bg:           #ddd !default;
+$header-default-toggle-icon-bar-bg:        #888 !default;
+$header-default-toggle-border-color:       #ddd !default;

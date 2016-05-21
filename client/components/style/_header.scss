@@ -1,3 +1,526 @@
-.test {
-  background-color: #fff;
+//
+// headers
+// --------------------------------------------------
+@import "../../style/bootstrap/variables";
+@import "../../style/bootstrap/mixins";
+
+
+//== Navbar
+//
+//##
+
+// Basics of a navbar
+$header-height:                    70px !default;
+$header-margin-bottom:             $line-height-computed !default;
+$header-border-radius:             $border-radius-base !default;
+$header-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
+$header-padding-vertical:          (($header-height - $line-height-computed) / 2) !default;
+$header-collapse-max-height:       340px !default;
+
+$header-default-color:             #777 !default;
+$header-default-bg:                #f8f8f8 !default;
+$header-default-border:            darken($header-default-bg, 6.5%) !default;
+
+// Navbar links
+$header-default-link-color:                #777 !default;
+$header-default-link-hover-color:          #333 !default;
+$header-default-link-hover-bg:             transparent !default;
+$header-default-link-active-color:         #555 !default;
+$header-default-link-active-bg:            darken($header-default-bg, 6.5%) !default;
+$header-default-link-disabled-color:       #ccc !default;
+$header-default-link-disabled-bg:          transparent !default;
+
+// Navbar brand label
+$header-default-brand-color:               $header-default-link-color !default;
+$header-default-brand-hover-color:         darken($header-default-brand-color, 10%) !default;
+$header-default-brand-hover-bg:            transparent !default;
+
+// Navbar toggle
+$header-default-toggle-hover-bg:           #ddd !default;
+$header-default-toggle-icon-bar-bg:        #888 !default;
+$header-default-toggle-border-color:       #ddd !default;
+
+//mixins
+
+@mixin header-vertical-align($element-height) {
+  margin-top: (($header-height - $element-height) / 2);
+  margin-bottom: (($header-height - $element-height) / 2);
+}
+// Wrapper and base class
+//
+// Provide a static header from which we expand to create full-width, fixed, and
+// other header variations.
+
+.header {
+  position: relative;
+  min-height: $header-height; // Ensure a header always shows (e.g., without a .header-brand in collapsed mode)
+  margin-bottom: $header-margin-bottom;
+  border: 1px solid transparent;
+
+  // Prevent floats from breaking the header
+  @include clearfix;
+
+  @media (min-width: $grid-float-breakpoint) {
+    border-radius: $header-border-radius;
+  }
+}
+
+
+// header heading
+//
+// Groups `.header-brand` and `.header-toggle` into a single component for easy
+// styling of responsive aspects.
+
+.header-header {
+  @include clearfix;
+
+  @media (min-width: $grid-float-breakpoint) {
+    float: left;
+  }
+}
+
+
+// header collapse (body)
+//
+// Group your header content into this for easy collapsing and expanding across
+// various device sizes. By default, this content is collapsed when <768px, but
+// will expand past that for a horizontal display.
+//
+// To start (on mobile devices) the header links, forms, and buttons are stacked
+// vertically and include a `max-height` to overflow in case you have too much
+// content for the user's viewport.
+
+.header-collapse {
+  overflow-x: visible;
+  padding-right: $header-padding-horizontal;
+  padding-left:  $header-padding-horizontal;
+  border-top: 1px solid transparent;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1);
+  @include clearfix;
+  -webkit-overflow-scrolling: touch;
+
+  &.in {
+    overflow-y: auto;
+  }
+
+  @media (min-width: $grid-float-breakpoint) {
+    width: auto;
+    border-top: 0;
+    box-shadow: none;
+
+    &.collapse {
+      display: block !important;
+      height: auto !important;
+      padding-bottom: 0; // Override default setting
+      overflow: visible !important;
+    }
+
+    &.in {
+      overflow-y: visible;
+    }
+
+    // Undo the collapse side padding for headers with containers to ensure
+    // alignment of right-aligned contents.
+    .header-fixed-top &,
+    .header-static-top &,
+    .header-fixed-bottom & {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
+.header-fixed-top,
+.header-fixed-bottom {
+  .header-collapse {
+    max-height: $header-collapse-max-height;
+
+    @media (max-device-width: $screen-xs-min) and (orientation: landscape) {
+      max-height: 200px;
+    }
+  }
+}
+
+
+// Both header header and collapse
+//
+// When a container is present, change the behavior of the header and collapse.
+
+.container,
+.container-fluid {
+  > .header-header,
+  > .header-collapse {
+    margin-right: -$header-padding-horizontal;
+    margin-left:  -$header-padding-horizontal;
+
+    @media (min-width: $grid-float-breakpoint) {
+      margin-right: 0;
+      margin-left:  0;
+    }
+  }
+}
+
+
+//
+// header alignment options
+//
+// Display the header across the entirety of the page or fixed it to the top or
+// bottom of the page.
+
+// Static top (unfixed, but 100% wide) header
+.header-static-top {
+  z-index: $zindex-navbar;
+  border-width: 0 0 1px;
+
+  @media (min-width: $grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+
+// Fix the top/bottom headers when screen real estate supports it
+.header-fixed-top,
+.header-fixed-bottom {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: $zindex-navbar-fixed;
+
+  // Undo the rounded corners
+  @media (min-width: $grid-float-breakpoint) {
+    border-radius: 0;
+  }
+}
+.header-fixed-top {
+  top: 0;
+  border-width: 0 0 1px;
+}
+.header-fixed-bottom {
+  bottom: 0;
+  margin-bottom: 0; // override .header defaults
+  border-width: 1px 0 0;
+}
+
+
+// Brand/project name
+
+.header-brand {
+  float: left;
+  padding: $header-padding-vertical $header-padding-horizontal;
+  font-size: $font-size-large;
+  line-height: $line-height-computed;
+  height: $header-height;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  > img {
+    display: block;
+  }
+
+  @media (min-width: $grid-float-breakpoint) {
+    .header > .container &,
+    .header > .container-fluid & {
+      margin-left: -$header-padding-horizontal;
+    }
+  }
+}
+
+
+// header toggle
+//
+// Custom button for toggling the `.header-collapse`, powered by the collapse
+// JavaScript plugin.
+
+.header-toggle {
+  position: relative;
+  float: right;
+  margin-right: $header-padding-horizontal;
+  padding: 9px 10px;
+  @include header-vertical-align(34px);
+  background-color: transparent;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+  border: 1px solid transparent;
+  border-radius: $border-radius-base;
+
+  // We remove the `outline` here, but later compensate by attaching `:hover`
+  // styles to `:focus`.
+  &:focus {
+    outline: 0;
+  }
+
+  // Bars
+  .icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+  }
+  .icon-bar + .icon-bar {
+    margin-top: 4px;
+  }
+
+  @media (min-width: $grid-float-breakpoint) {
+    display: none;
+  }
+}
+
+
+// header nav links
+//
+// Builds on top of the `.nav` components with its own modifier class to make
+// the nav the full height of the horizontal nav (above 768px).
+
+.header-nav {
+  margin: ($header-padding-vertical / 2) (-$header-padding-horizontal);
+
+  > li > a {
+    padding-top:    10px;
+    padding-bottom: 10px;
+    line-height: $line-height-computed;
+  }
+
+  @media (max-width: $grid-float-breakpoint-max) {
+    // Dropdowns get custom display when collapsed
+    .open .dropdown-menu {
+      position: static;
+      float: none;
+      width: auto;
+      margin-top: 0;
+      background-color: transparent;
+      border: 0;
+      box-shadow: none;
+      > li > a,
+      .dropdown-header {
+        padding: 5px 15px 5px 25px;
+      }
+      > li > a {
+        line-height: $line-height-computed;
+        &:hover,
+        &:focus {
+          background-image: none;
+        }
+      }
+    }
+  }
+
+  // Uncollapse the nav
+  @media (min-width: $grid-float-breakpoint) {
+    float: left;
+    //margin: 0;
+
+    > li {
+      float: left;
+      > a {
+        padding-top:    $header-padding-vertical;
+        padding-bottom: $header-padding-vertical;
+      }
+    }
+  }
+}
+
+// Dropdown menus
+
+// Menu position and menu carets
+.header-nav > li > .dropdown-menu {
+  margin-top: 0;
+  @include border-top-radius(0);
+}
+// Menu position and menu caret support for dropups via extra dropup class
+.header-fixed-bottom .header-nav > li > .dropdown-menu {
+  margin-bottom: 0;
+  @include border-top-radius($header-border-radius);
+  @include border-bottom-radius(0);
+}
+
+
+// Buttons in headers
+//
+// Vertically center a button within a header (when *not* in a form).
+
+.header-btn {
+  @include navbar-vertical-align($input-height-base);
+
+  &.btn-sm {
+    @include navbar-vertical-align($input-height-small);
+  }
+  &.btn-xs {
+    @include navbar-vertical-align(22);
+  }
+}
+
+
+// Text in headers
+//
+// Add a class to make any element properly align itself vertically within the headers.
+
+.header-text {
+  @include navbar-vertical-align($line-height-computed);
+
+  @media (min-width: $grid-float-breakpoint) {
+    float: left;
+    margin-left: $header-padding-horizontal;
+    margin-right: $header-padding-horizontal;
+  }
+}
+
+
+// Component alignment
+//
+// Repurpose the pull utilities as their own header utilities to avoid specificity
+// issues with parents and chaining. Only do this when the header is uncollapsed
+// though so that header contents properly stack and align in mobile.
+//
+// Declared after the header components to ensure more specificity on the margins.
+
+@media (min-width: $grid-float-breakpoint) {
+  .header-left {
+    float: left !important;
+  }
+  .header-right {
+    float: right !important;
+  margin-right: -$header-padding-horizontal;
+
+    ~ .header-right {
+      margin-right: 0;
+    }
+  }
+}
+
+
+// Alternate headers
+// --------------------------------------------------
+
+// Default header
+.header-default {
+  background-color: $header-default-bg;
+  border-color: $header-default-border;
+
+  .header-brand {
+    color: $header-default-brand-color;
+    &:hover,
+    &:focus {
+      color: $header-default-brand-hover-color;
+      background-color: $header-default-brand-hover-bg;
+    }
+  }
+
+  .header-text {
+    color: $header-default-color;
+  }
+
+  .header-nav {
+    > li > a {
+      color: $header-default-link-color;
+
+      &:hover,
+      &:focus {
+        color: $header-default-link-hover-color;
+        background-color: $header-default-link-hover-bg;
+      }
+    }
+    > .active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $header-default-link-active-color;
+        background-color: $header-default-link-active-bg;
+      }
+    }
+    > .disabled > a {
+      &,
+      &:hover,
+      &:focus {
+        color: $header-default-link-disabled-color;
+        background-color: $header-default-link-disabled-bg;
+      }
+    }
+  }
+
+  .header-toggle {
+    border-color: $header-default-toggle-border-color;
+    &:hover,
+    &:focus {
+      background-color: $header-default-toggle-hover-bg;
+    }
+    .icon-bar {
+      background-color: $header-default-toggle-icon-bar-bg;
+    }
+  }
+
+  .header-collapse,
+  .header-form {
+    border-color: $header-default-border;
+  }
+
+  // Dropdown menu items
+  .header-nav {
+    // Remove background color from open dropdown
+    > .open > a {
+      &,
+      &:hover,
+      &:focus {
+        background-color: $header-default-link-active-bg;
+        color: $header-default-link-active-color;
+      }
+    }
+
+    @media (max-width: $grid-float-breakpoint-max) {
+      // Dropdowns get custom display when collapsed
+      .open .dropdown-menu {
+        > li > a {
+          color: $header-default-link-color;
+          &:hover,
+          &:focus {
+            color: $header-default-link-hover-color;
+            background-color: $header-default-link-hover-bg;
+          }
+        }
+        > .active > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $header-default-link-active-color;
+            background-color: $header-default-link-active-bg;
+          }
+        }
+        > .disabled > a {
+          &,
+          &:hover,
+          &:focus {
+            color: $header-default-link-disabled-color;
+            background-color: $header-default-link-disabled-bg;
+          }
+        }
+      }
+    }
+  }
+
+
+  // Links in headers
+  //
+  // Add a class to ensure links outside the header nav are colored correctly.
+
+  .header-link {
+    color: $header-default-link-color;
+    &:hover {
+      color: $header-default-link-hover-color;
+    }
+  }
+
+  .btn-link {
+    color: $header-default-link-color;
+    &:hover,
+    &:focus {
+      color: $header-default-link-hover-color;
+    }
+    &[disabled],
+    fieldset[disabled] & {
+      &:hover,
+      &:focus {
+        color: $header-default-link-disabled-color;
+      }
+    }
+  }
 }

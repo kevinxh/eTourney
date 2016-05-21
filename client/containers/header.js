@@ -58,7 +58,7 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar fluid fixedTop>
+      <Navbar bsClass="header" fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
             <a href="/">React-Bootstrap</a>
