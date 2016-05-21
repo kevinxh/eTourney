@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/lib/Col';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import { selectGame, selectTab, toggleTab } from '../../actions/createTM-actions';
+import { selectGame, selectTab } from '../../actions/createTM-actions';
 import { LEAGUEOFLEGEND, HEARTHSTONE, UNSELECTED } from '../../constants/games';
 
 class TabSelectGame extends Component {
@@ -17,20 +17,10 @@ class TabSelectGame extends Component {
   onChange() {
     const game = document.getElementById('selectGame').value;
     this.props.selectGame(game);
-    this.validate();
   }
 
   onClickNext(tab) {
     this.props.selectTab(tab);
-  }
-
-  validate() {
-    console.log(this.props.SelectedGame);
-    if (this.props.SelectedGame !== UNSELECTED) {
-      this.props.toggleTab(2, false);
-    } else {
-      this.props.toggleTab(2, true);
-    }
   }
 
   render() {
@@ -64,7 +54,6 @@ TabSelectGame.propTypes = {
   SelectedGame: React.PropTypes.oneOf([UNSELECTED, LEAGUEOFLEGEND, HEARTHSTONE]).isRequired,
   selectGame: React.PropTypes.func.isRequired,
   selectTab: React.PropTypes.func.isRequired,
-  toggleTab: React.PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -74,7 +63,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectGame, selectTab, toggleTab }, dispatch);
+  return bindActionCreators({ selectGame, selectTab }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TabSelectGame);

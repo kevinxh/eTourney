@@ -5,7 +5,7 @@ import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
 import Col from 'react-bootstrap/lib/Col';
-import { selectTab, toggleTab } from '../../actions/createTM-actions';
+import { selectTab } from '../../actions/createTM-actions';
 
 class TabSettingLOL extends Component {
   onClickNext(tab) {
@@ -15,22 +15,6 @@ class TabSettingLOL extends Component {
   onChange() {
     // todo: on every input change,
     // we refresh the value stored in redux
-    // and validate information:
-
-    //this.validate();
-  }
-
-  validate() {
-    // todo: validate every input
-    // if validation passed
-    // enable the next tab:
-
-    // this.props.toggleTab(3, false);
-
-    // if validation not passed
-    // disable the next tab:
-
-    //this.props.toggleTab(3, true);
   }
 
   render() {
@@ -67,7 +51,7 @@ class TabSettingLOL extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectTab, toggleTab }, dispatch);
+  return bindActionCreators({ selectTab }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(TabSettingLOL);
