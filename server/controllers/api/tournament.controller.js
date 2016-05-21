@@ -57,9 +57,7 @@ export function find(req, res) {
       }
       return res.status(200).json({
         success: true,
-        tournamentName: tournament.tournamentName,
-        game: tournament.game,
-        creatorEmail: tournament.creatorEmail,
+        tournament,
       });
     });
   } catch (error) {

@@ -29,7 +29,7 @@ export function Login(req, res) {
       if (isMatch) {
       // Create token if the password matched and no error was thrown
         const token = jwt.sign({ email: user.email }, config.JwtSecret, {
-          expiresIn: 10080, // a week in seconds
+          expiresIn: 5184000, // 60 days in seconds
         });
         return res.status(200).json({
           success: true,
