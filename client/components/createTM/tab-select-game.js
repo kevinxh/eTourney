@@ -5,31 +5,34 @@ import Col from 'react-bootstrap/lib/Col';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import { selectGame, selectTabState, selectedTabNotCompleted } from '../../actions/createTM-actions';
-import { LEAGUEOFLEGEND, HEARTHSTONE } from '../../constants/games';
-
+import { selectGame, selectTab, toggleTab } from '../../actions/createTM-actions';
+import { LEAGUEOFLEGEND, HEARTHSTONE, UNSELECTED } from '../../constants/games';
 
 class TabSelectGame extends Component {
-
   constructor(props) {
     super(props);
-
     this.onChange = this.onChange.bind(this);
   }
 
   onChange() {
-    const game = document.getElementById('formControlsSelect').value;
+    const game = document.getElementById('selectGame').value;
     this.props.selectGame(game);
+    this.validate();
   }
 
-  handleTabState(tab) {
-    if (!this.props.Selectedgame) {
-      this.props.selectedTabNotCompleted(tab);
-    }
-    else {
-    this.props.selectTabState(tab);
+  onClickNext(tab) {
+    this.props.selectTab(tab);
+  }
+
+  validate() {
+    console.log(this.props.SelectedGame);
+    if (this.props.SelectedGame !== UNSELECTED) {
+      this.props.toggleTab(2, false);
+    } else {
+      this.props.toggleTab(2, true);
     }
   }
+
   render() {
     return (<div>
       <Col sm={6}>
@@ -37,7 +40,7 @@ class TabSelectGame extends Component {
         <p>Instruction</p>
       </Col>
       <Col sm={6}>
-        <FormGroup controlId="formControlsSelect">
+        <FormGroup controlId="selectGame">
           <ControlLabel>Select</ControlLabel>
           <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
             <option value="Please Select" selected disabled>Please Selected--</option>
@@ -47,21 +50,31 @@ class TabSelectGame extends Component {
         </FormGroup>
       </Col>
       <button
-        onClick={() => this.handleTabState(2)}
+        onClick={() => this.onClickNext(2)}
       >
       next</button>
     </div>);
   }
 }
 
+// Please state props types for every component props.
+// example:
+// Delete this comment if you see this. :)
+TabSelectGame.propTypes = {
+  SelectedGame: React.PropTypes.oneOf([UNSELECTED, LEAGUEOFLEGEND, HEARTHSTONE]).isRequired,
+  selectGame: React.PropTypes.func.isRequired,
+  selectTab: React.PropTypes.func.isRequired,
+  toggleTab: React.PropTypes.func.isRequired,
+};
+
 function mapStateToProps(state) {
   return {
-    Selectedgame: state.CreateTM.SelectedGame,
+    SelectedGame: state.CreateTM.TournamentInfo.game,
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectGame, selectTabState }, dispatch);
+  return bindActionCreators({ selectGame, selectTab, toggleTab }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TabSelectGame);

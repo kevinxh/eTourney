@@ -18,7 +18,7 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const SIGNOUT = 'SIGNOUT';
 
-//Create Tournament Actions
+// Create Tournament Actions
 export const SELECT_GAME = 'SELECT_GAME';
-export const SELECT_STATE = 'SELECT_STATE';
-export const SELECT_TABNOTCOMPLETED = 'SELECT_TABNOTCOMPLETED';
+export const SELECT_TAB = 'SELECT_TAB';
+export const TOGGLE_TAB = 'TOGGLE_TAB';

@@ -7,16 +7,21 @@ export const selectGame = (game) => {
   };
 };
 
-export const selectTabState = (tab) => {
+export const selectTab = (tab) => {
   return {
-    type: actionTypes.SELECT_STATE,
+    type: actionTypes.SELECT_TAB,
     tab,
   };
 };
 
-export const selectedTabNotCompleted = (tab) => {
+// toggleTab can enable/disable create tournament tabs
+// variable "disabled" is a boolean,
+// if "disabled" is false, then the tab is enabled, vise versa.
+// variable "tab" is an integer
+export const toggleTab = (tab, disabled) => {
   return {
-    type: actionTypes.SELECT_TABNOTCOMPLETED,
+    type: actionTypes.TOGGLE_TAB,
     tab,
+    disabled,
   };
 };
