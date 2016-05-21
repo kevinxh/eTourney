@@ -20,3 +20,5 @@ export const SIGNOUT = 'SIGNOUT';
 
 //Create Tournament Actions
 export const SELECT_GAME = 'SELECT_GAME';
+export const SELECT_STATE = 'SELECT_STATE';
+export const SELECT_TABNOTCOMPLETED = 'SELECT_TABNOTCOMPLETED';

@@ -5,9 +5,9 @@ import Col from 'react-bootstrap/lib/Col';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import { selectGame } from '../../actions/createTM-actions';
-import { LEAGUEOFLEGEND } from '../../constants/games';
-import { HEARTHSTONE } from '../../constants/games';
+import { selectGame, selectTabState, selectedTabNotCompleted } from '../../actions/createTM-actions';
+import { LEAGUEOFLEGEND, HEARTHSTONE } from '../../constants/games';
+
 
 class TabSelectGame extends Component {
 
@@ -18,8 +18,17 @@ class TabSelectGame extends Component {
   }
 
   onChange() {
-    const game=document.getElementById('formControlsSelect').value;
+    const game = document.getElementById('formControlsSelect').value;
     this.props.selectGame(game);
+  }
+
+  handleTabState(tab) {
+    if (!this.props.Selectedgame) {
+      this.props.selectedTabNotCompleted(tab);
+    }
+    else {
+    this.props.selectTabState(tab);
+    }
   }
   render() {
     return (<div>
@@ -37,14 +46,22 @@ class TabSelectGame extends Component {
           </FormControl>
         </FormGroup>
       </Col>
-    
+      <button
+        onClick={() => this.handleTabState(2)}
+      >
       next</button>
     </div>);
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectGame }, dispatch);
+function mapStateToProps(state) {
+  return {
+    Selectedgame: state.CreateTM.SelectedGame,
+  };
 }
 
-export default connect(null, mapDispatchToProps)(TabSelectGame);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectGame, selectTabState }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabSelectGame);

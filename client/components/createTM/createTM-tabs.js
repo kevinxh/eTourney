@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import TabSelectGame from './tab-select-game';
 import TabSettingLOL from './tab-setting-LOL';
 import TabSettingHS from './tab-setting-HS';
+import { selectTabState } from '../../actions/createTM-actions';
 import { LEAGUEOFLEGEND, HEARTHSTONE } from '../../constants/games';
 
 
@@ -16,42 +18,21 @@ class CreateTMtabs extends Component {
       selectedTab: 1,
       tabState: {
         tab1: true,
-        tab2: false,
-        tab3: false,
+        tab2: true,
+        tab3: true,
       },
 
     };
-    this.Activekey = this.Activekey.bind(this);
+
     this.onSelect = this.onSelect.bind(this);
   }
 
-  Activekey(key) {
-    this.setState({ selectedTab: key });
-  }
-
-  handleTabState(tab, active) {
-    if (!this.props.Selectedgame) {}
-    else {
-      this.setState({
-        selectedTab: active,
-        tabState: {
-          [tab]: true,
-        },
-      }
-    );
-    }
-  }
 
   onSelect(event) {
-      if (this.state.tabState[`tab${event}`]) {
-        this.setState({ selectedTab: event });
-      }
+    this.props.selectTabState(event);
     // todo : error message feedback
   }
 
-  Activekey(key) {
-    this.setState({ selectedTab: key });
-  }
 
   RenderSelect() {
     let TabSetting = '';
@@ -72,31 +53,32 @@ class CreateTMtabs extends Component {
     return (<div>
       <Tabs
         defaultActiveKey={1}
-        activeKey={this.state.selectedTab}
+        activeKey={this.props.Activatedtab.state}
         onSelect={this.onSelect}
         id="createTM"
       >
         <Tab eventKey={1} title="Tab 1"><TabSelectGame /></Tab>
-        <Tab eventKey={2} title="Tab 2" disable={this.state.tabState.tab2}>
+        <Tab eventKey={2} title="Tab 2" disabled={this.props.Activatedtab.disable} >
         {this.RenderSelect()}
         </Tab>
-        <Tab eventKey={3} title="Tab 3" disable={this.state.tabState.tab3}>
+        <Tab eventKey={3} title="Tab 3">
         Tab 3 content
         </Tab>
       </Tabs>
-      <button
-        onClick={()=> this.handleTabState(`tab${this.state.selectedTab+1}`,this.state.selectedTab+1)}
-      >
-      next</button>
     </div>);
   }
 }
 
 function mapStateToProps(state) {
   return {
-
-    Selectedgame: state.CreateTM
+    Selectedgame: state.CreateTM.SelectedGame,
+    Activatedtab: state.CreateTM.SelectedTab,
   };
 }
 
-export default connect(mapStateToProps)(CreateTMtabs);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectTabState }, dispatch);
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTMtabs);
