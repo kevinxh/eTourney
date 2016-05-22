@@ -1,6 +1,6 @@
 import Tournament from '../../models/tournament';
 
-export function create(req, res) {
+export function createTournament(req, res) {
   if (!req.body.tournamentName) {
     return res.status(400).json({
       success: false,
@@ -20,27 +20,21 @@ export function create(req, res) {
   });
   tournament.save((err) => {
     if (err) {
-      return	res.status(401).json({
+      return	res.status(403).json({
         success: false,
         msg: err,
       });
     }
     return res.status(201).json({
       success: true,
-      tournamentName: tournament.tournamentName,
+      tournament,
     });
   });
 }
 
-export function find(req, res) {
-  if (!req.params.tournamentName) {
-    return res.status(400).json({
-      success: false,
-      msg: 'Please provide tournament name',
-    });
-  }
+export function findTournamentByID(req, res) {
   try {
-    Tournament.findOne({ tournamentName: req.params.tournamentName }, (err, tournament) => {
+    Tournament.findOne({ _id: req.params.tournamentID }, (err, tournament) => {
       // if error finding an tournament
       if (err) {
         return res.status(403).json({
@@ -52,7 +46,7 @@ export function find(req, res) {
       if (!tournament) {
         return res.status(401).json({
           success: false,
-          msg: `Request failed. ${req.params.tournamentName} not found.`,
+          msg: 'Request failed. Tournament not found.',
         });
       }
       return res.status(200).json({

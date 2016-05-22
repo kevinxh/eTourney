@@ -4,7 +4,7 @@ import { Login, Logout, Register } from '../controllers/auth.controller';
 
 const authRouter = express.Router();
 authRouter.post('/login', Login);
-authRouter.post('/logout', Logout);
+authRouter.post('/logout', Logout); //we do not need this now, but might need it later
 authRouter.post('/register', Register);
 
 // for testing jwt
