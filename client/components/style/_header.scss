@@ -2,43 +2,8 @@
 // headers
 // --------------------------------------------------
 @import "../../style/bootstrap/variables";
+@import "../../style/variables";
 @import "../../style/bootstrap/mixins";
-
-
-//== Navbar
-//
-//##
-
-// Basics of a navbar
-$header-height:                    70px !default;
-$header-margin-bottom:             $line-height-computed !default;
-$header-border-radius:             $border-radius-base !default;
-$header-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
-$header-padding-vertical:          (($header-height - $line-height-computed) / 2) !default;
-$header-collapse-max-height:       340px !default;
-
-$header-default-color:             #777 !default;
-$header-default-bg:                #f8f8f8 !default;
-$header-default-border:            darken($header-default-bg, 6.5%) !default;
-
-// Navbar links
-$header-default-link-color:                #777 !default;
-$header-default-link-hover-color:          #333 !default;
-$header-default-link-hover-bg:             transparent !default;
-$header-default-link-active-color:         #555 !default;
-$header-default-link-active-bg:            darken($header-default-bg, 6.5%) !default;
-$header-default-link-disabled-color:       #ccc !default;
-$header-default-link-disabled-bg:          transparent !default;
-
-// Navbar brand label
-$header-default-brand-color:               $header-default-link-color !default;
-$header-default-brand-hover-color:         darken($header-default-brand-color, 10%) !default;
-$header-default-brand-hover-bg:            transparent !default;
-
-// Navbar toggle
-$header-default-toggle-hover-bg:           #ddd !default;
-$header-default-toggle-icon-bar-bg:        #888 !default;
-$header-default-toggle-border-color:       #ddd !default;
 
 //mixins
 
@@ -308,7 +273,8 @@ $header-default-toggle-border-color:       #ddd !default;
   // Uncollapse the nav
   @media (min-width: $grid-float-breakpoint) {
     float: left;
-    //margin: 0;
+    margin-top: ($header-padding-vertical / 2);
+    margin-bottom: ($header-padding-vertical / 2);
 
     > li {
       float: left;
@@ -320,6 +286,13 @@ $header-default-toggle-border-color:       #ddd !default;
   }
 }
 
+// when header is not collapsed, set margin for navigation links
+.header-link-group {
+  @media (min-width: $grid-float-breakpoint) {
+    margin-left: 100px;
+    margin-right: $header-padding-horizontal;
+  }
+}
 // Dropdown menus
 
 // Menu position and menu carets
@@ -396,6 +369,7 @@ $header-default-toggle-border-color:       #ddd !default;
 .header-default {
   background-color: $header-default-bg;
   border-color: $header-default-border;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
 
   .header-brand {
     color: $header-default-brand-color;
@@ -425,7 +399,7 @@ $header-default-toggle-border-color:       #ddd !default;
       &:hover,
       &:focus {
         color: $header-default-link-active-color;
-        background-color: $header-default-link-active-bg;
+        //background-color: $header-default-link-active-bg;
       }
     }
     > .disabled > a {
