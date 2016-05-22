@@ -6,15 +6,17 @@ import { fetchGame } from '../actions/games-actions';
 class FindTournament extends Component {
   componentDidMount() {
     this.props.fetchGame(this.props.params.game);
-    console.log(this.props)
   }
   render() {
+    if (!this.props.game) {
+      return (<div></div>);
+    }
     return (
       <div>
         <h2 className="text-center">Select a Tournament</h2>
-        <span>{this.props.params.game}</span>
+        <span>{this.props.game.name}</span>
       </div>
-		);
+    );
   }
 }
 

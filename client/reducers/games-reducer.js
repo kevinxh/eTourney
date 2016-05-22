@@ -19,6 +19,7 @@ export default function (state = initialGameList, action){
       return {...state, selectedGame: action.game};
       // break;
     case FETCH_GAME:
+    // return {...state, selectedGame: { name: 'HurtStone', id: 1 }}
       return {...state, selectedGame: state.games.filter(
           (obj)=> {return obj.id === parseInt(action.gameId)}
         )[0]};

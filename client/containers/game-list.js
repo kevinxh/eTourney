@@ -33,7 +33,7 @@ GameList.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    games: state.Games
+    games: state.Games.games
   };
 }
 
