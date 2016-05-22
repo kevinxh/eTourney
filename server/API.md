@@ -30,6 +30,7 @@
 
   * **Code:** 200 SUCCESS<br />
     **Content:**
+
     ```javascript
     {
       success : true,
@@ -37,6 +38,7 @@
       access_token: "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtAZ21haWwuY29tIiwiaWF0IjoxNDYzOTQ5MTgyLCJleHAiOjE0NjkxMzMxODJ9.TzgrUPJ64qXufZpLJ8YIyAIUSPMmohH2gOZLas-knzc",
     }
     ```
+
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
@@ -74,7 +76,7 @@
 
 <br/>
 
-  ###**Register**
+###**Register**
 
   Sign up new user. Returns access_token and JSON data about the new user.
 
@@ -102,6 +104,7 @@
 
     * **Code:** 201 CREATED<br />
       **Content:**
+
       ```javascript
       {
         success : true,
@@ -109,6 +112,7 @@
         access_token: "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtAZ21haWwuY29tIiwiaWF0IjoxNDYzOTQ5MTgyLCJleHAiOjE0NjkxMzMxODJ9.TzgrUPJ64qXufZpLJ8YIyAIUSPMmohH2gOZLas-knzc",
       }
       ```
+
   * **Error Response:**
 
     * **Code:** 400 BAD REQUEST <br />
@@ -171,6 +175,7 @@
 
   * **Code:** 201 CREATED<br />
     **Content:**
+
     ```javascript
     {
       "success": true,
@@ -184,6 +189,7 @@
       }
     }
     ```
+
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
@@ -248,6 +254,7 @@
 
   * **Code:** 201 CREATED<br />
     **Content:**
+
     ```javascript
     {
       "success": true,
@@ -261,6 +268,7 @@
       }
     }
     ```
+    
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
