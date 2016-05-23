@@ -18,8 +18,13 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const SIGNOUT = 'SIGNOUT';
 
+// Games Actions
 export const SELECT_GAME = 'SELECT_GAME';
 export const FETCH_GAME = 'FETCH_GAME';
+export const FETCH_GAMES = 'FETCH_GAMES';
 
 
 export const HOT_SELECT = 'HOT_SELECT';
+
+// Tournament Actions
+export const FETCH_TOURNAMENTS = 'FETCH_TOURNAMENTS';

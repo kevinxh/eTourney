@@ -13,7 +13,7 @@ class FindTournament extends Component {
     }
     return (
       <div>
-        <h2 className="text-center">Select a Tournament</h2>
+        <h2>{this.props.game.name}</h2>
         <span>{this.props.game.name}</span>
       </div>
     );
