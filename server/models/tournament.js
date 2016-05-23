@@ -7,8 +7,8 @@ const TournamentSchema = new Schema({
     unique: true,
     required: 'Tournament name is required',
     validate: [
-      (name) => (name.length >= 2 && name.length <= 16),
-      'Name length should be between 2 and 16 characters',
+      (name) => (name.length >= 2 && name.length <= 32),
+      'Name length should be between 2 and 32 characters',
     ]
   },
   game: {

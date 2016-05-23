@@ -5,9 +5,11 @@ import webpackConfig from '../../webpack.config';
 
 
 const dev = (app) => {
-  const compiler = webpack(webpackConfig);
-  app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
-  app.use(webpackHotMiddleware(compiler));
+  if (process.env.NODE_ENV !== 'test') {
+    const compiler = webpack(webpackConfig);
+    app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
+    app.use(webpackHotMiddleware(compiler));
+  }
   return app;
 };
 
