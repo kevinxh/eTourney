@@ -1,4 +1,4 @@
-import { SELECT_GAME, FETCH_GAME, FETCH_GAMES } from '../actions/action-types';
+import { SELECT_GAME, FETCH_GAMES } from '../actions/action-types';
 
 const initialGameList = {
   games: [],
@@ -9,13 +9,8 @@ const initialGameList = {
 export default function (state = initialGameList, action){
   switch (action.type) {
     case SELECT_GAME:
-      return {...state, selectedGame: action.game};
+      return {...state, selectedGame: action.data};
       // break;
-    case FETCH_GAME:
-    // return {...state, selectedGame: { name: 'HurtStone', id: 1 }}
-      return {...state, selectedGame: state.games.filter(
-          (obj)=> {return obj.id === parseInt(action.gameId)}
-        )[0]};
     case FETCH_GAMES:
       return {...state, games: action.data};
     default:

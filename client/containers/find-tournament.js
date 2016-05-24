@@ -1,36 +1,62 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchGame } from '../actions/games-actions';
+import { Grid, Row, Col } from 'react-bootstrap';
+
+import { selectGame } from '../actions/games-actions';
+import { fetchTournaments } from '../actions/tournaments-actions';
+import TournamentListItem from '../components/tournament/tournament-list-item';
 
 class FindTournament extends Component {
   componentDidMount() {
-    this.props.fetchGame(this.props.params.game);
+    this.props.selectGame(this.props.params.game);
+    this.props.fetchTournaments(this.props.params.game);
+  }
+  renderTournaments() {
+    if (this.props.tournaments.length === 0) {
+      return <div></div>;
+    }
+    return this.props.tournaments.map((tournament) => (
+      <Col key={tournament.id} xs={6} md={4}>
+        <TournamentListItem tournament={tournament} />
+      </Col>
+    ));
   }
   render() {
     if (!this.props.game) {
       return (<div></div>);
     }
+    if (!this.props.tournaments) {
+      return (<div></div>);
+    }
     return (
-      <div>
-        <h2>{this.props.game.name}</h2>
-        <span>{this.props.game.name}</span>
-      </div>
+      <Grid>
+        <h2 className="text-center">{this.props.game.name} Tournaments</h2>
+        <hr />
+        <Row className="show-grid">
+          {this.renderTournaments()}
+        </Row>
+      </Grid>
     );
   }
 }
 
 FindTournament.propTypes = {
   game: React.PropTypes.object,
+  tournaments: React.PropTypes.array,
   params: React.PropTypes.object.isRequired,
-  fetchGame: React.PropTypes.func
+  selectGame: React.PropTypes.func,
+  fetchTournaments: React.PropTypes.func
 };
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchGame }, dispatch);
+  return bindActionCreators({ selectGame, fetchTournaments }, dispatch);
 }
 function mapStateToProps(state) {
-  return { game: state.Games.selectedGame };
+  return {
+    game: state.Games.selectedGame,
+    tournaments: state.Tournaments.tournaments
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(FindTournament);

@@ -11,6 +11,17 @@ function* fetchGames() {
   }
 }
 
+function* fetchGame() {
+  while (true) {
+    const { gameId } = yield take(actionTypes.SELECT_GAME);
+    const response = yield call(API.GAMES.fetchGame, gameId);
+    yield put({ type: actionTypes.SELECT_GAME, data: response });
+
+  }
+
+}
+
 export default function* authSagas() {
   yield fork(fetchGames);
+  yield fork(fetchGame);
 }
