@@ -244,6 +244,8 @@
     padding-top:    10px;
     padding-bottom: 10px;
     line-height: $line-height-computed;
+    font-weight: 600;
+    font-size: $font-size-large;
   }
 
   @media (max-width: $grid-float-breakpoint-max) {
