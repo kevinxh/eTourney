@@ -14,10 +14,8 @@ import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
-import SigninModal from '../components/auth/signin-modal';
-import SignupModal from '../components/auth/signup-modal';
-
-import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
+import LoginRegisterModal from '../components/auth/loginRegister-modal';
+import { SIGNIN_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
 require('../components/style/_header.scss');
@@ -46,12 +44,7 @@ class Header extends Component {
             eventKey={1}
             onClick={() => this.props.modalAction(SIGNIN_MODAL, MODAL_OPEN)}
             href="#"
-          >Sign In</NavItem>
-          <NavItem
-            eventKey={2}
-            onClick={() => this.props.modalAction(SIGNUP_MODAL, MODAL_OPEN)}
-            href="#"
-          >Sign Up</NavItem>
+          >Login & Register</NavItem>
         </Nav>);
     }
   }
@@ -80,12 +73,8 @@ class Header extends Component {
             {this.renderUserNav()}
         </NavbarCollapse>
 
-        <SigninModal
-          show={this.props.showSignin}
-          onHide={this.props.modalAction}
-        />
-        <SignupModal
-          show={this.props.showSignup}
+        <LoginRegisterModal
+          show={this.props.showLoginRegister}
           onHide={this.props.modalAction}
         />
       </Navbar>
@@ -94,15 +83,13 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showSignin: React.PropTypes.bool.isRequired,
-  showSignup: React.PropTypes.bool.isRequired,
+  showLoginRegister: React.PropTypes.bool.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
   modalAction: React.PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
-  showSignin: false,
-  showSignup: false,
+  showLoginRegister: false,
   isAuthenticated: false,
 };
 
@@ -112,8 +99,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    showSignin: state.Modal.showSignin,
-    showSignup: state.Modal.showSignup,
+    showLoginRegister: state.Modal.showLoginRegister,
     isAuthenticated: state.Auth.isAuthenticated,
     email: state.Auth.email,
   };
