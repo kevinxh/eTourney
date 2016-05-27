@@ -73,8 +73,8 @@ class SignupForm extends Component {
         </Col>
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button type="submit" onClick={this.handleClick}>
-              Sign up
+            <Button className="btn btn-danger" type="submit" onClick={this.handleClick}>
+              Sign Up
             </Button>
           </Col>
         </FormGroup>

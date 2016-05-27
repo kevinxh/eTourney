@@ -5,6 +5,7 @@ import SignupForm from './signup-form';
 import { Tabs, TabLink, TabContent } from 'react-tabs-redux';
 import { SIGNIN_MODAL } from '../../constants';
 import { MODAL_CLOSE } from '../../actions/action-types';
+require('../style/_header.scss');
 
 export default class SigninModal extends Component {
   render() {
@@ -15,9 +16,13 @@ export default class SigninModal extends Component {
           onHide={() => this.props.onHide(SIGNIN_MODAL, MODAL_CLOSE)}
         >
           <Modal.Header closeButton />
-          <Tabs>
-            <TabLink to="login" default >Login</TabLink>
-            <TabLink to="register" >Register</TabLink>
+          <Tabs id="window">
+            <div className="buttons">
+              <button className="btn btn-link" id="login"><TabLink to="login">
+              Login</TabLink></button>
+              <button className="btn btn-link"><TabLink to="register">
+              Register</TabLink></button>
+            </div>
             <div>
               <TabContent for="login"><SigninForm /></TabContent>
               <TabContent for="register"><SignupForm /></TabContent>

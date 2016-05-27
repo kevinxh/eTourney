@@ -73,8 +73,8 @@ class SigninForm extends Component {
         </Col>
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button type="submit" onClick={this.handleClick}>
-              Sign in
+            <Button className="btn btn-danger" type="submit" onClick={this.handleClick}>
+              Login
             </Button>
           </Col>
         </FormGroup>
@@ -106,4 +106,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ userSignin }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
+ export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);

@@ -32,6 +32,7 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
     "react-router-redux": "^4.0.4",
+    "react-tabs-redux": "^1.2.0",
     "redux": "^3.5.1",
     "redux-saga": "^0.10.2"
   },
