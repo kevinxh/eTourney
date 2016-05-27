@@ -8,4 +8,21 @@
 @import "./bootstrap";
 // Customs
 @import "base";
-@import "./game-list"
+@import "./game-list";
+
+
+// Headings
+
+.underlined-headings:after{
+  display: block;
+  margin: 10px auto 10px auto;
+  content: '';
+  border-bottom: 2px solid #ec1c24;
+  width: 175px;
+}
+
+.description{
+  width: 75%;
+  margin: 0 auto;
+  line-height: 200%;
+}
