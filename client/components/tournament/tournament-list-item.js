@@ -6,9 +6,9 @@ class TournamentListItem extends Component {
   render() {
     let { name, time, type, prize } = this.props.tournament;
     return (
-      <div className="text-center game-list-item">
+      <div className="text-center tournament-list-item">
         <div><Link to={'#'}>
-          <Image src="http://placehold.it/400x150" thumbnail />
+          <Image src="http://placehold.it/300x150" thumbnail />
           <h3>{name}</h3>
           <div>Time: {time}</div>
           <div>{type}</div>

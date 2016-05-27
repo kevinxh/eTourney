@@ -1,21 +1,22 @@
 // For now, just mock
 
 const games = [
-  { name: 'HurtStone', id: 1 },
-  { name: 'CSPRO', id: 2 },
-  { name: 'GOATA2', id: 3 },
-  { name: 'abc', id: 4 },
-  { name: 'AB', id: 5 },
-  { name: '123', id: 6 }
+  { name: 'Hearthstone', id: 1 },
+  { name: 'CS:GO', id: 2 },
+  { name: 'DOTA2', id: 3 },
+  { name: 'League', id: 4 },
+  { name: 'Game 5', id: 5 },
+  { name: 'Game 6', id: 6 }
 ];
 
 const fetchGames = function () {
   return games;
 };
 
-const fetchGame = function(gid){
-  return games.filter((game) => game.id === parseInt(gid, 10))[0];
-};
+const fetchGame = function(gameId){
+  console.log(gameId);
+  return games.filter((game) => game.id === parseInt(gameId))[0];
+}
 
 export default {
   fetchGames,

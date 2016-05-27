@@ -17,7 +17,7 @@ class FindTournament extends Component {
       return <div></div>;
     }
     return this.props.tournaments.map((tournament) => (
-      <Col key={tournament.id} xs={6} md={4}>
+      <Col key={tournament.id} xs={6} md={3}>
         <TournamentListItem tournament={tournament} />
       </Col>
     ));
@@ -31,8 +31,7 @@ class FindTournament extends Component {
     }
     return (
       <Grid>
-        <h2 className="text-center">{this.props.game.name} Tournaments</h2>
-        <hr />
+        <h2 className="text-center underlined-headings">{this.props.game.name} Tournaments</h2>
         <Row className="show-grid">
           {this.renderTournaments()}
         </Row>
