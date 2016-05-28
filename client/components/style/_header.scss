@@ -1,7 +1,6 @@
 //
 // headers
 // --------------------------------------------------
-@import "../../style/bootstrap/variables";
 @import "../../style/variables";
 @import "../../style/bootstrap/mixins";
 
@@ -134,7 +133,7 @@
 
 // Static top (unfixed, but 100% wide) header
 .header-static-top {
-  z-index: $zindex-navbar;
+  z-index: $zindex-header;
   border-width: 0 0 1px;
 
   @media (min-width: $grid-float-breakpoint) {
@@ -148,7 +147,7 @@
   position: fixed;
   right: 0;
   left: 0;
-  z-index: $zindex-navbar-fixed;
+  z-index: $zindex-header-fixed;
 
   // Undo the rounded corners
   @media (min-width: $grid-float-breakpoint) {
@@ -315,13 +314,13 @@
 // Vertically center a button within a header (when *not* in a form).
 
 .header-btn {
-  @include navbar-vertical-align($input-height-base);
+  @include header-vertical-align($input-height-base);
 
   &.btn-sm {
-    @include navbar-vertical-align($input-height-small);
+    @include header-vertical-align($input-height-small);
   }
   &.btn-xs {
-    @include navbar-vertical-align(22);
+    @include header-vertical-align(22);
   }
 }
 
@@ -331,7 +330,7 @@
 // Add a class to make any element properly align itself vertically within the headers.
 
 .header-text {
-  @include navbar-vertical-align($line-height-computed);
+  @include header-vertical-align($line-height-computed);
 
   @media (min-width: $grid-float-breakpoint) {
     float: left;
@@ -432,6 +431,11 @@
 
   // Dropdown menu items
   .header-nav {
+
+    .dropdown-menu{
+      top: $header-height - 10;
+    }
+
     // Remove background color from open dropdown
     > .open > a {
       &,
