@@ -7,7 +7,7 @@ function* fetchGames() {
     yield take(actionTypes.FETCH_GAMES);
     const response = yield call(API.GAMES.fetchGames);
     // const response = API.GAMES.fetchGames();
-    yield put({ type: actionTypes.FETCH_GAMES, data: response });
+    yield put({ type: actionTypes.FETCH_GAMES_SUCCESS, data: response });
   }
 }
 
@@ -15,13 +15,11 @@ function* fetchGame() {
   while (true) {
     const { gameId } = yield take(actionTypes.SELECT_GAME);
     const response = yield call(API.GAMES.fetchGame, gameId);
-    yield put({ type: actionTypes.SELECT_GAME, data: response });
-
+    yield put({ type: actionTypes.SELECT_GAME_SUCCESS, data: response });
   }
-
 }
 
-export default function* authSagas() {
+export default function* gamesSagas() {
   yield fork(fetchGames);
   yield fork(fetchGame);
 }

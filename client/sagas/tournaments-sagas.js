@@ -7,10 +7,10 @@ function* fetchTournaments() {
     const { gameID } = yield take(actionTypes.FETCH_TOURNAMENTS);
     const response = yield call(API.TOURNAMENTS.fetchTournaments, gameID);
     // const response = API.GAMES.fetchGames();
-    yield put({ type: actionTypes.FETCH_TOURNAMENTS, data: response });
+    yield put({ type: actionTypes.FETCH_TOURNAMENTS_SUCCESS, data: response });
   }
 }
 
-export default function* authSagas() {
+export default function* tournamentsSagas() {
   yield fork(fetchTournaments);
 }

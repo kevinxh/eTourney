@@ -9,6 +9,7 @@ import GameListItem from '../components/game-list/game-list-item';
 class GameList extends Component {
 
   componentWillMount() {
+    console.log(this.props.games);
     this.props.fetchGames();
   };
   renderGames() {

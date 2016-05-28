@@ -20,10 +20,13 @@ export const SIGNOUT = 'SIGNOUT';
 
 // Games Actions
 export const SELECT_GAME = 'SELECT_GAME';
+export const SELECT_GAME_SUCCESS = 'SELECT_GAME_SUCCESS';
 export const FETCH_GAMES = 'FETCH_GAMES';
+export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS';
 
 
 export const HOT_SELECT = 'HOT_SELECT';
 
 // Tournament Actions
 export const FETCH_TOURNAMENTS = 'FETCH_TOURNAMENTS';
+export const FETCH_TOURNAMENTS_SUCCESS = 'FETCH_TOURNAMENTS_SUCCESS';

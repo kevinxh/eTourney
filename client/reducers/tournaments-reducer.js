@@ -1,4 +1,4 @@
-import { FETCH_TOURNAMENTS } from '../actions/action-types';
+import { FETCH_TOURNAMENTS_SUCCESS } from '../actions/action-types';
 import * as gameTypes from '../constants/tournaments';
 
 const initialTournamentList = {
@@ -9,7 +9,7 @@ const initialTournamentList = {
 
 export default function (state = initialTournamentList, action){
   switch (action.type) {
-    case FETCH_TOURNAMENTS:
+    case FETCH_TOURNAMENTS_SUCCESS:
       return {...state,tournaments:action.data};
       break;
     default:

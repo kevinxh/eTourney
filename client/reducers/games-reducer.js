@@ -1,4 +1,4 @@
-import { SELECT_GAME, FETCH_GAMES } from '../actions/action-types';
+import { SELECT_GAME_SUCCESS, FETCH_GAMES_SUCCESS } from '../actions/action-types';
 
 const initialGameList = {
   games: [],
@@ -8,10 +8,10 @@ const initialGameList = {
 
 export default function (state = initialGameList, action){
   switch (action.type) {
-    case SELECT_GAME:
+    case SELECT_GAME_SUCCESS:
       return {...state, selectedGame: action.data};
       // break;
-    case FETCH_GAMES:
+    case FETCH_GAMES_SUCCESS:
       return {...state, games: action.data};
     default:
       return state;
