@@ -8,7 +8,7 @@ class GameListItem extends Component {
   render() {
     return (
       <div className="text-center game-list-item">
-        <div><Link to={`/find/${this.props.game.id}`}><Image src="http://placehold.it/400x300" thumbnail /></Link></div>
+        <div><Link to={`/find/${this.props.game.id}`}><Image src="http://placehold.it/400x300" responsive /></Link></div>
       </div>
     );
   }

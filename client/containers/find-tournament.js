@@ -32,7 +32,7 @@ class FindTournament extends Component {
     return (
       <Grid>
         <h2 className="text-center underlined-headings">{this.props.game.name} Tournaments</h2>
-        <Row className="show-grid">
+        <Row>
           {this.renderTournaments()}
         </Row>
       </Grid>
