@@ -12,9 +12,9 @@ const TournamentSchema = new Schema({
     ]
   },
   game: {
-    type: String,
-    required: 'Tournament game is required',
-    enum: ['LeagueOfLegend', 'HearthStone'], // todo: we a better implementation for this
+    type: Schema.Types.ObjectId,
+    ref: 'Game',
+    required: 'Tournament game is required'
   },
   creatorEmail: {
     type: String,
