@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { take, call, put, fork } from 'redux-saga/effects';
 import * as actionTypes from '../actions/action-types';
 import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
@@ -15,18 +16,6 @@ function* userSigninTask(email, password) {
   }
 }
 
-function* signinFlow() {
-  while (true) {
-    const { email, password } = yield take(actionTypes.SIGNIN_REQUEST);
-    const access_token = yield call(userSigninTask, email, password);
-    if (access_token) {
-      localStorage.setItem('token', access_token);
-      yield take(actionTypes.SIGNOUT);
-      localStorage.removeItem('token');
-    }
-  }
-}
-
 function* userSignupTask(email, password) {
   try {
     yield put({ type: actionTypes.SIGNUP_WAITING });
@@ -39,14 +28,30 @@ function* userSignupTask(email, password) {
   }
 }
 
+function* userSignoutTask(access_token) {
+  localStorage.setItem('access_token', access_token);
+  axios.defaults.headers.common.Authorization = access_token;
+  yield take(actionTypes.SIGNOUT);
+  localStorage.removeItem('access_token');
+  axios.defaults.headers.common.Authorization = '';
+}
+
+function* signinFlow() {
+  while (true) {
+    const { email, password } = yield take(actionTypes.SIGNIN_REQUEST);
+    const access_token = yield call(userSigninTask, email, password);
+    if (access_token) {
+      yield call(userSignoutTask, access_token);
+    }
+  }
+}
+
 function* signupFlow() {
   while (true) {
     const { email, password } = yield take(actionTypes.SIGNUP_REQUEST);
     const access_token = yield call(userSignupTask, email, password);
     if (access_token) {
-      localStorage.setItem('token', access_token);
-      yield take(actionTypes.SIGNOUT);
-      localStorage.removeItem('token');
+      yield call(userSignoutTask, access_token);
     }
   }
 }
