@@ -20,7 +20,7 @@ import SignupModal from '../components/auth/signup-modal';
 import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
-require('../components/style/_header.scss');
+require('../style/_header.scss');
 
 class Header extends Component {
 

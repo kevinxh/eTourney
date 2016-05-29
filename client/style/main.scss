@@ -3,7 +3,8 @@
  */
 
  // Variables
- @import "variables";
+@import "./variables/_bootstrap.scss";
+@import "./variables/_customs.scss";
 // Frameworks
 @import "./bootstrap";
 
