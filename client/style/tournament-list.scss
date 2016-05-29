@@ -1,0 +1,24 @@
+
+
+.tournament-list-item{
+  border: 1px solid black;
+  border-radius: $tournament-list-item-border-radius;
+
+  > a {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  hr {
+    margin: 5px 0 5px 0;
+    border-top: 1px solid #000000;
+  }
+
+  img.img-responsive{
+    border-radius: $tournament-list-item-border-radius $tournament-list-item-border-radius 0 0;
+  }
+
+  .content-area{
+    padding: $tournament-list-item-content-area-padding;
+  }
+}

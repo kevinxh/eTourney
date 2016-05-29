@@ -1,8 +1,9 @@
 import config from './secret';
 import mongoose from 'mongoose';
 
-// Registering the User model
+// Registering models
 require('../models/user');
+require('../models/tournament');
 
 export default function () {
   const db = mongoose.connect(config.db_connection_url);
