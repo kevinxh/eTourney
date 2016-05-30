@@ -16,9 +16,9 @@ export default class LoginRegisterModal extends Component {
           onHide={() => this.props.onHide(SIGNIN_MODAL, MODAL_CLOSE)}
         >
           <Modal.Header closeButton />
-          <Tabs defaultActiveKey={1} bsStyle="pills" >
-            <Tab eventKey={1} title="Login" id="login"><br /><br /><br /><SigninForm /></Tab>
-            <Tab eventKey={2} title="Register" id="register"><br /><br /><br /><SignupForm /></Tab>
+          <Tabs defaultActiveKey={1} bsStyle="pills" id="loginRegisterTabs">
+            <Tab eventKey={1} title="Login"><br /><br /><br /><SigninForm /></Tab>
+            <Tab eventKey={2} title="Register"><br /><br /><br /><SignupForm /></Tab>
           </Tabs>
         </Modal>
       </div>

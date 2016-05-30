@@ -15,7 +15,7 @@ import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 import LoginRegisterModal from '../components/auth/loginRegister-modal';
-import { SIGNIN_MODAL } from '../constants';
+import { LOGIN_REGISTER_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
 require('../components/style/_header.scss');
@@ -42,7 +42,7 @@ class Header extends Component {
         <Nav pullRight>
           <NavItem
             eventKey={1}
-            onClick={() => this.props.modalAction(SIGNIN_MODAL, MODAL_OPEN)}
+            onClick={() => this.props.modalAction(LOGIN_REGISTER_MODAL, MODAL_OPEN)}
             href="#"
           >Login & Register</NavItem>
         </Nav>);
