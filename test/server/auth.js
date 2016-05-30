@@ -139,6 +139,20 @@ export default function () {
           done();
         });
       });
+      it('with correct auth when email is capitalized', (done) => {
+        const capitalizedEmail = config.validAuth.email.toLowerCase();
+        request.post(config.endPoints.login, {
+          form: { ...config.validAuth, email: capitalizedEmail }
+        }, (err, resp, body) => {
+          const parsedBody = JSON.parse(body);
+          assert(parsedBody.success === true, 'Should return true status');
+          assert(parsedBody.email === capitalizedEmail,
+            'Should contain registered email');
+          expect(parsedBody, 'Should include access token').to.include.keys('access_token');
+          tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
+          done();
+        });
+      });
 
       it('should let logined user use its JWT token', (done) => {
         tokenedRequestObject.get(config.endPoints.testing, (err, resp) => {
