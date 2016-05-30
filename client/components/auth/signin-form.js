@@ -41,13 +41,13 @@ class SigninForm extends Component {
       <Form horizontal>
         <FormGroup controlId="email">
           <Col componentClass={ControlLabel} sm={2}>
-            Email
+            邮箱
           </Col>
           <Col sm={10}>
             <FormControl
               type="email"
               value={this.state.email}
-              placeholder="Email"
+              placeholder="邮箱"
               onChange={this.handleEmailChange}
             />
           </Col>
@@ -55,13 +55,13 @@ class SigninForm extends Component {
 
         <FormGroup controlId="password" >
           <Col componentClass={ControlLabel} sm={2}>
-            Password
+            密码
           </Col>
           <Col sm={10}>
             <FormControl
               type="password"
               value={this.state.password}
-              placeholder="Password"
+              placeholder="密码"
               onChange={this.handlePasswordChange}
             />
           </Col>
@@ -73,8 +73,8 @@ class SigninForm extends Component {
         </Col>
         <FormGroup>
           <Col smOffset={2} sm={10}>
-            <Button type="submit" onClick={this.handleClick}>
-              Sign in
+            <Button className="btn btn-danger" type="submit" onClick={this.handleClick}>
+              登录
             </Button>
           </Col>
         </FormGroup>
@@ -106,4 +106,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ userSignin }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
+ export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
