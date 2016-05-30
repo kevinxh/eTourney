@@ -4,17 +4,21 @@ import { bindActionCreators } from 'redux';
 import HotDisplay from '../components/hot-tournament/hot-display';
 import HotList from '../components/hot-tournament/hot-list';
 import { hotSelect } from '../actions/hot-actions';
+import { Grid, Row, Col } from 'react-bootstrap';
+import Collapsible from 'react-collapsible';
 
 class HotTournament extends Component {
   render() {
     return (
-      <div>
-        <HotDisplay tournament={this.props.hotDisplay} />
+      <Grid>
+
+        <Row>
         <HotList
           hotTournaments={this.props.hotTournaments}
-          selectTournamentt={this.props.hotSelect}
         />
-      </div>
+        </Row>
+
+      </Grid>
     );
   }
 }

@@ -6,8 +6,11 @@ export default class Home extends Component {
   render() {
     return (
       <div>
+        <HotTournament
+          class="pagination-centered"
+        />
         <GameList />
-        <HotTournament />
+
 
       </div>
 		);

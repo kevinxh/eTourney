@@ -16,6 +16,9 @@ const hotTournaments = function () {
     'LOL',
     'GTA5',
     '2K11',
+    'WOW',
+    '跑跑卡丁车',
+    '实况足球',
   ];
 };
 
