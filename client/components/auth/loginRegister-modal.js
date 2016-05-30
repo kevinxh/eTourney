@@ -4,7 +4,7 @@ import SigninForm from './signin-form';
 import SignupForm from './signup-form';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
-import { SIGNIN_MODAL } from '../../constants';
+import { LOGIN_REGISTER_MODAL } from '../../constants';
 import { MODAL_CLOSE } from '../../actions/action-types';
 
 export default class LoginRegisterModal extends Component {
@@ -13,12 +13,12 @@ export default class LoginRegisterModal extends Component {
       <div>
         <Modal
           show={this.props.show}
-          onHide={() => this.props.onHide(SIGNIN_MODAL, MODAL_CLOSE)}
+          onHide={() => this.props.onHide(LOGIN_REGISTER_MODAL, MODAL_CLOSE)}
         >
           <Modal.Header closeButton />
           <Tabs defaultActiveKey={1} bsStyle="pills" id="loginRegisterTabs">
-            <Tab eventKey={1} title="Login"><br /><br /><br /><SigninForm /></Tab>
-            <Tab eventKey={2} title="Register"><br /><br /><br /><SignupForm /></Tab>
+            <Tab eventKey={1} title="登录"><br /><br /><br /><SigninForm /></Tab>
+            <Tab eventKey={2} title="注册"><br /><br /><br /><SignupForm /></Tab>
           </Tabs>
         </Modal>
       </div>

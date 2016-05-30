@@ -18,7 +18,7 @@ import LoginRegisterModal from '../components/auth/loginRegister-modal';
 import { LOGIN_REGISTER_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
-require('../components/style/_header.scss');
+require('../style/_header.scss');
 
 class Header extends Component {
 
@@ -27,13 +27,13 @@ class Header extends Component {
     if (this.props.isAuthenticated && this.props.email) {
       return (
         <Nav pullRight>
-          <NavDropdown eventKey={3} title="User" id="basic-nav-dropdown">
-            <MenuItem
-              eventKey={3.1}
-              onClick={() => this.props.userSignout()}
-            >Sign out</MenuItem>
+          <NavDropdown pullRight eventKey={3} title="用户" id="basic-nav-dropdown">
+            <MenuItem eventKey={3.1}>登录为: {this.props.email}</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={3.2}>Signed in as: {this.props.email}</MenuItem>
+            <MenuItem
+              eventKey={3.2}
+              onClick={() => this.props.userSignout()}
+            >登出</MenuItem>
           </NavDropdown>
         </Nav>
       );
@@ -44,30 +44,31 @@ class Header extends Component {
             eventKey={1}
             onClick={() => this.props.modalAction(LOGIN_REGISTER_MODAL, MODAL_OPEN)}
             href="#"
-          >Login & Register</NavItem>
+          >登录 & 注册</NavItem>
         </Nav>);
     }
   }
 
   render() {
+    //todo: navigation active link according to routing path
     return (
-      <Navbar fluid fixedTop>
+      <Navbar bsClass="header" fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
-            <a href="/">React-Bootstrap</a>
+            <Link to="/">LOGO</Link>
           </NavbarBrand>
           <NavbarToggle />
         </NavbarHeader>
         <NavbarCollapse>
-          <Nav pullLeft>
-            <li role="presentation">
-              <Link to="/find">Find Tournament</Link>
+          <Nav pullLeft className="header-link-group">
+            <li role="navigation">
+              <Link to="/find">寻找比赛</Link>
             </li>
-            <li role="presentation">
-              <Link to="/create">Create Tournament</Link>
+            <li role="navigation">
+              <Link to="/create">创建属于你的比赛</Link>
             </li>
-            <li role="presentation">
-              <Link to="/features">Features</Link>
+            <li role="navigation">
+              <Link to="/features">功能</Link>
             </li>
           </Nav>
             {this.renderUserNav()}

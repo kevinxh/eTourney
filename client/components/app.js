@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../containers/header';
+import GameList from '../containers/game-list'
 
 require('../style/main.scss');
 

@@ -41,13 +41,13 @@ class SigninForm extends Component {
       <Form horizontal>
         <FormGroup controlId="email">
           <Col componentClass={ControlLabel} sm={2}>
-            Email
+            邮箱
           </Col>
           <Col sm={10}>
             <FormControl
               type="email"
               value={this.state.email}
-              placeholder="Email"
+              placeholder="邮箱"
               onChange={this.handleEmailChange}
             />
           </Col>
@@ -55,13 +55,13 @@ class SigninForm extends Component {
 
         <FormGroup controlId="password" >
           <Col componentClass={ControlLabel} sm={2}>
-            Password
+            密码
           </Col>
           <Col sm={10}>
             <FormControl
               type="password"
               value={this.state.password}
-              placeholder="Password"
+              placeholder="密码"
               onChange={this.handlePasswordChange}
             />
           </Col>
@@ -74,7 +74,7 @@ class SigninForm extends Component {
         <FormGroup>
           <Col smOffset={2} sm={10}>
             <Button className="btn btn-danger" type="submit" onClick={this.handleClick}>
-              Login
+              登录
             </Button>
           </Col>
         </FormGroup>

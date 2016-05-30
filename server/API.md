@@ -147,7 +147,7 @@
 
 * **URL**
 
-  /api/tournament
+  /api/tournaments
 
 * **Method:**
 
@@ -213,7 +213,7 @@
     axios({
       method: 'post',
       header:  {'Authorization': 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtAZ21haWwuY29tIiwiaWF0IjoxNDYzOTQ5MTgyLCJleHAiOjE0NjkxMzMxODJ9.TzgrUPJ64qXufZpLJ8YIyAIUSPMmohH2gOZLas-knzc'},
-      url: `/api/tournament`,
+      url: `/api/tournaments`,
       data: {
         tournamentName: "myTournament"
         game: "LeagueOfLegend",
@@ -228,7 +228,7 @@
 
 * **URL**
 
-  /api/tournament/`:tournamentID`
+  /api/tournaments/`:tournamentID`
 
 * **Method:**
 
@@ -297,7 +297,7 @@
     axios({
       method: 'post',
       header:  {'Authorization': 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtAZ21haWwuY29tIiwiaWF0IjoxNDYzOTQ5MTgyLCJleHAiOjE0NjkxMzMxODJ9.TzgrUPJ64qXufZpLJ8YIyAIUSPMmohH2gOZLas-knzc'},
-      url: `/api/tournament/573d36d680935d590f6a5821`,
+      url: `/api/tournaments/573d36d680935d590f6a5821`,
     });
   ```
 <br />
