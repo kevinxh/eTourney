@@ -8,8 +8,16 @@ export default class Collapsible_panel extends React.Component {
       open: false
     };
   }
+  change_load(){
+    if (load=="load more"){
+      var load= "load more";
+    }else{
+      var load ="load less";
+    }
 
+  }
   render() {
+    var load = "load more"
     return (
       <div className="collapsible-panel">
         <Grid>
@@ -20,9 +28,9 @@ export default class Collapsible_panel extends React.Component {
             <Panel className="collapsible-panel" collapsible expanded={this.state.open}>
           {this.props.tournament}
             </Panel>
-            <Button class="center-block" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                click
-            </Button>
+            <a class="center-block" onClick={ ()=> this.setState({ open: !this.state.open })}>
+                {load}
+            </a>
           </Row>
         </Grid>
       </div>
