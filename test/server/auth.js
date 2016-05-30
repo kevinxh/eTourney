@@ -66,7 +66,7 @@ export default function () {
         }, (err, resp, body) => {
           const parsedBody = JSON.parse(body);
           assert(parsedBody.success === true,
-          'Should return true status and successfully register');
+          `Should return true status and successfully register; ParsedBody = ${parsedBody}`);
           expect(parsedBody, 'should have token').to.include.keys('access_token');
           tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
           done();
@@ -133,6 +133,20 @@ export default function () {
           const parsedBody = JSON.parse(body);
           assert(parsedBody.success === true, 'Should return true status');
           assert(parsedBody.email === config.validAuth.email,
+            'Should contain registered email');
+          expect(parsedBody, 'Should include access token').to.include.keys('access_token');
+          tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
+          done();
+        });
+      });
+      it('with correct auth when email is capitalized', (done) => {
+        const capitalizedEmail = config.validAuth.email.toLowerCase();
+        request.post(config.endPoints.login, {
+          form: { ...config.validAuth, email: capitalizedEmail }
+        }, (err, resp, body) => {
+          const parsedBody = JSON.parse(body);
+          assert(parsedBody.success === true, 'Should return true status');
+          assert(parsedBody.email === capitalizedEmail,
             'Should contain registered email');
           expect(parsedBody, 'Should include access token').to.include.keys('access_token');
           tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
