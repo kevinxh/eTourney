@@ -4,7 +4,6 @@ import Collapsible_panel from './Collapsible-panel';
 import Grid from 'react-bootstrap/lib/Grid';
 import { Image, HelpBlock, Col, Row, Clearfix } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Collapsible from 'react-collapsible';
 
 export default class HotList extends Component {
 

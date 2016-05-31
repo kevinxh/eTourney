@@ -5,7 +5,7 @@ import HotDisplay from '../components/hot-tournament/hot-display';
 import HotList from '../components/hot-tournament/hot-list';
 import { hotSelect } from '../actions/hot-actions';
 import { Grid, Row, Col } from 'react-bootstrap';
-import Collapsible from 'react-collapsible';
+
 
 class HotTournament extends Component {
   render() {

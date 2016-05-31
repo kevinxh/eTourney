@@ -28,8 +28,6 @@
     "passport-jwt": "^2.0.0",
     "react": "^15.1.0",
     "react-bootstrap": "^0.29.4",
-    "react-collapse": "^2.2.3",
-    "react-collapsible": "^0.3.0",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.0",
