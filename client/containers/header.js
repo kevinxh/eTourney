@@ -14,10 +14,8 @@ import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
-import SigninModal from '../components/auth/signin-modal';
-import SignupModal from '../components/auth/signup-modal';
-
-import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
+import LoginRegisterModal from '../components/auth/loginRegister-modal';
+import { LOGIN_REGISTER_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
 require('../style/_header.scss');
@@ -44,16 +42,9 @@ class Header extends Component {
         <Nav pullRight>
           <NavItem
             eventKey={1}
-            onClick={() => this.props.modalAction(SIGNIN_MODAL, MODAL_OPEN)}
+            onClick={() => this.props.modalAction(LOGIN_REGISTER_MODAL, MODAL_OPEN)}
             href="#"
-            className="active"
-          >登录</NavItem>
-          <NavItem
-            eventKey={2}
-            onClick={() => this.props.modalAction(SIGNUP_MODAL, MODAL_OPEN)}
-            href="#"
-            className="active"
-          >注册</NavItem>
+          >登录 & 注册</NavItem>
         </Nav>);
     }
   }
@@ -83,12 +74,8 @@ class Header extends Component {
             {this.renderUserNav()}
         </NavbarCollapse>
 
-        <SigninModal
-          show={this.props.showSignin}
-          onHide={this.props.modalAction}
-        />
-        <SignupModal
-          show={this.props.showSignup}
+        <LoginRegisterModal
+          show={this.props.showLoginRegister}
           onHide={this.props.modalAction}
         />
       </Navbar>
@@ -97,15 +84,13 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showSignin: React.PropTypes.bool.isRequired,
-  showSignup: React.PropTypes.bool.isRequired,
+  showLoginRegister: React.PropTypes.bool.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
   modalAction: React.PropTypes.func.isRequired,
 };
 
 Header.defaultProps = {
-  showSignin: false,
-  showSignup: false,
+  showLoginRegister: false,
   isAuthenticated: false,
 };
 
@@ -115,8 +100,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    showSignin: state.Modal.showSignin,
-    showSignup: state.Modal.showSignup,
+    showLoginRegister: state.Modal.showLoginRegister,
     isAuthenticated: state.Auth.isAuthenticated,
     email: state.Auth.email,
   };

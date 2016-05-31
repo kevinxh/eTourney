@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { take, call, put, fork } from 'redux-saga/effects';
 import * as actionTypes from '../actions/action-types';
-import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
+import { LOGIN_REGISTER_MODAL } from '../constants';
 import API from '../API';
 
 function* userSigninTask(email, password) {
@@ -9,7 +9,7 @@ function* userSigninTask(email, password) {
     yield put({ type: actionTypes.SIGNIN_WAITING });
     const response = yield call(API.AUTH.userSignin, email, password);
     yield put({ type: actionTypes.SIGNIN_SUCCESS, email: response.email });
-    yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNIN_MODAL });
+    yield put({ type: actionTypes.MODAL_CLOSE, modal: LOGIN_REGISTER_MODAL });
     return response.access_token;
   } catch (error) {
     yield put({ type: actionTypes.SIGNIN_ERROR, error: error.data.msg });
@@ -21,7 +21,7 @@ function* userSignupTask(email, password) {
     yield put({ type: actionTypes.SIGNUP_WAITING });
     const response = yield call(API.AUTH.userSignup, email, password);
     yield put({ type: actionTypes.SIGNIN_SUCCESS, email: response.email });
-    yield put({ type: actionTypes.MODAL_CLOSE, modal: SIGNUP_MODAL });
+    yield put({ type: actionTypes.MODAL_CLOSE, modal: LOGIN_REGISTER_MODAL });
     return response.access_token;
   } catch (error) {
     yield put({ type: actionTypes.SIGNUP_ERROR, error: error.data.msg });

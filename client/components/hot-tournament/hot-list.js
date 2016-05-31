@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Collapsible_panel from './Collapsible-panel';
-
 import Grid from 'react-bootstrap/lib/Grid';
 import { Image, HelpBlock, Col, Row, Clearfix } from 'react-bootstrap';
 import { Link } from 'react-router';
+import Collapsible_panel from "./collapsible-panel";
+
 
 export default class HotList extends Component {
 
