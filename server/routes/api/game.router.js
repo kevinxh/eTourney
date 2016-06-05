@@ -6,7 +6,7 @@ const gameRouter = express.Router();
 
 gameRouter.use(JWTAuthentication);
 
-gameRouter.route('/')
+gameRouter.route('/create')
   .post(actions.createGame);
 gameRouter.route('/:gameName')
   .get(actions.findGameByName);
