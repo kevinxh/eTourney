@@ -29,23 +29,37 @@ export function createTournament(req, res) {
         msg: 'Request failed. Game not found.',
       });
     }
+    if (!req.body.tournamentName){
+      return res.status(401).json({
+        success: false,
+        msg: 'Request failed. No tournament name provided.'
+      })
+    }
     const tournament = new Tournament({
       tournamentName: req.body.tournamentName,
       game,
       creatorEmail: req.user.email,
     });
 
-    game.tournaments.push(tournament);
-    game.save((errSave) => {
-      if (errSave) {
-        return	res.status(403).json({
+    tournament.save((errSaveTournament) => {
+      if (errSaveTournament) {
+        return res.status(500).json({
           success: false,
-          msg: errSave,
+          msg: errSaveTournament
         });
       }
-      return res.status(201).json({
-        success: true,
-        tournament,
+      game.tournaments.push(tournament);
+      game.save((errSave) => {
+        if (errSave) {
+          return	res.status(403).json({
+            success: false,
+            msg: errSave,
+          });
+        }
+        return res.status(201).json({
+          success: true,
+          tournament,
+        });
       });
     });
   });
