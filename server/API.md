@@ -2,7 +2,7 @@
 
 ## **1. Authentication**
 ----
-###**Login**
+### **Login**
 
   Authenticates user. Returns access_token and JSON data about the user.
 
@@ -74,9 +74,8 @@
     });
   ```
 
-<br/>
 
-###**Register**
+### **Register**
 
   Sign up new user. Returns access_token and JSON data about the new user.
 
@@ -137,11 +136,10 @@
         }
       });
     ```
-<br />
 
 ## **2. Tournament**
 ----
-###**Create Tournament**
+### **Create Tournament**
 
   Create new tournament. Returns JSON data about the new tournament.
 
@@ -180,12 +178,21 @@
     {
       "success": true,
       "tournament": {
-        "_id": "573d36d680935d590f6a5821",
-        "tournamentName": "myTournament",
-        "game": "HearthStone",
-        "creatorEmail": "k@gmail.com",
-        "__v": 0,
-        "created": "2016-05-19T03:45:26.229Z"
+        "tournamentName": "hahaaaa",
+        "game": {
+          "_id": "5753c8d2832b79071b188c05",
+          "gameName": "justaGame",
+          "__v": 3,
+          "tournaments": [
+            "5753cc49832b79071b188c06",
+            "5753ce7f832b79071b188c07",
+            "5753cf0c7e9953b91be4191a"
+          ],
+          "created": "2016-06-05T06:38:10.426Z"
+        },
+        "creatorEmail": "jack@gmail.com",
+        "_id": "5753cf0c7e9953b91be4191a",
+        "created": "2016-06-05T07:04:44.692Z"
       }
     }
     ```
@@ -220,9 +227,8 @@
       }
     });
   ```
-<br />
 
-###**Find Tournament by ID**
+### **Find Tournament by ID**
 
   Find existing tournament information. Returns JSON data about the tournament.
 
@@ -261,14 +267,14 @@
       "tournament": {
         "_id": "573d36d680935d590f6a5821",
         "tournamentName": "myTournament",
-        "game": "HearthStone",
+        "game": "5753cc49832b79071b188c06",
         "creatorEmail": "k@gmail.com",
         "__v": 0,
         "created": "2016-05-19T03:45:26.229Z"
       }
     }
     ```
-    
+
 * **Error Response:**
 
   * **Code:** 400 BAD REQUEST <br />
@@ -300,4 +306,67 @@
       url: `/api/tournaments/573d36d680935d590f6a5821`,
     });
   ```
-<br />
+
+## **3. Game**
+----
+### **Create Game**
+
+Creates a game with no tournaments and insert it into mongodb.
+
+* **URL**
+
+  /api/tournaments
+
+* **Method:**
+
+  `POST`
+
+*  **Header**
+
+   **Required:**
+
+   `[Authorization]`: string (JWT)
+
+*  **URL Params**
+
+   None
+
+* **Data Params**
+
+  **Required:**
+
+  `gameName`: string
+
+* **Success Response:**
+
+  * **Code:** 201 CREATED<br />
+    **Content:**
+
+    ```javascript
+    {
+      "success": true,
+      "game": {
+        "__v": 0,
+        "gameName": "greatGame",
+        "_id": "5753d3da3a930c441ccfa848",
+        "tournaments": [],
+        "created": "2016-06-05T07:25:14.938Z"
+      }
+    }
+    ```
+
+* **Error Response:**
+
+  * **Code:** 400 BAD REQUEST <br />
+    **Content:** `{"success":false,"msg":"Please enter a game name"}`
+
+
+* **Sample Call:**
+
+### **Find Game by Name**
+
+Find and retrieve a game(s) by its game name.
+
+### **Find Game by ID**
+
+Find and retrieve a game by its unique ID.
