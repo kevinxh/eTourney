@@ -27,7 +27,8 @@ export default function () {
     after((done) => {
 
       Tournament.findOne({ tournamentName: config.testingTournament.tournamentName}, (err, tournament) => {
-        tournament.remove((err) => {
+        tournament.remove((errRemove) => {
+          if (errRemove) throw errRemove;
           done();
         });
       })

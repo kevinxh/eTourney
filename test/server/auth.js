@@ -66,7 +66,7 @@ export default function () {
         }, (err, resp, body) => {
           const parsedBody = JSON.parse(body);
           assert(parsedBody.success === true,
-          `Should return true status and successfully register; ParsedBody = ${JSON.parse(parsedBody)}`);
+          `Should return true status and successfully register; ParsedBody = ${JSON.stringify(parsedBody)}`);
           expect(parsedBody, 'should have token').to.include.keys('access_token');
           tokenedRequestObject = generateTokenedRequestObject(parsedBody.access_token);
           done();
