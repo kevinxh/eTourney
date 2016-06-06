@@ -1,4 +1,4 @@
-import Tournament from '../models/tournament';
+import Tournament from '../../models/tournament';
 
 export function fetchHotTournament(req, res) {
   try {
