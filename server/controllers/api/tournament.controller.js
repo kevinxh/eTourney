@@ -22,18 +22,18 @@ export function createTournament(req, res) {
         msg: err,
       });
     }
+    if (!req.body.tournamentName) {
+      return res.status(400).json({
+        success: false,
+        msg: 'Please enter your tournament name'
+      })
+    }
     // if no such tournament
     if (!game) {
-      return res.status(401).json({
+      return res.status(400).json({
         success: false,
         msg: 'Request failed. Game not found.',
       });
-    }
-    if (!req.body.tournamentName){
-      return res.status(401).json({
-        success: false,
-        msg: 'Request failed. No tournament name provided.'
-      })
     }
     const tournament = new Tournament({
       tournamentName: req.body.tournamentName,
