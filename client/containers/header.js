@@ -25,7 +25,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      position: 0
+      isTop: true,
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -40,6 +40,7 @@ class Header extends Component {
 
   handleScroll() {
     let position = 0;
+    const isTop = this.state.isTop;
     if (typeof(window.pageYOffset) === 'number') {
       // Netscape
       position = window.pageYOffset;
@@ -50,15 +51,18 @@ class Header extends Component {
       // IE6 standards compliant mode
       position = document.documentElement.scrollTop;
     }
-    this.setState({ position });
+    if (position <= 10 && isTop === false) {
+      this.setState({ isTop: true });
+    } else if (position > 10 && isTop === true) {
+      this.setState({ isTop: false });
+    }
   }
 
   toggleTransparency() {
-    let a = 'header-transparent';
-    if (this.state.position >= 10) {
-      a = '';
+    if (this.state.isTop) {
+      return 'header-transparent';
     }
-    return a;
+    return '';
   }
 
   renderUserNav() {
