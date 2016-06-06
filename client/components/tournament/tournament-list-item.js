@@ -4,13 +4,13 @@ import { Link } from 'react-router';
 
 class TournamentListItem extends Component {
   render() {
-    let { gid, name, time, type, prize } = this.props.tournament;
+    let { gid, tournamentName, time, type, prize } = this.props.tournament;
     return (
       <div className="tournament-list-item">
         <Link to={'#'}>
           <Image src="http://placehold.it/300x150" rounded responsive />
           <div className="content-area">
-            <span>{name}</span>
+            <span>{tournamentName}</span>
             <hr />
             <HelpBlock>Lorem ipsum dolor ...</HelpBlock>
             <Row>
