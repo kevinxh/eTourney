@@ -1,6 +1,8 @@
 // For now, just mock
-
+import axios from 'axios';
 import * as gameTypes from '../constants/tournaments';
+
+const API_ROOT = 'http://localhost:8080/api/tournaments';
 
 const tournaments = [
   { id: 1, gid: 1, name: 'Just a tourney', time: 'May, 15th 2016 19:00', type: gameTypes.PREMADE_5P, prize: '10000' },
@@ -11,12 +13,14 @@ const tournaments = [
 ];
 
 const fetchTournaments = function (gid = null) {
-  if (!gid) {
-    return tournaments;
-  }
-  tournaments.filter( (tour) => {
-  });
-  return tournaments.filter((tournament) => tournament.gid === parseInt(gid, 10));
+  return axios({
+    method: 'get',
+    url: `${API_ROOT}?gid=${gid}`,
+    headers: {
+      Authorization: localStorage.access_token
+    }
+  }).then(response => response.data.tournaments)
+    .catch(err => err)
 };
 
 export default {
