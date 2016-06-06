@@ -22,6 +22,44 @@ require('../style/_header.scss');
 
 class Header extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      position: 0
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    let position = 0;
+    if (typeof(window.pageYOffset) === 'number') {
+      // Netscape
+      position = window.pageYOffset;
+    } else if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+      // DOM
+      position = document.body.scrollTop;
+    } else if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+      // IE6 standards compliant mode
+      position = document.documentElement.scrollTop;
+    }
+    this.setState({ position });
+  }
+
+  toggleTransparency() {
+    let a = 'header-transparent';
+    if (this.state.position >= 10) {
+      a = '';
+    }
+    return a;
+  }
 
   renderUserNav() {
     if (this.props.isAuthenticated && this.props.email) {
@@ -50,9 +88,9 @@ class Header extends Component {
   }
 
   render() {
-    //todo: navigation active link according to routing path
+    // todo: navigation active link according to routing path
     return (
-      <Navbar bsClass="header" fluid fixedTop>
+      <Navbar bsClass="header" className={this.toggleTransparency()} fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
             <Link to="/">LOGO</Link>
