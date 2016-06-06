@@ -15,7 +15,7 @@ export function createTournament(req, res) {
   //   });
   // }
 
-  Game.findOne({ gameName: req.body.game }, (err, game) => {
+  Game.findOne({ name: req.body.game }, (err, game) => {
     if (err) {
       return res.status(403).json({
         success: false,
@@ -93,4 +93,28 @@ export function findTournamentByID(req, res) {
       msg: 'Unknown error',
     });
   }
+}
+
+export function findTournaments(req, res) {
+  const gid = req.query.gid;
+
+  /**
+    TODO : Find a better solution to add
+     game search term
+  **/
+  const queryOpts = {};
+  if (gid) queryOpts.game = gid;
+
+  Tournament.find(queryOpts, (err, tournaments) => {
+    if (err) {
+      return res.status(500).json({
+        success: false,
+        msg: err
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      tournaments
+    });
+  });
 }

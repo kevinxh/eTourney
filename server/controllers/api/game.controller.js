@@ -1,15 +1,35 @@
 import Game from '../../models/game';
 
+const TOP_GAMES_LIMIT = 6;
+
+export function getAllGames(req, res) {
+  Game.find({},'name tournaments', (err, games) => {
+    return res.status(200).json({
+      success: true,
+      games
+    });
+  });
+}
+
+export function getTopGames(req, res) {
+  Game.find({},'name tournaments', {limit: TOP_GAMES_LIMIT},  (err, games) => {
+    return res.status(200).json({
+      success: true,
+      games
+    });
+  })
+}
+
 export function createGame(req, res) {
-  const { gameName } = req.body;
-  if (!gameName) {
+  const { name } = req.body;
+  if (!name) {
     return res.status(400).json({
       success: false,
       msg: 'Please enter a game name'
     });
   }
   const game = new Game({
-    gameName
+    name
   });
 
   game.save((err) => {
@@ -28,7 +48,7 @@ export function createGame(req, res) {
 
 export function findGameByName(req, res) {
   try {
-    Game.findOne({ gameName: req.params.gameName }, (err, game) => {
+    Game.findOne({ name: req.params.name }, (err, game) => {
       if (err) {
         return res.status(403).json({
           success: false,
