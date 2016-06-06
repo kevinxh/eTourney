@@ -2,44 +2,44 @@ import React, { Component } from 'react';
 import Grid from 'react-bootstrap/lib/Grid';
 import { Image, HelpBlock, Col, Row, Clearfix } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Collapsible_panel from "./collapsible-panel";
+import COLLAPSIBLE_PANEL from './collapsible-panel';
 
 
 export default class HotList extends Component {
 
   renderSubList1() {
     if (this.props.hotTournaments){
-      var first_row_counter=0;
+      var FIRST_ROW_COUNTER = 0;
       return this.props.hotTournaments.map(
         (tournament) => {
-          if (first_row_counter<4){
-            first_row_counter=first_row_counter+1;
+          if (FIRST_ROW_COUNTER < 4) {
+            FIRST_ROW_COUNTER = FIRST_ROW_COUNTER + 1;
             return (
-            <Col xs={6} md={3} key={tournament}>
-              <div className="tournament-list-item">
-                <Link to={'#'}>
-                  <Image src="http://placehold.it/300x150" rounded responsive />
-                  <div className="content-area">
-                    <span>{tournament}</span>
-                    <hr />
-                    <HelpBlock>巴拉巴拉拉小魔仙</HelpBlock>
-                    <Row>
-                      <Col xs={3}>Game</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Time</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Type</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Clearfix />
-                  </div>
-                </Link>
-              </div>
-            </Col>
+              <Col xs={6} md={3} key={tournament.tournamentName}>
+                <div className="tournament-list-item">
+                  <Link to={'#'}>
+                    <Image src="http://placehold.it/300x150" rounded responsive />
+                    <div className="content-area">
+                      <span>{tournament.tournamentName}</span>
+                      <hr />
+                      <HelpBlock>巴拉巴拉拉小魔仙</HelpBlock>
+                      <Row>
+                        <Col xs={3}>Game</Col>
+                        <Col xs={9}>{tournament.tournamentName}</Col>
+                      </Row>
+                      <Row>
+                        <Col xs={3}>Time</Col>
+                        <Col xs={9}>{tournament.created}</Col>
+                      </Row>
+                      <Row>
+                        <Col xs={3}>Type</Col>
+                        <Col xs={9}>{tournament.creatorEmail}</Col>
+                      </Row>
+                      <Clearfix />
+                    </div>
+                  </Link>
+                </div>
+              </Col>
           );
           }
         }
@@ -49,37 +49,37 @@ export default class HotList extends Component {
 
   renderSubList2() {
     if (this.props.hotTournaments){
-      var first_row_counter=0;
+      var FIRST_ROW_COUNTER = 0;
       return this.props.hotTournaments.map(
         (tournament) => {
-          first_row_counter=first_row_counter+1;
-          if (first_row_counter>4&&first_row_counter<8){
+          FIRST_ROW_COUNTER = FIRST_ROW_COUNTER + 1;
+          if (FIRST_ROW_COUNTER > 4 && FIRST_ROW_COUNTER < 8) {
             return (
-            <Col xs={6} md={3} key={tournament}>
-              <div className="tournament-list-item">
-                <Link to={'#'}>
-                  <Image src="http://placehold.it/300x150" rounded responsive />
-                  <div className="content-area">
-                    <span>{tournament}</span>
-                    <hr />
-                    <HelpBlock>巴拉巴拉拉小魔仙</HelpBlock>
-                    <Row>
-                      <Col xs={3}>Game</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Time</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Type</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Clearfix />
-                  </div>
-                </Link>
-              </div>
-            </Col>
+              <Col xs={6} md={3} key={tournament.tournamentName}>
+                <div className="tournament-list-item">
+                  <Link to={'#'}>
+                    <Image src="http://placehold.it/300x150" rounded responsive />
+                    <div className="content-area">
+                      <span>{tournament.tournamentName}</span>
+                      <hr />
+                      <HelpBlock>巴拉巴拉拉小魔仙</HelpBlock>
+                      <Row>
+                        <Col xs={3}>Game</Col>
+                        <Col xs={9}>{tournament.tournamentName}</Col>
+                      </Row>
+                      <Row>
+                        <Col xs={3}>Time</Col>
+                        <Col xs={9}>{tournament.created}</Col>
+                      </Row>
+                      <Row>
+                        <Col xs={3}>Type</Col>
+                        <Col xs={9}>{tournament.creatorEmail}</Col>
+                      </Row>
+                      <Clearfix />
+                    </div>
+                  </Link>
+                </div>
+              </Col>
           );
           }
         }
@@ -100,7 +100,7 @@ export default class HotList extends Component {
         </Grid>
         <Grid>
           <Row>
-            <Collapsible_panel
+            <COLLAPSIBLE_PANEL
               tournament1={this.renderSubList1()}
               tournament={this.renderSubList2()}/>
           </Row>

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 const fetchHotTournament = function () {
   return axios({
-    responseType: 'json',
     method: 'get',
     url: `${FETCH_TMT_API}`,
   }).then(response => response.data);
