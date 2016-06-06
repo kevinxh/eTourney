@@ -22,6 +22,21 @@ const hotTournaments = function () {
   ];
 };
 
+// const initialTournamentList = {
+//   hotTournaments: [],
+//   selectedGame: null
+// }
+//
+//
+// export default function (state = initialTournamentList, action){
+//   switch (action.type) {
+//     case actionTypes.FETCH_HOTTOURNAMENT_SUCCESS:
+//       return {...state, hotTournaments: action.data};
+//     default:
+//       return state;
+//   }
+// }
+
 export default combineReducers({
   selectedHot,
   hotTournaments,

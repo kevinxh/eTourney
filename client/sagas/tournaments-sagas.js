@@ -11,6 +11,15 @@ function* fetchTournaments() {
   }
 }
 
+function* fetchHotTournaments() {
+  while (true) {
+    yield take(actionTypes.HOT_TOURNAMENT_FETCH);
+    const response = yield call(API.HOTTOURNAMENTS.fetchHotTournament);
+    yield put({ type: actionTypes.FETCH_HOTTOURNAMENT_SUCCESS, data: response });
+  }
+}
+
 export default function* tournamentsSagas() {
   yield fork(fetchTournaments);
+  yield fork(fetchHotTournaments);
 }
