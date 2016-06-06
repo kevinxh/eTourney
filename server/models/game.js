@@ -1,7 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 const GameSchema = new Schema({
-  gameName: {
+  name: {
     type: String,
     index: true,
     required: 'Game name is required'
