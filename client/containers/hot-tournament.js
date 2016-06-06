@@ -11,21 +11,40 @@ class HotTournament extends Component {
   componentWillMount() {
     console.log(this.props.hotTournaments);
     this.props.fetchHotTournament();
-    // console.log(this.props.data);
   };
 
   render() {
-    return (
-      <Grid>
+    // return (
+    //   <Grid>
+    //
+    //     <Row>
+    //       {/*<HotList
+    //         hotTournaments={this.props.hotTournaments}
+    //       />*/}
+    //       {this.props.hotTournaments[0]}
+    //     </Row>
+    //
+    //   </Grid>
+    // );
+    return this.props.hotTournaments.map((tournaments)=>{
+      return (
+        <li key={tournaments.tournamentName}
 
-        <Row>
-          <HotList
-            hotTournaments={this.props.hotTournaments}
-          />
-        </Row>
+        > {tournaments.tournamentName}
 
-      </Grid>
+
+        </li>
+
+      );
+
+
+    }
+
+
+
+
     );
+
   }
 }
 
