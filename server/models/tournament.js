@@ -32,13 +32,14 @@ export const TournamentSchema = new Schema({
 }, { collection: 'Tournament' });
 
 TournamentSchema.pre('remove', function (next) {
-  mongoose.model('Game').findOne({ _id: this.game }, (err, game) => {
-    const index = game.tournaments.indexOf(this._id);
-    game.tournaments.splice(index,1);
-    game.save((err) => {
-      next()
-    })
-  });
+  mongoose.model('Game').update({ _id: this.game }, { $pullAll: {tournaments: [this._id]}});
+  // mongoose.model('Game').findOne({ _id: this.game }, (err, game) => {
+  //   const index = game.tournaments.indexOf(this._id);
+  //   game.tournaments.splice(index,1);
+  //   game.save((err) => {
+  //     next()
+  //   });
+  // });
 })
 // Registering the Tournament model
 export default mongoose.model('Tournament', TournamentSchema);
