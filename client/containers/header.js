@@ -59,7 +59,7 @@ class Header extends Component {
   }
 
   toggleTransparency() {
-    if (this.state.isTop) {
+    if (this.state.isTop && this.props.path === '/') {
       return 'header-transparent';
     }
     return '';
@@ -142,6 +142,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
+    path: state.routing.locationBeforeTransitions.pathname,
     showLoginRegister: state.Modal.showLoginRegister,
     isAuthenticated: state.Auth.isAuthenticated,
     email: state.Auth.email,
