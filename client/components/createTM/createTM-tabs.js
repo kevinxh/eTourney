@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import Tabs from 'react-bootstrap/lib/Tabs';
 import Tab from 'react-bootstrap/lib/Tab';
 import TabSelectGame from './tab-select-game';
-import TabSettingLOL from './tab-setting-LOL';
+import SimpleForm from './tab-setting-LOL';
 import TabSettingHS from './tab-setting-HS';
 import { selectTab } from '../../actions/createTM-actions';
 import { LEAGUEOFLEGEND, HEARTHSTONE, UNSELECTED } from '../../constants/games';
@@ -25,7 +25,7 @@ class CreateTMtabs extends Component {
     if (this.props.SelectedGame === UNSELECTED) {
       return TabSetting;
     } else if (this.props.SelectedGame === LEAGUEOFLEGEND) {
-      TabSetting = <TabSettingLOL />;
+      TabSetting = <SimpleForm />;
     } else if (this.props.SelectedGame === HEARTHSTONE) {
       TabSetting = <TabSettingHS />;
     }
@@ -44,7 +44,7 @@ class CreateTMtabs extends Component {
           <TabSelectGame />
         </Tab>
         <Tab eventKey={2} title="Tab 2" disabled={this.props.TabState['2']}>
-        {this.RenderSelect()}
+          <SimpleForm />
         </Tab>
         <Tab eventKey={3} title="Tab 3" disabled={this.props.TabState['3']}>
         Tab 3 content

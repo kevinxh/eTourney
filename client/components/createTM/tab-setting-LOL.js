@@ -1,57 +1,61 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Col from 'react-bootstrap/lib/Col';
-import { selectTab } from '../../actions/createTM-actions';
+import React, { Component, PropTypes } from 'react';
+import { reduxForm } from 'redux-form';
+export const fields = ['Organization', 'gamemap'];
 
-class TabSettingLOL extends Component {
-  onClickNext(tab) {
-    this.props.selectTab(tab);
+class SimpleForm extends Component {
+  myfunction() {
+      console.log("myfunction");
   }
-
-  onChange() {
-    // todo: on every input change,
-    // we refresh the value stored in redux
-  }
-
   render() {
-    return (
+    const {
+      fields: { Organization, gamemap },
+      handleSubmit,
+      resetForm,
+      submitting
+    } = this.props;
+    return (<form onSubmit={handleSubmit(this.myfunction)}>
       <div>
-        <Col sm={8}>
-          <h3>Tournament Settings</h3>
-          <h4>Game: League of Legend</h4>
-          <FormGroup controlID="formControlsText">
-            <ControlLabel>Organization</ControlLabel>
-            <FormControl type="text" placeholder="PLease Enter Your Organization Name" />
-          </FormGroup>
-          <FormGroup controlID="formControlsText">
-            <ControlLabel>Tournament Name</ControlLabel>
-            <FormControl type="text" placeholder="PLease Enter Your Tournament Name" />
-          </FormGroup>
-          <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Marker</ControlLabel>
-            <FormControl onChange={this.onChange} componentClass="select" placeholder="select">
-              <option value="League of Legend">League of Legend</option>
-            </FormControl>
-          </FormGroup>
-
-        </Col>
-        <Col sm={4}>
-          <h>Instruction</h>
-        </Col>
-        <button
-          onClick={() => this.onClickNext(3)}
-        >
-        next</button>
-      </div>);
+        <label>Organization</label>
+        <div>
+          <input type="text" placeholder="Organization" {...Organization} />
+        </div>
+      </div>
+      <div>
+        <label>Game Map</label>
+        <div>
+          <select
+            {...gamemap}
+              // required syntax for reset form to work
+              // undefined will not change value to first empty option
+              // when resetting
+            value={gamemap.value || ''}>
+            <option></option>
+            <option value="Rift">Summoner's Rift</option>
+            <option value="Crystal">Crystal Something</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <button type="submit" disabled={submitting}>
+          {submitting ? <i/> : <i/>} Submit
+        </button>
+        <button type="button" disabled={submitting} onClick={resetForm}>
+            Clear Values
+        </button>
+      </div>
+    </form>
+  );
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectTab }, dispatch);
+SimpleForm.propTypes = {
+  fields: PropTypes.object.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  submitting: PropTypes.bool.isRequired
 }
 
-export default connect(null, mapDispatchToProps)(TabSettingLOL);
+export default reduxForm({
+  form: 'simple',
+  fields
+})(SimpleForm)
