@@ -1,0 +1,22 @@
+@import "./variables/_bootstrap";
+
+$footer-default-bg:                $black-bg;
+$footer-padding:  70px 0;
+// links
+$footer-default-link-color:                $white-link;
+$footer-default-link-hover-color:          $white-link-hover;
+$footer-default-link-hover-bg:             transparent !default;
+$footer-default-link-active-color:         $white-link-active;
+
+// todo: Responsive Design
+
+.footer{
+  background-color: $footer-default-bg;
+  color: white;
+  padding: $footer-padding;
+
+  .footer-list{
+    list-style: none;
+    padding-left: 5px;
+  }
+}

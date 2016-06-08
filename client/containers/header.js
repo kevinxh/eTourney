@@ -97,7 +97,9 @@ class Header extends Component {
       <Navbar bsClass="header" className={this.toggleTransparency()} fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
-            <Link to="/">LOGO</Link>
+            <Link to="/">
+              <img src="http://placehold.it/40x40?text=logo" />
+            </Link>
           </NavbarBrand>
           <NavbarToggle />
         </NavbarHeader>
