@@ -1,14 +1,14 @@
 import { Button, Panel, Col, Row, Clearfix, Grid } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-export default class COLLAPSIBLE_PANEL extends React.Component {
+export default class CollapsiblePanel extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
       open: false
     };
   }
-  CHANGE_LOAD() {
+  toggleLoading() {
     if (this.state.open === true) {
       return 'Click To Load Less...'
     }
@@ -28,7 +28,7 @@ export default class COLLAPSIBLE_PANEL extends React.Component {
           {this.props.tournament}
             </Panel>
             <div className="text-center game-list-item" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                {this.CHANGE_LOAD()}
+                {this.toggleLoading()}
             </div>
           </Row>
         </Grid>

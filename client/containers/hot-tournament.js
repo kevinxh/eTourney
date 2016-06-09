@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import HotDisplay from '../components/hot-tournament/hot-display';
 import HotList from '../components/hot-tournament/hot-list';
 import { fetchHotTournament } from '../actions/hot-actions';
 import { Grid, Row, Col } from 'react-bootstrap';
@@ -9,9 +8,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 
 class HotTournament extends Component {
   componentWillMount() {
-    // console.log(this.props.hotTournaments);
     this.props.fetchHotTournament();
-    // console.log(this.props.hotTournaments);
   }
 
   render() {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from 'react-bootstrap/lib/Grid';
 import { Image, HelpBlock, Col, Row, Clearfix } from 'react-bootstrap';
 import { Link } from 'react-router';
-import COLLAPSIBLE_PANEL from './collapsible-panel';
+import CollapsiblePanel from './collapsible-panel';
 
 
 export default class HotList extends Component {
@@ -100,7 +100,7 @@ export default class HotList extends Component {
         </Grid>
         <Grid>
           <Row>
-            <COLLAPSIBLE_PANEL
+            <CollapsiblePanel
               tournament1={this.renderSubList1()}
               tournament={this.renderSubList2()}/>
           </Row>
