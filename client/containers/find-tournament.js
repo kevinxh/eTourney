@@ -17,7 +17,7 @@ class FindTournament extends Component {
       return <div></div>;
     }
     return this.props.tournaments.map((tournament) => (
-      <Col key={tournament.id} xs={6} md={3}>
+      <Col key={tournament._id} xs={6} md={3}>
         <TournamentListItem tournament={tournament} />
       </Col>
     ));

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const TournamentSchema = new Schema({
+export const TournamentSchema = new Schema({
   tournamentName: {
     type: String,
     index: true,
@@ -12,9 +12,9 @@ const TournamentSchema = new Schema({
     ]
   },
   game: {
-    type: String,
-    required: 'Tournament game is required',
-    enum: ['LeagueOfLegend', 'HearthStone'], // todo: we a better implementation for this
+    type: Schema.Types.ObjectId,
+    ref: 'Game',
+    required: 'Tournament game is required'
   },
   creatorEmail: {
     type: String,
@@ -31,5 +31,16 @@ const TournamentSchema = new Schema({
   },
 }, { collection: 'Tournament' });
 
+TournamentSchema.pre('remove', function (next) {
+  mongoose.model('Game').update({ _id: this.game }, { $pullAll: {tournaments: [this._id]}});
+  next();
+  // mongoose.model('Game').findOne({ _id: this.game }, (err, game) => {
+  //   const index = game.tournaments.indexOf(this._id);
+  //   game.tournaments.splice(index,1);
+  //   game.save((err) => {
+  //     next()
+  //   });
+  // });
+})
 // Registering the Tournament model
 export default mongoose.model('Tournament', TournamentSchema);

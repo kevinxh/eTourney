@@ -13,6 +13,8 @@ export const tournamentRouter = express.Router();
 tournamentRouter.use(JWTAuthentication);
 
 tournamentRouter.route('/')
+  .get(actions.findTournaments);
+tournamentRouter.route('/create')
   .post(actions.createTournament);
 tournamentRouter.route('/:tournamentID')
   .get(actions.findTournamentByID);

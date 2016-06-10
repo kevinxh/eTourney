@@ -1,6 +1,7 @@
 import { assert, expect } from 'chai';
 import request from 'request';
 import Tournament from '../../server/models/tournament';
+import Game from '../../server/models/game';
 
 export default function () {
   describe('Tournament System unit tests', function () {
@@ -12,10 +13,10 @@ export default function () {
       token: 'JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRvdXJuYW1lbnRhcGlAZXRvdXJuZXkuY29tIiwiaWF0IjoxNDYzOTgyOTE2LCJleHAiOjE0NjkxNjY5MTZ9.XMK2RY68s7GI1JFiR6FESVoPkdHaz71AUBlOK2Lug4s',
       testingTournament: {
         tournamentName: 'testingTournament01',
-        game: 'LeagueOfLegend',
+        game: 'Overwatch',
       },
       endPoints: {
-        createTournament: 'http://localhost:8080/api/tournaments',
+        createTournament: 'http://localhost:8080/api/tournaments/create',
         findTournamentByID: 'http://localhost:8080/api/tournaments'
       }
     };
@@ -24,10 +25,13 @@ export default function () {
 
     // After completing all tests
     after((done) => {
-      Tournament.remove({ tournamentName: config.testingTournament.tournamentName }, () => {
-        console.log('Testing tournament removed');
-        done();
-      });
+
+      Tournament.findOne({ tournamentName: config.testingTournament.tournamentName}, (err, tournament) => {
+        tournament.remove((errRemove) => {
+          if (errRemove) throw errRemove;
+          done();
+        });
+      })
     });
 
     describe('Create new tournament', () => {
@@ -57,8 +61,8 @@ export default function () {
           form: { tournamentName: config.testingTournament.tournamentName }
         }, (err, resp, body) => {
           expect(resp.statusCode, 'Status should be 400').to.equal(400);
-          assert(JSON.parse(body).msg === 'Please enter your choice of game',
-          'Should return "Please enter your choice of game"');
+          assert(JSON.parse(body).msg === 'Request failed. Game not found.',
+          'Should return "Request failed. Game not found."');
           done();
         });
       });

@@ -1,22 +1,20 @@
-// For now, just mock
+import axios from 'axios';
 
-const games = [
-  { name: 'Hearthstone', id: 1 },
-  { name: 'CS:GO', id: 2 },
-  { name: 'DOTA2', id: 3 },
-  { name: 'League', id: 4 },
-  { name: 'Game 5', id: 5 },
-  { name: 'Game 6', id: 6 }
-];
+const API_ROOT = 'http://localhost:8080/api/games';
 
 const fetchGames = function () {
-  return games;
+  return axios({
+    method: 'get',
+    url: `${API_ROOT}/`
+  }).then(response => response.data.games);
 };
 
-const fetchGame = function(gameId){
-  console.log(gameId);
-  return games.filter((game) => game.id === parseInt(gameId))[0];
-}
+const fetchGame = function (gameId) {
+  return axios({
+    method: 'get',
+    url: `${API_ROOT}/id/${gameId}`
+  }).then(response => response.data.game);
+};
 
 export default {
   fetchGames,
