@@ -1,7 +1,8 @@
 @import "./variables/_bootstrap";
 
 $footer-default-bg:                $black-bg;
-$footer-padding:  70px 0;
+$footer-padding:  70px 0 25px;
+$footer-copyright-padding:  25px 0;
 // links
 $footer-default-link-color:                $white-link;
 $footer-default-link-hover-color:          $white-link-hover;
@@ -18,5 +19,9 @@ $footer-default-link-active-color:         $white-link-active;
   .footer-list{
     list-style: none;
     padding-left: 5px;
+  }
+
+  .copyright{
+    padding: $footer-copyright-padding;
   }
 }

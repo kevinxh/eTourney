@@ -11,17 +11,37 @@ export default class Footer extends Component {
               <img src="http://placehold.it/150x150?text=logo" />
             </div>
             <div className="col-md-2 col-xs-6">
-              <h4>col title</h4>
+              <h4>小标题</h4>
               <ul className="footer-list">
                 <li>list item1</li>
                 <li>list item1</li>
               </ul>
             </div>
             <div className="col-md-2 col-xs-6">
-            col2
+              <h4>小标题</h4>
+              <ul className="footer-list">
+                <li>list item1</li>
+                <li>list item1</li>
+              </ul>
             </div>
             <div className="col-md-2 col-xs-6">
-            col3
+              <h4>小标题</h4>
+              <ul className="footer-list">
+                <li>list item1</li>
+                <li>list item1</li>
+              </ul>
+            </div>
+            <div className="col-md-2 col-xs-6">
+              <h4>小标题</h4>
+              <ul className="footer-list">
+                <li>list item1</li>
+                <li>list item1</li>
+              </ul>
+            </div>
+          </div>
+          <div className="row">
+            <div className="copyright">
+              <p className="text-center">copyright</p>
             </div>
           </div>
         </div>
