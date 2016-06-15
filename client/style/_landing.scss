@@ -1,0 +1,42 @@
+@import "./variables/_bootstrap";
+
+$bg-min-height: 700px;
+$hero-topic-font-size: 80px;
+$hero-info-font-size: floor(($hero-topic-font-size * 0.4));
+
+// todo: Responsive Design
+
+.hero {
+  height: 100vh;
+  padding-top: 400px;
+  min-height: $bg-min-height - $header-height;
+  .intro{
+    color: black;
+    width: 1600px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    .topic{
+      font-size: $hero-topic-font-size;
+    }
+
+    .info{
+      font-size: $hero-info-font-size;
+    }
+  }
+}
+
+.bg-wrapper {
+  position: absolute;
+  z-index: -999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-height: $bg-min-height;
+  width: 100%;
+  background-image: url("../assets/image/bg-test1.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}

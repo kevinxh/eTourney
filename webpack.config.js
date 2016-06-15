@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, './client/assets'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: 'http://0.0.0.0:8080/static/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -33,6 +33,9 @@ module.exports = {
           'css-loader?sourceMap',
           'postcss-loader',
           'sass-loader?sourceMap']
+      }, {
+        test: /\.(jpe?g|png|gif|svg)$/,
+        loader: 'url-loader?limit=10000&name=[path][name].[ext]'
       }
     ]
       //loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap') }]
