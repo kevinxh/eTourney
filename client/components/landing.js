@@ -16,6 +16,9 @@ export default class Landing extends Component {
           </ButtonToolbar>
         </div>
         <div className="bg-wrapper">
+          <video preload="auto" autoPlay loop muted>
+            <source src="https://d33jl3tgfli0fm.cloudfront.net/helix/videos/hero-loop-webm.webm" type="video/webm" />
+            </video>
         </div>
       </section>
 		);
