@@ -2,7 +2,7 @@ import express from 'express';
 import { Render } from '../controllers/index.controller';
 import authRouter from './auth.router';
 import { tournamentRouter, nonvalidTournamentRouter } from './api/tournament.router';
-import { fetchHotTournament } from '../controllers/api/fetchht.controoler';
+import { fetchHotTournament } from '../controllers/api/fetchht.controller';
 
 import gameRouter from './api/game.router';
 

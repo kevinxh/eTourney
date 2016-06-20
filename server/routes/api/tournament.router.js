@@ -1,7 +1,7 @@
 import express from 'express';
 import { JWTAuthentication } from '../../config/passport-jwt.js';
 import * as actions from '../../controllers/api/tournament.controller';
-import { fetchHotTournament } from '../../controllers/api/fetchht.controoler';
+import { fetchHotTournament } from '../../controllers/api/fetchht.controller';
 
 
 export const nonvalidTournamentRouter = express.Router();

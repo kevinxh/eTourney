@@ -10,10 +10,10 @@ export default class CollapsiblePanel extends React.Component {
   }
   toggleLoading() {
     if (this.state.open === true) {
-      return 'Click To Load Less...'
+      return '点击显示更少...'
     }
     else if (this.state.open === false) {
-      return 'Click To Load More...'
+      return '点击显示更多...'
     }
   }
   render() {
@@ -22,10 +22,10 @@ export default class CollapsiblePanel extends React.Component {
         <Grid>
           <Row>
             <Panel className="collapsible-panel">
-              {this.props.tournament1}
+              {this.props.firsthalf}
             </Panel>
             <Panel className="collapsible-panel" collapsible expanded={this.state.open}>
-          {this.props.tournament}
+          {this.props.secondhalf}
             </Panel>
             <div className="text-center game-list-item" onClick={ ()=> this.setState({ open: !this.state.open })}>
                 {this.toggleLoading()}

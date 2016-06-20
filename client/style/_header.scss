@@ -18,6 +18,7 @@
 .header {
   position: relative;
   min-height: $header-height; // Ensure a header always shows (e.g., without a .header-brand in collapsed mode)
+  height: $header-height;
   margin-bottom: $header-margin-bottom;
   border: 1px solid transparent;
 
@@ -363,6 +364,15 @@
 }
 
 
+// Transparent header
+
+.header-default.header-transparent {
+  background-color: transparent;
+  border-color: transparent;
+  height: $header-height + 20px;
+  box-shadow: none;
+}
+
 // Alternate headers
 // --------------------------------------------------
 
@@ -370,7 +380,8 @@
 .header-default {
   background-color: $header-default-bg;
   border-color: $header-default-border;
-  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+  box-shadow: 0px 5px 3px rgba(0,0,0,.1);
+  transition: all 0.35s ease-in-out;
 
   .header-brand {
     color: $header-default-brand-color;
