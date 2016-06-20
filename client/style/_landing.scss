@@ -3,6 +3,7 @@
 $bg-min-height: 700px;
 $hero-topic-font-size: 80px;
 $hero-info-font-size: floor(($hero-topic-font-size * 0.4));
+$hero-intro-width: 800px;
 
 // todo: Responsive Design
 
@@ -12,7 +13,7 @@ $hero-info-font-size: floor(($hero-topic-font-size * 0.4));
   min-height: $bg-min-height - $header-height;
   .intro{
     color: white;
-    width: 800px;
+    width: $hero-intro-width;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -23,6 +24,10 @@ $hero-info-font-size: floor(($hero-topic-font-size * 0.4));
 
     .info{
       font-size: $hero-info-font-size;
+    }
+
+    .btn{
+      margin: 0px 25px 0px 0px;
     }
   }
 }
@@ -37,7 +42,9 @@ $hero-info-font-size: floor(($hero-topic-font-size * 0.4));
   width: 100%;
 
   video{
+    height:100%;
     width: 100%;
     filter: brightness(30%);
+    object-fit: cover;
   }
 }

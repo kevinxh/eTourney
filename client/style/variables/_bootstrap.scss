@@ -58,14 +58,11 @@ $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
 $black-bg:                #000000;
-$white-link:              rgba(255,255,255,0.75);
-$white-link-hover:        rgba(255,255,255,0.9);
-$white-link-active:       rgba(255,255,255,0.95);
-
 $body-bg:               #fff !default;
 $text-color:            $gray-dark !default;
-$link-color:            $brand-primary !default;
-$link-hover-color:      darken($link-color, 15%) !default;
+$link-color:            #e3e3e3;
+$link-hover-color:      lighten($link-color, 3%) !default;
+$link-active-color:     lighten($link-color, 6%);
 $link-hover-decoration: underline !default;
 
 $component-active-color:    #fff !default;
@@ -174,10 +171,10 @@ $header-default-color:             #777 !default;
 $header-default-bg:                $black-bg;
 $header-default-border:            darken($header-default-bg, 6.5%) !default;
 // links
-$header-default-link-color:                $white-link;
-$header-default-link-hover-color:          $white-link-hover;
+$header-default-link-color:                $link-color;
+$header-default-link-hover-color:          $link-hover-color;
 $header-default-link-hover-bg:             transparent !default;
-$header-default-link-active-color:         $white-link-active;
+$header-default-link-active-color:         $link-active-color;
 $header-default-link-active-bg:            darken($header-default-bg, 6.5%) !default;
 $header-default-link-disabled-color:       #ccc !default;
 $header-default-link-disabled-bg:          transparent !default;
