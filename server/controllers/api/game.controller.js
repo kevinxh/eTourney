@@ -46,6 +46,11 @@ export function createGame(req, res) {
   });
 }
 
+export function updateGameImage(req, res, next){
+  console.log(req.files);
+  res.status(200).send('test');
+}
+
 export function findGameByName(req, res) {
   try {
     Game.findOne({ name: req.params.name }, (err, game) => {
