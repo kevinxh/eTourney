@@ -1,21 +1,24 @@
 /*!
  * eTourney
  */
- 
+
 @import "compass";
 @import "compass/functions";
  // Variables
-@import "./variables/_bootstrap.scss";
 @import "./variables/_customs.scss";
+@import "./variables/_bootstrap.scss";
 
 // Frameworks
 @import "./bootstrap";
 
 // Customs
 @import "base";
+@import "_header";
 @import "_buttons";
-@import "./game-list";
-@import "./tournament-list";
+@import "_landing";
+@import "_footer";
+@import "_game-list";
+@import "_tournament-list";
 
 
 // Headings

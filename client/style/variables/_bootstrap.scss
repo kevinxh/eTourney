@@ -57,13 +57,13 @@ $brand-info:            #5bc0de !default;
 $brand-warning:         #f0ad4e !default;
 $brand-danger:          #d9534f !default;
 
-$black-bg:                #000000;
+$black:              #000000;
 $body-bg:               #fff !default;
 $text-color:            $gray-dark !default;
 $link-color:            #e3e3e3;
 $link-hover-color:      lighten($link-color, 3%) !default;
 $link-active-color:     lighten($link-color, 6%);
-$link-hover-decoration: underline !default;
+$link-hover-decoration: none;
 
 $component-active-color:    #fff !default;
 $component-active-bg:       $brand-primary !default;
@@ -168,7 +168,7 @@ $header-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $header-padding-vertical:          (($header-height - $line-height-computed) / 2) !default;
 $header-collapse-max-height:       340px !default;
 $header-default-color:             #777 !default;
-$header-default-bg:                $black-bg;
+$header-default-bg:                $black;
 $header-default-border:            darken($header-default-bg, 6.5%) !default;
 // links
 $header-default-link-color:                $link-color;
