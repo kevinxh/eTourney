@@ -57,6 +57,7 @@
 
 .header-collapse {
   overflow-x: visible;
+  background-color: $black;
   padding-right: $header-padding-horizontal;
   padding-left:  $header-padding-horizontal;
   border-top: 1px solid transparent;
@@ -75,7 +76,7 @@
 
     &.collapse {
       display: block !important;
-      height: auto !important;
+      height: $header-height;
       padding-bottom: 0; // Override default setting
       overflow: visible !important;
     }
@@ -275,8 +276,8 @@
   // Uncollapse the nav
   @media (min-width: $grid-float-breakpoint) {
     float: left;
-    margin-top: ($header-padding-vertical / 2);
-    margin-bottom: ($header-padding-vertical / 2);
+    margin-top: 0;
+    margin-bottom: 0;
 
     > li {
       float: left;
