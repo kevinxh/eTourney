@@ -18,11 +18,11 @@
 //////////////////////////////////////////////////////////
 // BASE DEFAULTS /////////////////////////////////////////
 //////////////////////////////////////////////////////////
-$unicorn-btn-namespace: ".btn"; //prefix for all classes
-$unicorn-btn-glow-namespace: ".glow";
-$unicorn-btn-glow-color: #2c9adb !default;
-$unicorn-btn-bgcolor: #EEE !default;
-$unicorn-btn-height: 32px !default;
+$unicorn-btn-namespace:       ".btn"; //prefix for all classes
+$unicorn-btn-glow-namespace:  ".glow";
+$unicorn-btn-glow-color:      #2c9adb !default;
+$unicorn-btn-bgcolor:         $passion-red;
+$unicorn-btn-height:          40px;
 
 
 //////////////////////////////////////////////////////////
@@ -39,7 +39,7 @@ $unicorn-btn-font-family: $font-family-sans-serif;
 //////////////////////////////////////////////////////////
 
 // (name background-color font-color) add as many as you like.
-$unicorn-btn-actions: ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('caution' #E54028 #FFFFFF) ('passion-red' #eb2227 #eb2227) ;
+$unicorn-btn-actions: ('passion-red' #eb2227 #eb2227) ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('passion-red' #eb2227 #eb2227) ;
 // Remove any type to omit from final CSS build
 $unicorn-btn-types: 'flat' 'rounded' '3d' 'border' 'pill' 'circle' 'dropdown';
 $unicorn-btn-sizes: 'jumbo' 'large' 'small' 'tiny' !default;
@@ -219,7 +219,7 @@ button#{$unicorn-btn-namespace}:disabled {
 
 
 // BORDER BUTTON BASE
-@if $unicorn-btn-build-flat {
+@if $unicorn-btn-build-border {
     #{$unicorn-btn-namespace}-border {
         @include box-shadow(none);
         @include transition-property(all);
@@ -230,8 +230,8 @@ button#{$unicorn-btn-namespace}:disabled {
         text-shadow: none;
 
         &:hover, &:focus {
-            background: none;
-            color: lighten($unicorn-btn-font-color, 10%);
+            @include contrasted($unicorn-btn-font-color);
+            background: lighten($unicorn-btn-font-color, 10%);
             border: 1px solid lighten($unicorn-btn-font-color, 10%);
         }
         &:active, &.is-active, &.active {
@@ -399,9 +399,9 @@ button#{$unicorn-btn-namespace}:disabled {
             text-shadow: none;
 
             &:hover, &:focus {
-                background: none;
-                color: lighten($unicorn-btn-background, 15%);
-                border: 1px solid lighten($unicorn-btn-background, 15%);
+                @include contrasted(darken($unicorn-btn-background, 30%));
+                background: lighten($unicorn-btn-background, 5%);
+                border: 1px solid lighten($unicorn-btn-background, 5%);
             }
             &:active, &.is-active, &.active {
                 @include transition-duration(0s);
@@ -493,16 +493,16 @@ button#{$unicorn-btn-namespace}:disabled {
     #{$unicorn-btn-namespace}-#{$unicorn-btn-size} {
         @if $unicorn-btn-size == 'jumbo' {
             font-size: $unicorn-btn-jumbofs;
-            height: $unicorn-btn-height * 1.6;
-            line-height: $unicorn-btn-height * 1.6;
-            padding: 0px ($unicorn-btn-height * 1.6) * .8;
+            height: $unicorn-btn-height * 1.5;
+            line-height: $unicorn-btn-height * 1.5;
+            padding: 0px ($unicorn-btn-height * 1.5) * .8;
         }
 
         @if $unicorn-btn-size == 'large' {
             font-size: $unicorn-btn-largefs;
-            height: $unicorn-btn-height * 1.5 !important;
-            line-height: $unicorn-btn-height * 1.5;
-            padding: 0px ($unicorn-btn-height * 1.5) * .8;
+            height: $unicorn-btn-height * 1.2 !important;
+            line-height: $unicorn-btn-height * 1.2;
+            padding: 0px ($unicorn-btn-height * 1.2) * .8;
         }
 
         @if $unicorn-btn-size == 'small' {
