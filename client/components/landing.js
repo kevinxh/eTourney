@@ -12,7 +12,7 @@ export default class Landing extends Component {
             <button className="btn btn-large btn-border">寻找比赛</button>
           </Link>
           <Link to="/create">
-            <button className="btn btn-large btn-border-primary">创建属于你的比赛</button>
+            <button className="btn btn-large btn-border-passion-red">创建属于你的比赛</button>
           </Link>
         </div>
         <div className="bg-wrapper">

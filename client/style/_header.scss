@@ -10,6 +10,7 @@
   margin-top: (($header-height - $element-height) / 2);
   margin-bottom: (($header-height - $element-height) / 2);
 }
+
 // Wrapper and base class
 //
 // Provide a static header from which we expand to create full-width, fixed, and
@@ -57,7 +58,7 @@
 
 .header-collapse {
   overflow-x: visible;
-  background-color: $black;
+  background-color: $header-default-bg;
   padding-right: $header-padding-horizontal;
   padding-left:  $header-padding-horizontal;
   border-top: 1px solid transparent;

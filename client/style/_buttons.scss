@@ -28,8 +28,8 @@ $unicorn-btn-height: 32px !default;
 //////////////////////////////////////////////////////////
 // TYPOGRAPHY ////////////////////////////////////////////
 //////////////////////////////////////////////////////////
-$unicorn-btn-font-color: $link-color;
-$unicorn-btn-font-size: 15px;
+$unicorn-btn-font-color:  $link-color;
+$unicorn-btn-font-size:   $font-size-base;
 $unicorn-btn-font-weight: 500;
 $unicorn-btn-font-family: $font-family-sans-serif;
 
@@ -39,7 +39,7 @@ $unicorn-btn-font-family: $font-family-sans-serif;
 //////////////////////////////////////////////////////////
 
 // (name background-color font-color) add as many as you like.
-$unicorn-btn-actions: ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('caution' #E54028 #FFFFFF) ('royal' #87318C #FFFFFF) ;
+$unicorn-btn-actions: ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('caution' #E54028 #FFFFFF) ('passion-red' #eb2227 #eb2227) ;
 // Remove any type to omit from final CSS build
 $unicorn-btn-types: 'flat' 'rounded' '3d' 'border' 'pill' 'circle' 'dropdown';
 $unicorn-btn-sizes: 'jumbo' 'large' 'small' 'tiny' !default;

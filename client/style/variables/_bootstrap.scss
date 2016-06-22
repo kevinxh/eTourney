@@ -168,7 +168,7 @@ $header-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $header-padding-vertical:          (($header-height - $line-height-computed) / 2) !default;
 $header-collapse-max-height:       340px !default;
 $header-default-color:             #777 !default;
-$header-default-bg:                $black;
+$header-default-bg:                $dark-gray;
 $header-default-border:            darken($header-default-bg, 6.5%) !default;
 // links
 $header-default-link-color:                $link-color;
