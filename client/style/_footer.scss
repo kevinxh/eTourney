@@ -1,13 +1,13 @@
 @import "./variables/_bootstrap";
 
-$footer-default-bg:                $black-bg;
+$footer-default-bg:                $black;
 $footer-padding:  70px 0 25px;
 $footer-copyright-padding:  25px 0;
 // links
-$footer-default-link-color:                $white-link;
-$footer-default-link-hover-color:          $white-link-hover;
+$footer-default-link-color:                $link-color;
+$footer-default-link-hover-color:          $link-hover-color;
 $footer-default-link-hover-bg:             transparent !default;
-$footer-default-link-active-color:         $white-link-active;
+$footer-default-link-active-color:         $link-active-color;
 
 // todo: Responsive Design
 

@@ -32,7 +32,7 @@ module.exports = {
         loaders: ['style-loader',
           'css-loader?sourceMap',
           'postcss-loader',
-          'sass-loader?sourceMap']
+          'sass-loader?sourceMap&includePaths[]=' + path.resolve(__dirname, "./node_modules/compass-mixins/lib")]
       }, {
         test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'url-loader?limit=10000&name=[path][name].[ext]'
@@ -40,7 +40,7 @@ module.exports = {
     ]
       //loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap') }]
   },
-  postcss: [autoprefixer({ browsers: ['last 3 versions'] })],
+  postcss: [autoprefixer({ remove: false, browsers: ['last 3 versions'] })],
   resolve: {
     extensions: ['', '.js', '.jsx']
   }

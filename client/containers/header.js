@@ -18,10 +18,7 @@ import LoginRegisterModal from '../components/auth/loginRegister-modal';
 import { LOGIN_REGISTER_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
-require('../style/_header.scss');
-
 class Header extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -98,7 +95,7 @@ class Header extends Component {
         <NavbarHeader>
           <NavbarBrand>
             <Link to="/">
-              <img src="http://placehold.it/40x40?text=logo" />
+              <img src="http://placehold.it/40x40?text=logo" alt="Logo" />
             </Link>
           </NavbarBrand>
           <NavbarToggle />
@@ -128,9 +125,12 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showLoginRegister: React.PropTypes.bool.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired,
-  modalAction: React.PropTypes.func.isRequired,
+  showLoginRegister:  React.PropTypes.bool.isRequired,
+  isAuthenticated:    React.PropTypes.bool.isRequired,
+  modalAction:        React.PropTypes.func.isRequired,
+  userSignout:        React.PropTypes.func.isRequired,
+  path:               React.PropTypes.string.isRequired,
+  email:              React.PropTypes.string,
 };
 
 Header.defaultProps = {
