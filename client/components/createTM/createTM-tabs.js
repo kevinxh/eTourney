@@ -44,7 +44,7 @@ class CreateTMtabs extends Component {
           <TabSelectGame />
         </Tab>
         <Tab eventKey={2} title="Tab 2" disabled={this.props.TabState['2']}>
-          <SimpleForm />
+          {this.RenderSelect()}
         </Tab>
         <Tab eventKey={3} title="Tab 3" disabled={this.props.TabState['3']}>
         Tab 3 content

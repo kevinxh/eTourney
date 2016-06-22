@@ -22,3 +22,4 @@ export const SIGNOUT = 'SIGNOUT';
 export const SELECT_GAME = 'SELECT_GAME';
 export const SELECT_TAB = 'SELECT_TAB';
 export const TOGGLE_TAB = 'TOGGLE_TAB';
+export const CREATE_TM_REQUEST = 'CREATE_TM_REQUEST';

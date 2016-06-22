@@ -25,3 +25,12 @@ export const toggleTab = (tab, disabled) => {
     disabled,
   };
 };
+
+
+export const createTM = (fields, game) => {
+  return {
+    type: actionTypes.CREATE_TM_REQUEST,
+    fields,
+    game,
+  };
+};
