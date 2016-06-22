@@ -162,6 +162,8 @@ $container-lg:                 $container-large-desktop !default;
 // 6.1 Header
 //*********************************************
 $header-height:                    60px;
+$header-transparent-height:        $header-height + 20px;
+$header-transparent-margin:        ($header-transparent-height - $header-height) / 2;
 $header-margin-bottom:             $line-height-computed !default;
 $header-border-radius:             $border-radius-base !default;
 $header-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
