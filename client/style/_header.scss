@@ -247,6 +247,7 @@
     line-height: $line-height-computed;
     font-weight: 600;
     font-size: $font-size-large;
+    text-align: center;
   }
 
   @media (max-width: $grid-float-breakpoint-max) {
@@ -372,6 +373,10 @@
   border-color: transparent;
   height: $header-height + 20px;
   box-shadow: none;
+
+  .header-collapse {
+    background-color: transparent;
+  }
 }
 
 // Alternate headers
