@@ -2,9 +2,37 @@
  * eTourney
  */
 
-// Variables
-@import "variables";
+@import "compass";
+// @import "compass/functions";
+ // Variables
+@import "./variables/_customs.scss";
+@import "./variables/_bootstrap.scss";
+
 // Frameworks
 @import "./bootstrap";
+
 // Customs
 @import "base";
+@import "_header";
+@import "_buttons";
+@import "_landing";
+@import "_footer";
+@import "_game-list";
+@import "_tournament-list";
+
+
+// Headings
+
+.underlined-headings:after{
+  display: block;
+  margin: 10px auto 10px auto;
+  content: '';
+  border-bottom: 2px solid #ec1c24;
+  width: 175px;
+}
+
+.description{
+  width: 75%;
+  margin: 0 auto;
+  line-height: 200%;
+}

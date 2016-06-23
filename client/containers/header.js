@@ -14,28 +14,65 @@ import NavbarCollapse from 'react-bootstrap/lib/NavbarCollapse';
 import NavbarHeader from 'react-bootstrap/lib/NavbarHeader';
 import NavDropdown from 'react-bootstrap/lib/NavDropdown';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
-import SigninModal from '../components/auth/signin-modal';
-import SignupModal from '../components/auth/signup-modal';
-
-import { SIGNIN_MODAL, SIGNUP_MODAL } from '../constants';
+import LoginRegisterModal from '../components/auth/loginRegister-modal';
+import { LOGIN_REGISTER_MODAL } from '../constants';
 import { MODAL_OPEN } from '../actions/action-types';
 
-require('../components/style/_header.scss');
-
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isTop: true,
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
+  handleScroll() {
+    let position = 0;
+    const isTop = this.state.isTop;
+    if (typeof(window.pageYOffset) === 'number') {
+      // Netscape
+      position = window.pageYOffset;
+    } else if (document.body && (document.body.scrollLeft || document.body.scrollTop)) {
+      // DOM
+      position = document.body.scrollTop;
+    } else if (document.documentElement && (document.documentElement.scrollLeft || document.documentElement.scrollTop)) {
+      // IE6 standards compliant mode
+      position = document.documentElement.scrollTop;
+    }
+    if (position <= 10 && isTop === false) {
+      this.setState({ isTop: true });
+    } else if (position > 10 && isTop === true) {
+      this.setState({ isTop: false });
+    }
+  }
+
+  toggleTransparency() {
+    if (this.state.isTop && this.props.path === '/') {
+      return 'header-transparent';
+    }
+    return '';
+  }
 
   renderUserNav() {
     if (this.props.isAuthenticated && this.props.email) {
       return (
         <Nav pullRight>
-          <NavDropdown eventKey={3} title="User" id="basic-nav-dropdown">
-            <MenuItem
-              eventKey={3.1}
-              onClick={() => this.props.userSignout()}
-            >Sign out</MenuItem>
+          <NavDropdown pullRight eventKey={3} title="用户" id="basic-nav-dropdown">
+            <MenuItem eventKey={3.1}>登录为: {this.props.email}</MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={3.2}>Signed in as: {this.props.email}</MenuItem>
+            <MenuItem
+              eventKey={3.2}
+              onClick={() => this.props.userSignout()}
+            >登出</MenuItem>
           </NavDropdown>
         </Nav>
       );
@@ -44,48 +81,42 @@ class Header extends Component {
         <Nav pullRight>
           <NavItem
             eventKey={1}
-            onClick={() => this.props.modalAction(SIGNIN_MODAL, MODAL_OPEN)}
+            onClick={() => this.props.modalAction(LOGIN_REGISTER_MODAL, MODAL_OPEN)}
             href="#"
-          >Sign In</NavItem>
-          <NavItem
-            eventKey={2}
-            onClick={() => this.props.modalAction(SIGNUP_MODAL, MODAL_OPEN)}
-            href="#"
-          >Sign Up</NavItem>
+          >登录 & 注册</NavItem>
         </Nav>);
     }
   }
 
   render() {
+    // todo: navigation active link according to routing path
     return (
-      <Navbar fluid fixedTop>
+      <Navbar bsClass="header" className={this.toggleTransparency()} fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
-            <a href="/">React-Bootstrap</a>
+            <Link to="/">
+              <img src="http://placehold.it/40x40?text=logo" alt="Logo" />
+            </Link>
           </NavbarBrand>
           <NavbarToggle />
         </NavbarHeader>
         <NavbarCollapse>
-          <Nav pullLeft>
-            <li role="presentation">
-              <Link to="/find">Find Tournament</Link>
+          <Nav pullLeft className="header-link-group">
+            <li role="navigation">
+              <Link to="/find">寻找比赛</Link>
             </li>
-            <li role="presentation">
-              <Link to="/create">Create Tournament</Link>
+            <li role="navigation">
+              <Link to="/create">创建属于你的比赛</Link>
             </li>
-            <li role="presentation">
-              <Link to="/features">Features</Link>
+            <li role="navigation">
+              <Link to="/features">功能</Link>
             </li>
           </Nav>
             {this.renderUserNav()}
         </NavbarCollapse>
 
-        <SigninModal
-          show={this.props.showSignin}
-          onHide={this.props.modalAction}
-        />
-        <SignupModal
-          show={this.props.showSignup}
+        <LoginRegisterModal
+          show={this.props.showLoginRegister}
           onHide={this.props.modalAction}
         />
       </Navbar>
@@ -94,15 +125,16 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  showSignin: React.PropTypes.bool.isRequired,
-  showSignup: React.PropTypes.bool.isRequired,
-  isAuthenticated: React.PropTypes.bool.isRequired,
-  modalAction: React.PropTypes.func.isRequired,
+  showLoginRegister:  React.PropTypes.bool.isRequired,
+  isAuthenticated:    React.PropTypes.bool.isRequired,
+  modalAction:        React.PropTypes.func.isRequired,
+  userSignout:        React.PropTypes.func.isRequired,
+  path:               React.PropTypes.string.isRequired,
+  email:              React.PropTypes.string,
 };
 
 Header.defaultProps = {
-  showSignin: false,
-  showSignup: false,
+  showLoginRegister: false,
   isAuthenticated: false,
 };
 
@@ -112,8 +144,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    showSignin: state.Modal.showSignin,
-    showSignup: state.Modal.showSignup,
+    path: state.routing.locationBeforeTransitions.pathname,
+    showLoginRegister: state.Modal.showLoginRegister,
     isAuthenticated: state.Auth.isAuthenticated,
     email: state.Auth.email,
   };

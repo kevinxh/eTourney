@@ -29,7 +29,7 @@ export const toggleTab = (tab, disabled) => {
 
 export const createTM = (fields, game) => {
   return {
-    type: actionTypes.CREATE_TM_REQUEST,
+    type: actionTypes.CREATE_TOURNAMENT,
     fields,
     game,
   };

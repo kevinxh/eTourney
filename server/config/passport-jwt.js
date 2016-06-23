@@ -1,9 +1,10 @@
+import passport from 'passport';
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const User = require('mongoose').model('User');
 const config = require('./secret');
 
-export default function (passport) {
+export const passportJWT = function (passport) {
   passport.use(new JwtStrategy({
     jwtFromRequest: ExtractJwt.fromAuthHeader(),
     secretOrKey: config.JwtSecret,
@@ -16,4 +17,8 @@ export default function (passport) {
       return done(null, false);
     });
   }));
-}
+};
+
+export const JWTAuthentication = (req, res, next) => {
+  passport.authenticate('jwt', { session: false })(req, res, next);
+};

@@ -1,0 +1,50 @@
+@import "./variables/_bootstrap";
+
+$bg-min-height: 700px;
+$hero-topic-font-size: 80px;
+$hero-info-font-size: floor(($hero-topic-font-size * 0.4));
+$hero-intro-width: 800px;
+
+// todo: Responsive Design
+
+.hero {
+  height: 100vh;
+  padding-top: 300px;
+  min-height: $bg-min-height - $header-height;
+  .intro{
+    color: white;
+    width: $hero-intro-width;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    .topic{
+      font-size: $hero-topic-font-size;
+    }
+
+    .info{
+      font-size: $hero-info-font-size;
+    }
+
+    .btn{
+      margin: 0px 25px 0px 0px;
+    }
+  }
+}
+
+.bg-wrapper {
+  position: absolute;
+  z-index: -999;
+  top: 0;
+  left: 0;
+  height: 100%;
+  min-height: $bg-min-height;
+  width: 100%;
+
+  video{
+    height:100%;
+    width: 100%;
+    filter: brightness(30%);
+    object-fit: cover;
+  }
+}

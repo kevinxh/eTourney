@@ -1,7 +1,9 @@
 import AUTH from './auth-api';
-import TOURNAMENT from './tournament-api';
+import GAMES from './games-api';
+import TOURNAMENTS from './tournaments-api';
 
 export default {
   AUTH,
-  TOURNAMENT
+  GAMES,
+  TOURNAMENTS
 };
