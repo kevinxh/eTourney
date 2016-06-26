@@ -74,8 +74,9 @@ export function updateGameImage(req, res){
     }
     fs.readFile(req.file.path, (errFileReadError, data) => {
       if (errFileReadError) throw errFileReadError;
+      //TODO: If not Jpg, return format error
 
-      S3.putObject({ Bucket: S3BUCKET, Key: game.id, Body: data }, (errS3Error, data) => {
+      S3.putObject({ Bucket: S3BUCKET, Key: `images/games/${game.id}.jpg`, Body: data }, (errS3Error, data) => {
         if (errS3Error) console.error(errS3Error, errS3Error.stack);
         else res.status(200).send(`Uploaded succeeded for game ${game.id}`);
         fs.unlinkSync(req.file.path);

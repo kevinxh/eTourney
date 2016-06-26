@@ -4,11 +4,11 @@ import { Link } from 'react-router';
 
 class TournamentListItem extends Component {
   render() {
-    let { gid, tournamentName, time, type, prize } = this.props.tournament;
+    let { _id, gid, tournamentName, time, type, prize } = this.props.tournament;
     return (
       <div className="tournament-list-item">
         <Link to={'#'}>
-          <Image src="http://placehold.it/300x150" rounded responsive />
+          <Image src={`https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${_id}.jpg`} rounded responsive />
           <div className="content-area">
             <span>{tournamentName}</span>
             <hr />
