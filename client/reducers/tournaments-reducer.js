@@ -1,19 +1,18 @@
-import { FETCH_TOURNAMENTS_SUCCESS } from '../actions/action-types';
+import * as actionTypes from '../actions/action-types';
 import * as gameTypes from '../constants/tournaments';
 
 const initialTournamentList = {
-  tournaments: [
-
-  ]
+  tournament: [],
+  hotTournaments: [],
 };
 
 export default function (state = initialTournamentList, action){
   switch (action.type) {
-    case FETCH_TOURNAMENTS_SUCCESS:
-      return {...state,tournaments:action.data};
-      break;
+    case actionTypes.FETCH_TOURNAMENTS_SUCCESS:
+      return { ...state, tournament: action.data};
+    case actionTypes.FETCH_HOTTOURNAMENT_SUCCESS:
+      return { ...state, hotTournaments: action.data.hotTournament};
     default:
       return state;
-
   }
 }

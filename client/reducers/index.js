@@ -6,7 +6,6 @@ import Tournaments from './tournaments-reducer';
 import CreateTM from './createTM-reducer';
 import Modal from './modal-reducer';
 import Auth from './auth-reducer';
-import Hot from './hot-reducer';
 
 const rootReducer = combineReducers({
   routing,
@@ -15,7 +14,6 @@ const rootReducer = combineReducers({
   Games,
   Tournaments,
   CreateTM,
-  Hot,
 });
 
 export default rootReducer;

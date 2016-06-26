@@ -2,7 +2,7 @@ import Tournament from '../../models/tournament';
 
 export function fetchHotTournament(req, res) {
   try {
-    Tournament.find({}, (err, hottournament) => {
+    Tournament.find({}, (err, hotTournament) => {
       // if error finding an tournament
       if (err) {
         return res.status(403).json({
@@ -11,7 +11,7 @@ export function fetchHotTournament(req, res) {
         });
       }
       // if no such tournament
-      if (!hottournament) {
+      if (!hotTournament) {
         return res.status(401).json({
           success: false,
           msg: 'Request failed. Tournament not found.',
@@ -19,7 +19,7 @@ export function fetchHotTournament(req, res) {
       }
       return res.status(200).json({
         success: true,
-        hottournament,
+        hotTournament,
       });
     });
   } catch (error) {
