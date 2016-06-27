@@ -2,7 +2,12 @@ import express from 'express';
 import { JWTAuthentication } from '../../config/passport-jwt.js';
 import * as actions from '../../controllers/api/tournament.controller';
 
-const tournamentRouter = express.Router();
+
+export const nonJWTTournamentRouter = express.Router();
+nonJWTTournamentRouter.get('/hot-tournament', actions.fetchHotTournament);
+
+
+export const tournamentRouter = express.Router();
 
 tournamentRouter.use(JWTAuthentication);
 
@@ -14,4 +19,6 @@ tournamentRouter.route('/:tournamentID')
   .get(actions.findTournamentByID);
   //.post(actions.updateTournamentByID);
 
-export default tournamentRouter;
+
+
+// export default tournamentRouter;

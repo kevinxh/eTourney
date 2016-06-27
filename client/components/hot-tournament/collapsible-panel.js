@@ -1,34 +1,35 @@
 import { Button, Panel, Col, Row, Clearfix, Grid } from 'react-bootstrap';
 import React, { Component } from 'react';
 
-export default class Collapsible_panel extends React.Component {
+export default class CollapsiblePanel extends React.Component {
   constructor(...args) {
     super(...args);
     this.state = {
       open: false
     };
   }
-  change_load(){
-    if(this.state.open === true)
-    return "Load Less..."
-    else if(this.state.open === false)
-    return "Load More..."
+  toggleLoading() {
+    if (this.state.open === true) {
+      return '点击显示更少...'
+    }
+    else if (this.state.open === false) {
+      return '点击显示更多...'
+    }
   }
   render() {
-    var load = "load more"
     return (
       <div className="collapsible-panel">
         <Grid>
           <Row>
             <Panel className="collapsible-panel">
-              {this.props.tournament1}
+              {this.props.firsthalf}
             </Panel>
             <Panel className="collapsible-panel" collapsible expanded={this.state.open}>
-          {this.props.tournament}
+          {this.props.secondhalf}
             </Panel>
-            <a class="center-block" onClick={ ()=> this.setState({ open: !this.state.open })}>
-                {this.change_load()}
-            </a>
+            <div className="text-center game-list-item" onClick={ ()=> this.setState({ open: !this.state.open })}>
+                {this.toggleLoading()}
+            </div>
           </Row>
         </Grid>
       </div>

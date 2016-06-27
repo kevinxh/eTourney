@@ -1,5 +1,6 @@
 import Tournament from '../../models/tournament';
 import Game from '../../models/game';
+const hotQuantity = 6
 
 export function createTournament(req, res) {
   // if (!req.body.tournamentName) {
@@ -117,4 +118,33 @@ export function findTournaments(req, res) {
       tournaments
     });
   });
+}
+export function fetchHotTournament(req, res) {
+  try {
+    Tournament.find({}, (err, hotTournament) => {
+      // if error finding an tournament
+      if (err) {
+        return res.status(403).json({
+          success: false,
+          msg: err,
+        });
+      }
+      // if no such tournament
+      if (!hotTournament) {
+        return res.status(401).json({
+          success: false,
+          msg: 'Request failed. Tournament not found.',
+        });
+      }
+      return res.status(200).json({
+        success: true,
+        hotTournament,
+      });
+    }). limit(hotQuantity);
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      msg: 'Unknown error',
+    });
+  }
 }
