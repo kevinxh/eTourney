@@ -75,7 +75,7 @@
     width: auto;
     border-top: 0;
     box-shadow: none;
-    transition: $transition-all;
+    transition: $transition-default;
     
     &.collapse {
       display: block !important;
@@ -378,13 +378,13 @@
   height: $header-transparent-height;
   box-shadow: none;
   @media (min-width: $grid-float-breakpoint) {
-    transition: $transition-all;
+    transition: $transition-default;
   }
 
   .header-collapse {
     background-color: transparent;
     @media (min-width: $grid-float-breakpoint) {
-      transition: $transition-all;
+      transition: $transition-default;
       margin-top: $header-transparent-margin;
       margin-bottom: $header-transparent-margin;
     }
@@ -401,7 +401,7 @@
   box-shadow: 0px 5px 3px rgba(0,0,0,.1);
   height: $header-height;
   @media (min-width: $grid-float-breakpoint) {
-    transition: $transition-all;
+    transition: $transition-default;
   }
 
   .header-brand {

@@ -33,7 +33,12 @@ class TournamentListItem extends Component {
     } = this.props.tournament;
     return (
       <div className="tournament-list-item" onClick={this.onClick}>
-        <div className="tournament-image" style={this.image('http://placehold.it/300x150')} />
+        <div
+          className="tournament-image"
+          style={this.image(
+            require('../../assets/image/tournament-default-game-pics/HearthStone.jpg')
+          )}
+        />
         <div className="content-area">
           <div className="content-title">
             <div className="title">{tournamentName}</div>

@@ -7,11 +7,12 @@ $tournament-detail-color:   #7e838c;
   background-color: $light-gray;
   border: 1px solid $light-gray;
   cursor: pointer;
-  transition: $transition-all;
+  transition: $transition-tournament-list-item;
 
   &:hover{
+    transform: scale(1.02);
     border: 1px solid $dark-gray;
-    box-shadow: 0 0 10px $dark-gray;
+    box-shadow: 0 0 15px $dark-gray;
   }
 
   > a {
