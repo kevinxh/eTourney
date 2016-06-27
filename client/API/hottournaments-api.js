@@ -1,4 +1,4 @@
-const FETCH_TMT_API = 'http://localhost:8080/hot-tournament';
+const FETCH_TMT_API = 'http://localhost:8080/api/tournaments/hot-tournament';
 import axios from 'axios';
 
 const fetchHotTournament = function () {
