@@ -1,4 +1,5 @@
-
+$tournament-title-color:    white;
+$tournament-detail-color:   #7e838c;
 
 .tournament-list-item{
   height: $tournament-list-item-height;
@@ -9,8 +10,8 @@
   transition: $transition-all;
 
   &:hover{
-    border: 1px solid $passion-red;
-    box-shadow: 0 0 5px $passion-red;
+    border: 1px solid $dark-gray;
+    box-shadow: 0 0 10px $dark-gray;
   }
 
   > a {
@@ -20,7 +21,7 @@
 
   hr {
     margin: 5px 0 5px 0;
-    border-top: 1px solid $light-gray;
+    border-top: 1px solid mix($tournament-title-color, $tournament-detail-color);;
   }
 
   .tournament-image{
@@ -37,11 +38,40 @@
     padding: 8px 4px;
 
     .title{
+      // preserve two lines for long names
+      height: 2 * floor(($font-size-h3 * $line-height-base));
+      line-height: floor(($font-size-h3 * $line-height-base));
       font-size: $font-size-h3;
     }
 
     .creator{
       font-size: $font-size-h4;
+
+      > a{
+        opacity:  0.8;
+        color:    #1380F0;
+
+        &:hover{
+          opacity:  1;
+        }
+      }
+    }
+  }
+
+  .content-detail{
+    color: $tournament-detail-color;
+  }
+
+  .table{
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          border-top: none;
+        }
+      }
     }
   }
 }
