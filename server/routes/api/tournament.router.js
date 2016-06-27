@@ -1,11 +1,10 @@
 import express from 'express';
 import { JWTAuthentication } from '../../config/passport-jwt.js';
 import * as actions from '../../controllers/api/tournament.controller';
-import { fetchHotTournament } from '../../controllers/api/fetchht.controller';
 
 
-export const nonvalidTournamentRouter = express.Router();
-nonvalidTournamentRouter.get('/hot-tournament', fetchHotTournament);
+export const nonJWTTournamentRouter = express.Router();
+nonJWTTournamentRouter.get('/hot-tournament', actions.fetchHotTournament);
 
 
 export const tournamentRouter = express.Router();
