@@ -48,7 +48,12 @@ export function createGame(req, res) {
 
 export function findGameByName(req, res) {
   try {
-    Game.findOne({ name: req.params.name }, (err, game) => {
+    Game
+    .findOne({ name: req.params.name })
+    .populate({
+      path: 'tournaments',
+    }).exec((err, game) => {
+      console.log(game);
       if (err) {
         return res.status(403).json({
           success: false,
@@ -76,7 +81,7 @@ export function findGameByName(req, res) {
 
 export function findGameById(req, res) {
   try {
-    Game.findOne({ _id: req.params.gameID }, (err, game) => {
+    Game.findOne({ _id: req.params.gameID }).populate('tournaments').exec((err, game) => {
       // if error finding an game
       if (err) {
         return res.status(403).json({
