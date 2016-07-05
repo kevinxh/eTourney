@@ -21,6 +21,7 @@
     "babel-runtime": "^6.6.1",
     "bcrypt": "^0.8.6",
     "body-parser": "^1.15.0",
+    "compass-mixins": "^0.12.10",
     "express": "^4.13.4",
     "jsonwebtoken": "^6.2.0",
     "mongoose": "^4.4.14",

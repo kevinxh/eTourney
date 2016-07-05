@@ -69,26 +69,28 @@ export function createTournament(req, res) {
 
 export function findTournamentByID(req, res) {
   try {
-    Tournament.findOne({ _id: req.params.tournamentID }, (err, tournament) => {
+    Tournament.findOne({ _id: req.params.tournamentID })
+      .populate('game')
+      .exec((err, tournament) => {
       // if error finding an tournament
-      if (err) {
-        return res.status(403).json({
-          success: false,
-          msg: err,
+        if (err) {
+          return res.status(403).json({
+            success: false,
+            msg: err,
+          });
+        }
+        // if no such tournament
+        if (!tournament) {
+          return res.status(401).json({
+            success: false,
+            msg: 'Request failed. Tournament not found.',
+          });
+        }
+        return res.status(200).json({
+          success: true,
+          tournament,
         });
-      }
-      // if no such tournament
-      if (!tournament) {
-        return res.status(401).json({
-          success: false,
-          msg: 'Request failed. Tournament not found.',
-        });
-      }
-      return res.status(200).json({
-        success: true,
-        tournament,
       });
-    });
   } catch (error) {
     return res.status(500).json({
       success: false,
