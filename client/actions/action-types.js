@@ -22,6 +22,7 @@ export const SIGNOUT = 'SIGNOUT';
 export const SELECT_GAME = 'SELECT_GAME';
 export const SELECT_GAME_SUCCESS = 'SELECT_GAME_SUCCESS';
 export const FETCH_GAMES = 'FETCH_GAMES';
+export const FETCH_TOP_GAMES = 'FETCH_TOP_GAMES';
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS';
 
 

@@ -1,4 +1,4 @@
-import { SELECT_GAME, FETCH_GAMES } from './action-types';
+import { SELECT_GAME, FETCH_GAMES, FETCH_TOP_GAMES } from './action-types';
 
 export const selectGame = (gameId) => {
   return {
@@ -11,3 +11,8 @@ export const fetchGames = () => {
     type: FETCH_GAMES
   };
 };
+export const fetchTopGames = () => {
+  return {
+    type: FETCH_TOP_GAMES
+  }
+}
