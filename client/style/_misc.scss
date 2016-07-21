@@ -1,0 +1,35 @@
+.search-box {
+  width: 100%; margin: 20px; position: relative;
+
+  input {
+    width: 100%;
+    font-size:18pt;
+    padding: 10px;
+    display:block;
+    border:none;
+    border-bottom:1px solid #757575;
+      &:focus{ outline: none; }
+  }
+  .bar {
+    position: relative; display: block;
+
+    &:before, &:after {
+      content: '';
+      height:2px;
+      width:0;
+      bottom:1px;
+      position:absolute;
+      background:#5264AE;
+      transition:0.2s ease all;
+    }
+    &:before{ left: 50% }
+    &:after{ right: 50% }
+  }
+
+  // bar animaion
+  input:focus ~ .bar:before, input:focus ~ .bar:after {
+    width: 50%;
+  }
+
+
+}
