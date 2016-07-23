@@ -76,7 +76,7 @@
     border-top: 0;
     box-shadow: none;
     transition: $transition-default;
-    
+
     &.collapse {
       display: block !important;
       height: $header-height;
