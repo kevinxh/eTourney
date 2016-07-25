@@ -6,9 +6,10 @@ export const selectGame = (gameId) => {
     gameId
   };
 };
-export const fetchGames = () => {
+export const fetchGames = (gameName) => {
   return {
-    type: FETCH_GAMES
+    type: FETCH_GAMES,
+    gameName
   };
 };
 export const fetchTopGames = () => {

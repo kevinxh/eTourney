@@ -89,18 +89,18 @@ export function updateGameImage(req, res){
 export function findGameByName(req, res) {
   try {
     Game
-    .findOne({ name: req.params.name })
+    .find({ name: new RegExp(req.params.name, 'i') })
     .populate({
       path: 'tournaments',
-    }).exec((err, game) => {
-      console.log(game);
+    }).exec((err, games) => {
+      console.log(games);
       if (err) {
         return res.status(403).json({
           success: false,
           msg: err
         });
       }
-      if (!game) {
+      if (!games) {
         return res.status(404).json({
           success: false,
           msg: 'Request failed. Game not found.'
@@ -108,7 +108,7 @@ export function findGameByName(req, res) {
       }
       return res.status(200).json({
         success: true,
-        game
+        games
       });
     });
   } catch (error) {
