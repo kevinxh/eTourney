@@ -89,7 +89,7 @@ export function updateGameImage(req, res){
 export function findGameByName(req, res) {
   try {
     Game
-    .find({ name: new RegExp(req.params.name, 'i') })
+    .find({ name: new RegExp(req.params.name, 'i') }, '', { limit: TOP_GAMES_LIMIT })
     .populate({
       path: 'tournaments',
     }).exec((err, games) => {
