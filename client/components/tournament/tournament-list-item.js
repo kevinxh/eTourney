@@ -50,7 +50,7 @@ class TournamentListItem extends Component {
             <tbody>
               <tr>
                 <td>游戏</td>
-                <td>{game}</td>
+                <td>{game.name}</td>
               </tr>
               <tr>
                 <td>时间</td>

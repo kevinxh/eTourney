@@ -4,19 +4,6 @@ import fs from 'fs';
 import { S3, S3BUCKET } from '../../config/aws';
 
 export function createTournament(req, res) {
-  // if (!req.body.tournamentName) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     msg: 'Please enter your tournament name',
-  //   });
-  // }
-  // if (!req.body.game) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     msg: 'Please enter your choice of game',
-  //   });
-  // }
-
   Game.findOne({ name: req.body.game }, (err, game) => {
     if (err) {
       return res.status(403).json({
@@ -28,7 +15,7 @@ export function createTournament(req, res) {
       return res.status(400).json({
         success: false,
         msg: 'Please enter your tournament name'
-      })
+      });
     }
     // if no such game
     if (!game) {
@@ -39,7 +26,7 @@ export function createTournament(req, res) {
     }
     const tournament = new Tournament({
       tournamentName: req.body.tournamentName,
-      game,
+      game: { id: game._id, name: req.body.game },
       creatorEmail: req.user.email,
     });
 
