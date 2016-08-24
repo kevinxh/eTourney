@@ -33,10 +33,10 @@ class TournamentListItem extends Component {
     return (
       <div className="tournament-list-item" onClick={this.onClick}>
         <div className="image-box">
-        <div
-          className="tournament-image"
-          style={this.image(`https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${_id}.jpg`)}
-        />
+          <div
+            className="tournament-image"
+            style={this.image(`https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${_id}.jpg`)}
+          />
         </div>
         <div className="content-area">
           <div className="content-title">
@@ -60,7 +60,6 @@ class TournamentListItem extends Component {
                 <td>比赛类型</td>
                 <td>{type}</td>
               </tr>
-
             </tbody>
           </table>
         </div>

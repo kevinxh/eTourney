@@ -1,5 +1,7 @@
 import Tournament from '../../models/tournament';
 import Game from '../../models/game';
+import fs from 'fs';
+import { S3, S3BUCKET } from '../../config/aws';
 
 export function createTournament(req, res) {
   // if (!req.body.tournamentName) {
@@ -28,7 +30,7 @@ export function createTournament(req, res) {
         msg: 'Please enter your tournament name'
       })
     }
-    // if no such tournament
+    // if no such game
     if (!game) {
       return res.status(400).json({
         success: false,
@@ -67,26 +69,28 @@ export function createTournament(req, res) {
 
 export function findTournamentByID(req, res) {
   try {
-    Tournament.findOne({ _id: req.params.tournamentID }, (err, tournament) => {
+    Tournament.findOne({ _id: req.params.tournamentID })
+      .populate('game')
+      .exec((err, tournament) => {
       // if error finding an tournament
-      if (err) {
-        return res.status(403).json({
-          success: false,
-          msg: err,
+        if (err) {
+          return res.status(403).json({
+            success: false,
+            msg: err,
+          });
+        }
+        // if no such tournament
+        if (!tournament) {
+          return res.status(401).json({
+            success: false,
+            msg: 'Request failed. Tournament not found.',
+          });
+        }
+        return res.status(200).json({
+          success: true,
+          tournament,
         });
-      }
-      // if no such tournament
-      if (!tournament) {
-        return res.status(401).json({
-          success: false,
-          msg: 'Request failed. Tournament not found.',
-        });
-      }
-      return res.status(200).json({
-        success: true,
-        tournament,
       });
-    });
   } catch (error) {
     return res.status(500).json({
       success: false,
@@ -115,6 +119,44 @@ export function findTournaments(req, res) {
     return res.status(200).json({
       success: true,
       tournaments
+    });
+  });
+}
+
+export function tournamentImage(req, res) {
+  const { file } = req;
+
+  if (!file) {
+    return res.status(400).json({
+      success: false,
+      msg: 'Please provide an image file'
+    });
+  }
+
+  Tournament.findOne({ _id: req.params.tournamentID }, (errTourNotFound, tournament) => {
+    // if error finding an tournaments
+    if (errTourNotFound) {
+      return res.status(403).json({
+        success: false,
+        msg: errTourNotFound,
+      });
+    }
+    // if no such tournaments
+    if (!tournament) {
+      return res.status(401).json({
+        success: false,
+        msg: 'Request failed. Game not found.',
+      });
+    }
+    fs.readFile(req.file.path, (errFileReadError, data) => {
+      if (errFileReadError) throw errFileReadError;
+      // TODO: If not Jpg, return format error
+
+      S3.putObject({ Bucket: S3BUCKET, Key: `images/tournaments/${tournament.id}.jpg`, Body: data }, (errS3Error, data) => {
+        if (errS3Error) console.error(errS3Error, errS3Error.stack);
+        else res.status(200).send(`Uploaded succeeded for tournament ${tournament.id}`);
+        fs.unlinkSync(req.file.path);
+      });
     });
   });
 }

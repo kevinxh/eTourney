@@ -15,8 +15,10 @@ addons:
 notifications:
   slack:
     rooms:
-      - prprteam:VrTwaK9Iks4sbPMlrfXZdDDQ
+    - prprteam:VrTwaK9Iks4sbPMlrfXZdDDQ
     on_success: never
 before_install:
 - openssl aes-256-cbc -K $encrypted_753eb4a09846_key -iv $encrypted_753eb4a09846_iv
   -in secret.js.enc -out server/config/secret.js -d
+- openssl aes-256-cbc -K $encrypted_a3d637df3527_key -iv $encrypted_a3d637df3527_iv
+  -in aws-credentials.json.enc -out ./server/config/aws-credentials.json -d

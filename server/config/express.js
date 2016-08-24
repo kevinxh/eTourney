@@ -4,12 +4,14 @@ import bodyParser from 'body-parser';
 import passport from 'passport';
 import morgan from 'morgan';
 import dev from './dev';
+import aws from './aws';
 import router from '../routes';
 
 export default function () {
   const app = express();
 
   dev(app);
+  aws();
 
   app.use(express.static(path.join(__dirname, '../../client/assets')));
 

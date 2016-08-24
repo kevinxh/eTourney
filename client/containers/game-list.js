@@ -2,14 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
-import { fetchGames } from '../actions/games-actions';
+import { fetchGames, fetchTopGames } from '../actions/games-actions';
 
 import GameListItem from '../components/game-list/game-list-item';
 
 class GameList extends Component {
 
   componentWillMount() {
-    this.props.fetchGames();
+    this.props.fetchTopGames();
     console.log(this.props.games);
   };
   renderGames() {
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchGames }, dispatch);
+  return bindActionCreators({ fetchGames, fetchTopGames }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameList);

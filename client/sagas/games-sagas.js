@@ -11,6 +11,14 @@ function* fetchGames() {
   }
 }
 
+function* fetchTopGames() {
+  while (true) {
+    yield take(actionTypes.FETCH_TOP_GAMES);
+    const response = yield call(API.GAMES.fetchTopGames);
+    yield put({ type: actionTypes.FETCH_GAMES_SUCCESS, data: response });
+  }
+}
+
 function* fetchGame() {
   while (true) {
     const { gameId } = yield take(actionTypes.SELECT_GAME);
@@ -22,4 +30,5 @@ function* fetchGame() {
 export default function* gamesSagas() {
   yield fork(fetchGames);
   yield fork(fetchGame);
+  yield fork(fetchTopGames);
 }

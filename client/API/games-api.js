@@ -9,6 +9,13 @@ const fetchGames = function () {
   }).then(response => response.data.games);
 };
 
+const fetchTopGames = function () {
+  return axios({
+    method: 'get',
+    url: `${API_ROOT}/top`
+  }).then(response => response.data.games);
+};
+
 const fetchGame = function (gameId) {
   return axios({
     method: 'get',
@@ -18,5 +25,6 @@ const fetchGame = function (gameId) {
 
 export default {
   fetchGames,
+  fetchTopGames,
   fetchGame
 };

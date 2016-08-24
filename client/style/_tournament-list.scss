@@ -6,6 +6,7 @@ $tournament-detail-color:   #7e838c;
   height: $tournament-list-item-height;
   color: white;
   background-color: $light-gray;
+  margin: $tournament-list-item-margin;
   border: 1px solid $light-gray;
   //border-radius: $tournament-list-item-border-radius;
   cursor: pointer;
