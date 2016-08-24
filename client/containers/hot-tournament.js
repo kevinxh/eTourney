@@ -20,7 +20,7 @@ class HotTournament extends Component {
             </h1>
           </div>
           <div className="row">
-            {tournaments.slice(0, 3).map(tournament => {
+            {tournaments.slice(0, 6).map(tournament => {
               return (
                 <div key={tournament.tournamentName} className="col-xs-12 col-sm-6 col-md-4">
                   <TournamentListItem
