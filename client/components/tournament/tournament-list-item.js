@@ -14,9 +14,16 @@ class TournamentListItem extends Component {
     this.props.push(`/${this.props.tournament.tournamentName}`);
   }
 
-  image(url) {
+  image() {
+    let url;
+    console.log(this.props.tournament.uploadedImage);
+    if (this.props.tournament.uploadedImage === true) {
+      url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${this.props.tournament._id}.jpg)`;
+    } else {
+      url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/default/${this.props.tournament.game.id}.jpg)`;
+    }
     const img = {
-      backgroundImage: `url(${url})`,
+      backgroundImage: url,
     };
     return img;
   }
@@ -35,7 +42,7 @@ class TournamentListItem extends Component {
         <div className="image-box">
           <div
             className="tournament-image"
-            style={this.image(`https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${_id}.jpg`)}
+            style={this.image()}
           />
         </div>
         <div className="content-area">
