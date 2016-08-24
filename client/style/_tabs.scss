@@ -28,7 +28,11 @@ $tab-link-width:300px;
        pointer-events: none;
      }
     }
-    .tab-link:after {
+    .link-wrapper{
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .link-wrapper:not(:last-child):after {
       content: '';
       position:absolute;
       height: 0;
