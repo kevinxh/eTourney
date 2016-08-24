@@ -4,19 +4,6 @@ import fs from 'fs';
 import { S3, S3BUCKET } from '../../config/aws';
 
 export function createTournament(req, res) {
-  // if (!req.body.tournamentName) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     msg: 'Please enter your tournament name',
-  //   });
-  // }
-  // if (!req.body.game) {
-  //   return res.status(400).json({
-  //     success: false,
-  //     msg: 'Please enter your choice of game',
-  //   });
-  // }
-
   Game.findOne({ name: req.body.game }, (err, game) => {
     if (err) {
       return res.status(403).json({
@@ -28,9 +15,9 @@ export function createTournament(req, res) {
       return res.status(400).json({
         success: false,
         msg: 'Please enter your tournament name'
-      })
+      });
     }
-    // if no such tournament
+    // if no such game
     if (!game) {
       return res.status(400).json({
         success: false,
@@ -39,7 +26,7 @@ export function createTournament(req, res) {
     }
     const tournament = new Tournament({
       tournamentName: req.body.tournamentName,
-      game,
+      game: { id: game._id, name: req.body.game },
       creatorEmail: req.user.email,
     });
 
@@ -152,11 +139,24 @@ export function tournamentImage(req, res) {
       if (errFileReadError) throw errFileReadError;
       // TODO: If not Jpg, return format error
 
-      S3.putObject({ Bucket: S3BUCKET, Key: `images/tournaments/${tournament.id}.jpg`, Body: data }, (errS3Error, data) => {
-        if (errS3Error) console.error(errS3Error, errS3Error.stack);
-        else res.status(200).send(`Uploaded succeeded for tournament ${tournament.id}`);
-        fs.unlinkSync(req.file.path);
-      });
+      S3.putObject({ Bucket: S3BUCKET, Key: `images/tournaments/${tournament.id}.jpg`, Body: data },
+        (errS3Error, data) => {
+          if (errS3Error) console.error(errS3Error, errS3Error.stack);
+          else {
+            Tournament.findByIdAndUpdate(tournament.id, { uploadedImage: true },
+              (err, t) => {
+                if (err) {
+                  return res.status(500).json({
+                    success: false,
+                    err,
+                    msg: 'Request failed. Database update error.',
+                  });
+                }
+              });
+            res.status(200).send(`Uploaded succeeded for tournament ${tournament.id}`);
+          }
+          fs.unlinkSync(req.file.path);
+        });
     });
   });
 }

@@ -1,7 +1,8 @@
 //*********************************************
 // TRANSITION
 //*********************************************
-$transition-all: all 0.5s ease-in-out;
+$transition-default: all 0.5s ease-in-out;
+$transition-tournament-image: transform 0.2s ease-in-out;
 
 //*********************************************
 // COLORS
@@ -14,7 +15,7 @@ $passion-red:         #eb2227;
 //*********************************************
 // TOURNAMENT LIST RELATED VARIABLES
 //*********************************************
-
-
-$tournament-list-item-border-radius: 10px;
-$tournament-list-item-content-area-padding: 15px;
+$tournament-list-item-height:                 558px;
+$tournament-list-item-margin:                 20px 0;
+$tournament-list-item-image-height:           280px;
+$tournament-list-item-content-area-padding:   15px;

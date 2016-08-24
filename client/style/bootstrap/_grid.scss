@@ -19,6 +19,9 @@
   @media (min-width: $screen-lg-min) {
     width: $container-lg;
   }
+  @media (min-width: 1400px) {
+    width: 84.5%;
+  }
 }
 
 

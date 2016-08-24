@@ -4,9 +4,14 @@ import CreateTMtabs from './createTM/createTM-tabs';
 export default class CreateTournament extends Component {
   render() {
     return (
-      <div>
+      <section id="create-tournament">
+        <div className="heading">
+          <h1 className="text-center underlined-headings">
+            创建你的比赛
+          </h1>
+        </div>
         <CreateTMtabs />
-      </div>
+      </section>
 		);
   }
 }
