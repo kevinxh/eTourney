@@ -139,11 +139,24 @@ export function tournamentImage(req, res) {
       if (errFileReadError) throw errFileReadError;
       // TODO: If not Jpg, return format error
 
-      S3.putObject({ Bucket: S3BUCKET, Key: `images/tournaments/${tournament.id}.jpg`, Body: data }, (errS3Error, data) => {
-        if (errS3Error) console.error(errS3Error, errS3Error.stack);
-        else res.status(200).send(`Uploaded succeeded for tournament ${tournament.id}`);
-        fs.unlinkSync(req.file.path);
-      });
+      S3.putObject({ Bucket: S3BUCKET, Key: `images/tournaments/${tournament.id}.jpg`, Body: data },
+        (errS3Error, data) => {
+          if (errS3Error) console.error(errS3Error, errS3Error.stack);
+          else {
+            Tournament.findByIdAndUpdate(tournament.id, { uploadedImage: true },
+              (err, t) => {
+                if (err) {
+                  return res.status(500).json({
+                    success: false,
+                    err,
+                    msg: 'Request failed. Database update error.',
+                  });
+                }
+              });
+            res.status(200).send(`Uploaded succeeded for tournament ${tournament.id}`);
+          }
+          fs.unlinkSync(req.file.path);
+        });
     });
   });
 }

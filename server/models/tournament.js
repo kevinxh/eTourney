@@ -31,6 +31,10 @@ export const TournamentSchema = new Schema({
   time: {
     type: Date,
   },
+  uploadedImage: {
+    type: Boolean,
+    default: false
+  },
   created: {
     type: Date,
     default: Date.now,
