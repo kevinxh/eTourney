@@ -17,9 +17,9 @@ export default class CreateTMtabs extends Component {
     return (
       <div>
         <Tabs defaultTab="1" className="tabs-center">
-          <TabLink title="1. 选择游戏" eventKey="1" className="tab-link-lg testbg" />
-          <TabLink title="2. 创建比赛细则" eventKey="2" className="tab-link-lg testbg1" />
-          <TabLink title="3. 确认比赛信息" eventKey="3" className="tab-link-lg testbg2" />
+          <TabLink title="1. 选择游戏" eventKey="1" className="tab-link-lg" />
+          <TabLink title="2. 创建比赛细则" eventKey="2" className="tab-link-lg" />
+          <TabLink title="3. 确认比赛信息" eventKey="3" className="tab-link-lg" />
           <TabContent eventKey="1" className="tab-content content-custom-css">
             <div>
              1. 选择游戏

@@ -1,4 +1,5 @@
 $tabs-font-size:15px;
+$tabs-inactive-color:#d9d9d9;
 $tabs-text-color: #000000;
 $tabs-underline-color: #ec1c24;
 $tab-link-height:56px;
@@ -13,6 +14,7 @@ $tab-link-width:300px;
      display: inline-block;
      font-size: $tabs-font-size;
      color:#000000;
+     background-color: $tabs-inactive-color;
      padding:10px 20px;
      margin-bottom: 20px;
      //transition: border-bottom 0.5s;
@@ -38,9 +40,21 @@ $tab-link-width:300px;
       height: 0;
       width: 0;
       margin-left: 0px;
-        border-top: $tab-link-height/2 solid transparent;
-        border-bottom: $tab-link-height/2 solid transparent;
-        border-left:$tab-link-height/2 solid red;
+      border-top: $tab-link-height/2 solid transparent;
+      border-bottom: $tab-link-height/2 solid transparent;
+      border-left:$tab-link-height/2 solid $tabs-inactive-color;
+      z-index: 10;
+    }
+    .link-wrapper:not(:first-child):before {
+      content: '';
+      position:absolute;
+      height: 0;
+      width: 0;
+      margin-left: 0px;
+      border-top: $tab-link-height/2 solid transparent;
+      border-bottom: $tab-link-height/2 solid transparent;
+      border-left:$tab-link-height/2 solid #fff; //this color should match with background to get transparency effect.
+      z-index: 0;
     }
     .tab-link-sm{
       @extend .tab-link;
@@ -52,15 +66,6 @@ $tab-link-width:300px;
     .tab-link-jb {
       @extend .tab-link;
       font-size: $tabs-font-size+20px;
-    }
-    .testbg{
-      background-color: red;
-    }
-    .testbg1{
-      background-color: green;
-    }
-    .testbg2{
-      background-color: blue;
     }
   }
   .tabs-center{
