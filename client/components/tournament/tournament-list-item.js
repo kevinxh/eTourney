@@ -11,12 +11,11 @@ class TournamentListItem extends Component {
   }
 
   onClick() {
-    this.props.push(`/${this.props.tournament.tournamentName}`);
+    this.props.push(`/${this.props.tournament._id}`);
   }
 
   image() {
     let url;
-    console.log(this.props.tournament.uploadedImage);
     if (this.props.tournament.uploadedImage === true) {
       url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${this.props.tournament._id}.jpg)`;
     } else {
