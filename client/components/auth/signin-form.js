@@ -4,8 +4,8 @@ import { bindActionCreators } from 'redux';
 import Form from 'react-bootstrap/lib/Form';
 import FormGroup from 'react-bootstrap/lib/FormGroup';
 import FormControl from 'react-bootstrap/lib/FormControl';
+import Checkbox from 'react-bootstrap/lib/Checkbox';
 import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Button from 'react-bootstrap/lib/Button';
 import Col from 'react-bootstrap/lib/Col';
 import HelpBlock from 'react-bootstrap/lib/HelpBlock';
 import { userSignin } from '../../actions/auth-actions';
@@ -40,44 +40,58 @@ class SigninForm extends Component {
     return (
       <Form horizontal>
         <FormGroup controlId="email">
-          <Col componentClass={ControlLabel} sm={2}>
-            邮箱
+        <div className="formInput">
+          <Col componentClass={ControlLabel} smOffset={2} sm={1}>
+            <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
           </Col>
-          <Col sm={10}>
+          <Col sm={6}>
             <FormControl
+              bsClass="inputBox"
               type="email"
               value={this.state.email}
               placeholder="邮箱"
               onChange={this.handleEmailChange}
             />
           </Col>
+          </div>
         </FormGroup>
 
-        <FormGroup controlId="password" >
-          <Col componentClass={ControlLabel} sm={2}>
-            密码
+        <FormGroup controlId="password">
+          <div className="formInput">
+          <Col componentClass={ControlLabel} smOffset={2} sm={1}>
+            <i className="fa fa-key fa-lg" aria-hidden="true"></i>
           </Col>
-          <Col sm={10}>
+          <Col sm={6}>
             <FormControl
+              bsClass="inputBox"
               type="password"
               value={this.state.password}
               placeholder="密码"
               onChange={this.handlePasswordChange}
             />
           </Col>
+          </div>
         </FormGroup>
-        <Col smOffset={2} sm={10}>
+        <FormGroup>
+        <Checkbox inline>
+         记住密码
+        </Checkbox>
+        </FormGroup>
+        <Col smOffset={3} sm={6}>
           <div className="has-error">
             <HelpBlock>{this.props.error}</HelpBlock>
           </div>
         </Col>
         <FormGroup>
-          <Col smOffset={2} sm={10}>
-            <Button className="btn btn-danger" type="submit" onClick={this.handleClick}>
+          <Col smOffset={3} sm={6}>
+            <button className="btn btn-large btn-border-black" type="submit" onClick={this.handleClick}>
               登录
-            </Button>
+            </button>
           </Col>
         </FormGroup>
+        <div>
+          <a className="forgetPW" href="#">忘记密码?</a>
+        </div>
       </Form>
 
     );

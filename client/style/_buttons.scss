@@ -39,7 +39,7 @@ $unicorn-btn-font-family: $font-family-sans-serif;
 //////////////////////////////////////////////////////////
 
 // (name background-color font-color) add as many as you like.
-$unicorn-btn-actions: ('passion-red' #eb2227 #eb2227) ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('passion-red' #eb2227 #eb2227) ;
+$unicorn-btn-actions: ('passion-red' #eb2227 #eb2227) ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('passion-red' #eb2227 #eb2227) ('black' #000000 #000000);
 // Remove any type to omit from final CSS build
 $unicorn-btn-types: 'flat' 'rounded' '3d' 'border' 'pill' 'circle' 'dropdown';
 $unicorn-btn-sizes: 'jumbo' 'large' 'small' 'tiny' !default;

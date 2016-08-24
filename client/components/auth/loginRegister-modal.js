@@ -2,26 +2,38 @@ import React, { Component } from 'react';
 import Modal from 'react-bootstrap/lib/Modal';
 import SigninForm from './signin-form';
 import SignupForm from './signup-form';
-import Tabs from 'react-bootstrap/lib/Tabs';
-import Tab from 'react-bootstrap/lib/Tab';
 import { LOGIN_REGISTER_MODAL } from '../../constants';
 import { MODAL_CLOSE } from '../../actions/action-types';
+import Tabs from '../tabs/tabs.js';
+import TabLink from '../tabs/tab-link.js';
+import TabContent from '../tabs/tab-content.js';
 
 export default class LoginRegisterModal extends Component {
   render() {
     return (
-      <div>
-        <Modal
-          show={this.props.show}
-          onHide={() => this.props.onHide(LOGIN_REGISTER_MODAL, MODAL_CLOSE)}
-        >
-          <Modal.Header closeButton />
-          <Tabs defaultActiveKey={1} bsStyle="pills" id="loginRegisterTabs">
-            <Tab eventKey={1} title="登录"><br /><br /><br /><SigninForm /></Tab>
-            <Tab eventKey={2} title="注册"><br /><br /><br /><SignupForm /></Tab>
+      <Modal
+        show={this.props.show}
+        onHide={() => this.props.onHide(LOGIN_REGISTER_MODAL, MODAL_CLOSE)}
+        dialogClassName="cusModal"
+      >
+        <div className="logo">
+          <img src="http://media.techonline.com/img/tmp/logo-placeholder.png" alt="logo" />
+        </div>
+          <Tabs defaultTab="1" className="tabs-center">
+            <TabLink title="登录" eventKey="1" className="tab-link-lg" />
+            <TabLink title="注册" eventKey="2" className="tab-link-lg" />
+            <TabContent eventKey="1" className="tab-content content-custom-css">
+              <div>
+                <SigninForm />
+              </div>
+            </TabContent>
+            <TabContent eventKey="2" className="tab-content content-custom-css">
+              <div>
+                <SignupForm />
+              </div>
+            </TabContent>
           </Tabs>
-        </Modal>
-      </div>
+      </Modal>
     );
   }
 }

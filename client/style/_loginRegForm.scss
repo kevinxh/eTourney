@@ -1,0 +1,11 @@
+.formInput{
+  margin-top: 20px;
+}
+.forgetPW{
+  text-align: center;
+  color:#000000;
+  border-bottom: 1px solid #000000;
+  &:hover{
+    color:lighten(#000000, 20%);
+  }
+}
