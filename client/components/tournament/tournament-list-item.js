@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { push } from 'react-router-redux';
 import { Link } from 'react-router';
-import ProgressBar from 'react-bootstrap/lib/ProgressBar';
 
 class TournamentListItem extends Component {
   constructor(props) {
@@ -24,7 +23,7 @@ class TournamentListItem extends Component {
 
   render() {
     let {
-      gid,
+      _id,
       game,
       creatorEmail, // should be user nick name
       tournamentName,
@@ -33,12 +32,12 @@ class TournamentListItem extends Component {
     } = this.props.tournament;
     return (
       <div className="tournament-list-item" onClick={this.onClick}>
+        <div className="image-box">
         <div
           className="tournament-image"
-          style={this.image(
-            require('../../assets/image/tournament-default-game-pics/HearthStone.jpg')
-          )}
+          style={this.image(`https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${_id}.jpg`)}
         />
+        </div>
         <div className="content-area">
           <div className="content-title">
             <div className="title">{tournamentName}</div>
@@ -64,7 +63,6 @@ class TournamentListItem extends Component {
 
             </tbody>
           </table>
-          <ProgressBar now={60} label={'60/100'} />
         </div>
       </div>
     );

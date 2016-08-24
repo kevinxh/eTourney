@@ -1,18 +1,18 @@
 $tournament-title-color:    white;
 $tournament-detail-color:   #7e838c;
+//$tournament-list-item-border-radius:             20px;
 
 .tournament-list-item{
   height: $tournament-list-item-height;
   color: white;
   background-color: $light-gray;
   border: 1px solid $light-gray;
+  //border-radius: $tournament-list-item-border-radius;
   cursor: pointer;
-  transition: $transition-tournament-list-item;
 
-  &:hover{
-    transform: scale(1.02);
-    border: 1px solid $dark-gray;
-    box-shadow: 0 0 15px $dark-gray;
+
+  &:hover .tournament-image{
+    transform: scale(1.1);
   }
 
   > a {
@@ -25,10 +25,18 @@ $tournament-detail-color:   #7e838c;
     border-top: 1px solid mix($tournament-title-color, $tournament-detail-color);;
   }
 
+  .image-box{
+    height: $tournament-list-item-image-height;
+    //border-radius: $tournament-list-item-border-radius $tournament-list-item-border-radius 0 0;
+    overflow: hidden;
+  }
+
   .tournament-image{
     height: $tournament-list-item-image-height;
     background-size: cover;
     background-position: center;
+    transition: $transition-tournament-image;
+    //border-radius: $tournament-list-item-border-radius $tournament-list-item-border-radius 0 0;
   }
 
   .content-area{
