@@ -5,12 +5,14 @@ export default class CreateTournament extends Component {
   render() {
     return (
       <section id="create-tournament">
-        <div className="heading">
-          <h1 className="text-center underlined-headings">
-            创建你的比赛
-          </h1>
+        <div className="container">
+          <div className="heading">
+            <h1 className="text-center underlined-headings">
+              创建你的比赛
+            </h1>
+          </div>
+          <CreateTMtabs />
         </div>
-        <CreateTMtabs />
       </section>
 		);
   }
