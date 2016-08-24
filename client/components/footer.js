@@ -28,10 +28,10 @@ export default class Footer extends Component {
             </div>
           </div>
         </div>
+        <div className="copyright">
+          <p className="text-center">copyright</p>
+        </div>
       </footer>
-      <div className="copyright">
-        <p className="text-center">copyright</p>
-      </div>
       </div>
 		);
   }
