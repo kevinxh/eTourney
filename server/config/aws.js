@@ -1,8 +1,6 @@
 import AWS from 'aws-sdk';
-
+AWS.config.loadFromPath('./server/config/aws-credentials.json');
 export default function(){
-  AWS.config.loadFromPath('./server/config/aws-credentials.json');
-
   //Additional configs here...
 
   // const fileStream = fs.createReadStream('./server/config/landing0613.png');

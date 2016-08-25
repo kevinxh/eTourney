@@ -1,111 +1,50 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Grid from 'react-bootstrap/lib/Grid';
 import { Image, HelpBlock, Col, Row, Clearfix } from 'react-bootstrap';
 import { Link } from 'react-router';
-import Collapsible_panel from "./collapsible-panel";
-
+import CollapsiblePanel from './collapsible-panel';
+import TournamentListItem from '../tournament/tournament-list-item';
 
 export default class HotList extends Component {
 
-  renderSubList1() {
-    if (this.props.hotTournaments){
-      var first_row_counter=0;
-      return this.props.hotTournaments.map(
+  renderSubList(temp) {
+    if (temp){
+      return temp.map(
         (tournament) => {
-          if (first_row_counter<4){
-            first_row_counter=first_row_counter+1;
-            return (
-            <Col xs={6} md={3} key={tournament}>
-              <div className="tournament-list-item">
-                <Link to={'#'}>
-                  <Image src="http://placehold.it/300x150" rounded responsive />
-                  <div className="content-area">
-                    <span>{tournament}</span>
-                    <hr />
-                    <HelpBlock>巴拉巴拉拉小魔仙</HelpBlock>
-                    <Row>
-                      <Col xs={3}>Game</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Time</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Type</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Clearfix />
-                  </div>
-                </Link>
-              </div>
+          return (
+            <Col xs={6} md={3} key={tournament._id}>
+              <TournamentListItem tournament={tournament} />
             </Col>
-          );
-          }
-        }
-      );
-    }
-  }
-
-  renderSubList2() {
-    if (this.props.hotTournaments){
-      var first_row_counter=0;
-      return this.props.hotTournaments.map(
-        (tournament) => {
-          first_row_counter=first_row_counter+1;
-          if (first_row_counter>4&&first_row_counter<8){
-            return (
-            <Col xs={6} md={3} key={tournament}>
-              <div className="tournament-list-item">
-                <Link to={'#'}>
-                  <Image src="http://placehold.it/300x150" rounded responsive />
-                  <div className="content-area">
-                    <span>{tournament}</span>
-                    <hr />
-                    <HelpBlock>巴拉巴拉拉小魔仙</HelpBlock>
-                    <Row>
-                      <Col xs={3}>Game</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Time</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Row>
-                      <Col xs={3}>Type</Col>
-                      <Col xs={9}>{tournament}</Col>
-                    </Row>
-                    <Clearfix />
-                  </div>
-                </Link>
-              </div>
-            </Col>
-          );
-          }
+        );
         }
       );
     }
   }
 
   render() {
+    const HOT_TOURNAMENTS = this.props.hotTournaments;
+    const FIRST_HALF = HOT_TOURNAMENTS.slice(0, 4);
+    const SECOND_HALF = HOT_TOURNAMENTS.slice(4, 8);
     return (
       <div>
         <Grid>
           <h1 className="text-center underlined-headings">
-            Recommended Tournaments
+            热门比赛推荐
           </h1>
-          {/*<Row>
-            {this.renderSubList1()}
-          </Row>*/}
         </Grid>
         <Grid>
           <Row>
-            <Collapsible_panel
-              tournament1={this.renderSubList1()}
-              tournament={this.renderSubList2()}/>
+
+            <CollapsiblePanel
+              firsthalf={this.renderSubList(FIRST_HALF)}
+              secondhalf={this.renderSubList(SECOND_HALF)}/>
           </Row>
         </Grid>
       </div>
     );
   }
 }
+
+HotList.propTypes = {
+  hotTournaments: PropTypes.object.isRequired
+};

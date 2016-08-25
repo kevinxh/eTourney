@@ -5,5 +5,5 @@ import TOURNAMENTS from './tournaments-api';
 export default {
   AUTH,
   GAMES,
-  TOURNAMENTS
+  TOURNAMENTS,
 };

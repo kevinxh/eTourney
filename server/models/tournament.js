@@ -12,9 +12,15 @@ export const TournamentSchema = new Schema({
     ]
   },
   game: {
-    type: Schema.Types.ObjectId,
-    ref: 'Game',
-    required: 'Tournament game is required'
+    id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Game',
+      required: 'Tournament game is required'
+    },
+    name: {
+      type: String,
+      required: 'Game name is required'
+    }
   },
   creatorEmail: {
     type: String,
@@ -24,6 +30,10 @@ export const TournamentSchema = new Schema({
   },
   time: {
     type: Date,
+  },
+  uploadedImage: {
+    type: Boolean,
+    default: false
   },
   created: {
     type: Date,

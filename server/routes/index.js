@@ -12,7 +12,6 @@ router.use('/auth', authRouter);
 // REST APIs
 router.use('/api/tournaments', tournamentRouter);
 router.use('/api/games', gameRouter);
-
 router.get('*', Render);
 
 export default router;

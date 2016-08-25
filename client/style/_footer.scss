@@ -1,8 +1,9 @@
 @import "./variables/_bootstrap";
+@import "./bootstrap/mixins";
 
-$footer-default-bg:                $black;
-$footer-padding:  70px 0 25px;
-$footer-copyright-padding:  25px 0;
+$footer-default-bg:               $light-gray;
+$footer-padding:                  35px 20px 25px 20px;
+$footer-copyright-padding:        3px 0 1px 0;
 // links
 $footer-default-link-color:                $link-color;
 $footer-default-link-hover-color:          $link-hover-color;
@@ -12,16 +13,39 @@ $footer-default-link-active-color:         $link-active-color;
 // todo: Responsive Design
 
 .footer{
+  position: relative;
   background-color: $footer-default-bg;
   color: white;
   padding: $footer-padding;
 
-  .footer-list{
-    list-style: none;
-    padding-left: 5px;
-  }
 
-  .copyright{
-    padding: $footer-copyright-padding;
+  .footer-content{
+    text-align: left;
+    list-style: none;
+    padding: 5px 5px 5px 5px;
+    font-size: 12px;
+    @media (min-width: $grid-float-breakpoint) {
+      font-size: 15px;
+    }
   }
+  .footer-divider{
+    @extend .footer-content;
+
+    border-bottom:1px solid #9292B3;
+    font-size: 16px;
+
+    @media (min-width: $grid-float-breakpoint) {
+      font-size: 20px;
+    }
+  }
+  .footer-logo{
+    @media (max-width: $grid-float-breakpoint-max) {
+
+      display: none;
+    }
+  }
+}
+
+.copyright{
+  padding: $footer-copyright-padding;
 }

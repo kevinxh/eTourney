@@ -3,15 +3,14 @@ import { JWTAuthentication } from '../../config/passport-jwt.js';
 import * as actions from '../../controllers/api/tournament.controller';
 import { upload, imageUpload } from '../../middlewares/multer';
 
-
 const tournamentRouter = express.Router();
-
-//tournamentRouter.use(JWTAuthentication);
 
 tournamentRouter.route('/')
   .get(actions.findTournaments);
 tournamentRouter.route('/create')
   .post(JWTAuthentication, actions.createTournament);
+tournamentRouter.route('/hot')
+  .get(actions.fetchHotTournaments);
 tournamentRouter.route('/:tournamentID')
   .get(actions.findTournamentByID);
 tournamentRouter.route('/:tournamentID/image')

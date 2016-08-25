@@ -1,8 +1,20 @@
-
+$tournament-title-color:    white;
+$tournament-detail-color:   #7e838c;
+//$tournament-list-item-border-radius:             20px;
 
 .tournament-list-item{
-  border: 1px solid black;
-  border-radius: $tournament-list-item-border-radius;
+  height: $tournament-list-item-height;
+  color: white;
+  background-color: $light-gray;
+  margin: $tournament-list-item-margin;
+  border: 1px solid $light-gray;
+  //border-radius: $tournament-list-item-border-radius;
+  cursor: pointer;
+
+
+  &:hover .tournament-image{
+    transform: scale(1.1);
+  }
 
   > a {
     text-decoration: none;
@@ -11,19 +23,65 @@
 
   hr {
     margin: 5px 0 5px 0;
-    border-top: 1px solid #000000;
+    border-top: 1px solid mix($tournament-title-color, $tournament-detail-color);;
   }
 
-  img.img-responsive{
-    border-radius: $tournament-list-item-border-radius $tournament-list-item-border-radius 0 0;
+  .image-box{
+    height: $tournament-list-item-image-height;
+    //border-radius: $tournament-list-item-border-radius $tournament-list-item-border-radius 0 0;
+    overflow: hidden;
+  }
+
+  .tournament-image{
+    height: $tournament-list-item-image-height;
+    background-size: cover;
+    background-position: center;
+    transition: $transition-tournament-image;
+    //border-radius: $tournament-list-item-border-radius $tournament-list-item-border-radius 0 0;
   }
 
   .content-area{
     padding: $tournament-list-item-content-area-padding;
   }
-}
 
-  .collapsible-panel{
-    border: 0;
-    
+  .content-title{
+    padding: 8px 4px;
+
+    .title{
+      // preserve two lines for long names
+      height: 2 * floor(($font-size-h3 * $line-height-base));
+      line-height: floor(($font-size-h3 * $line-height-base));
+      font-size: $font-size-h3;
+    }
+
+    .creator{
+      font-size: $font-size-h4;
+
+      > a{
+        opacity:  0.8;
+        color:    #1380F0;
+
+        &:hover{
+          opacity:  1;
+        }
+      }
+    }
+  }
+
+  .content-detail{
+    color: $tournament-detail-color;
+  }
+
+  .table{
+    > thead,
+    > tbody,
+    > tfoot {
+      > tr {
+        > th,
+        > td {
+          border-top: none;
+        }
+      }
+    }
+  }
 }

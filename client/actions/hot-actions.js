@@ -6,3 +6,9 @@ export function hotSelect(tournament) {
     tournament,
   };
 }
+
+export const fetchHotTournament = () => {
+  return {
+    type: actionTypes.HOT_TOURNAMENT_FETCH
+  };
+};
