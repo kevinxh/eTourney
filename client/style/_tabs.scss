@@ -1,89 +1,119 @@
-$tabs-font-size:15px;
-$tabs-inactive-color:#d9d9d9;
+$tabs-font-size:21px;
+$tabs-inactive-color:#cccccc;
 $tabs-active-color:#262626;
 $tabs-text-color: #f2f2f2;
-$tab-link-height:56px;
-$tab-link-width:400px;
 
-  .tabs {
+$tab-link-height:50px;
+$tab-link-height-sm:42px;
+
+$tab-link-padding-horizontal:20px;
+$tab-link-padding-vertical:10px;
+
+$tab-link-width-sm:200px;
+$tab-link-width-md:350px;
+$tab-link-width-lg:400px;
+
+.tabs {
     margin-left: 0px;
     margin-bottom: 20px;
     margin-top: 40px;
     padding-left: 0px;
     .tab-link {
-     width: $tab-link-width;
-     height:$tab-link-height;
-     display: inline-block;
-     font-size: $tabs-font-size;
-     color:     $tabs-text-color;
-     background-color: $tabs-inactive-color;
-     padding:10px 20px;
-     margin-bottom: 20px;
-     transition: $transition-fast;
-     //transition: border-bottom 0.5s;
-     &.active {
-       background-color: $tabs-active-color;
-     }
-     &:hover{
-       color: lighten($tabs-text-color, 20%);
-     }
-     &.disabled{
-       color: lighten($tabs-text-color, 20%);
-       cursor: default;
-       pointer-events: none;
-     }
-    }
-    .link-wrapper{
-      display: inline-block;
-      margin-right: 10px;
-    }
-    .link-wrapper:not(:last-child):after {
-      content: '';
-      position:absolute;
-      height: 0;
-      width: 0;
-      margin-left: 0px;
-      border-top: $tab-link-height/2 solid transparent;
-      border-bottom: $tab-link-height/2 solid transparent;
-      border-left:$tab-link-height/2 solid $tabs-inactive-color;
-      z-index: 10;
-      transition: $transition-fast;
-    }
-    .link-wrapper.active:not(:last-child):after {
-      border-left:$tab-link-height/2 solid $tabs-active-color;
-    }
-    .link-wrapper:not(:first-child):before {
-      content: '';
-      position:absolute;
-      height: 0;
-      width: 0;
-      margin-left: 0px;
-      border-top: $tab-link-height/2 solid transparent;
-      border-bottom: $tab-link-height/2 solid transparent;
-      border-left:$tab-link-height/2 solid #fff; //this color should match with background to get transparency effect.
-      z-index: 0;
+        width: $tab-link-width-md;
+        height:$tab-link-height;
+        display: inline-block;
+        position:relative;
+        font-size: $tabs-font-size;
+        background-color: $tabs-inactive-color;
+        padding:$tab-link-padding-vertical $tab-link-padding-horizontal;
+        margin-bottom: 20px;
+        margin-right: 10px;
+        transition: $transition-fast;
+        a{
+            color:     $tabs-text-color;
+        }
+        &.active {
+            background-color: $tabs-active-color;
+        }
+        &:hover{
+            a{
+                color: lighten($tabs-text-color, 20%);
+            }
+        }
+        &.disabled{
+            color: lighten($tabs-text-color, 20%);
+            cursor: default;
+            pointer-events: none;
+        }
+        &:not(:last-child):after {
+            display: block;
+            content: '';
+            position:absolute;
+            top:0;
+            height: 0;
+            width: 0;
+            margin-left: $tab-link-width-md - $tab-link-padding-horizontal;
+            border-top: $tab-link-height/2 solid transparent;
+            border-bottom: $tab-link-height/2 solid transparent;
+            border-left:$tab-link-height/2 solid $tabs-inactive-color;
+            z-index: 10;
+            transition: $transition-fast;
+        }
+        &.active:not(:last-child):after {
+            border-left:$tab-link-height/2 solid $tabs-active-color;
+        }
+        &:not(:first-child):before {
+            display: block;
+            content: '';
+            position:absolute;
+            height: 0;
+            width: 0;
+            top:0;
+            margin-left: -$tab-link-padding-horizontal;
+            border-top: $tab-link-height/2 solid transparent;
+            border-bottom: $tab-link-height/2 solid transparent;
+            border-left:$tab-link-height/2 solid #fff; //this color should match with background to get transparency effect.
+            z-index: 0;
+        }
     }
     .tab-link-sm{
-      @extend .tab-link;
+        @extend .tab-link;
+        width: $tab-link-width-sm;
+        height:$tab-link-height-sm;
+        font-size: $tabs-font-size - 5px;
+        &:not(:last-child):after {
+            margin-left: $tab-link-width-sm - $tab-link-padding-horizontal;
+            border-top: $tab-link-height-sm/2 solid transparent;
+            border-bottom: $tab-link-height-sm/2 solid transparent;
+            border-left:$tab-link-height-sm/2 solid $tabs-inactive-color;
+        }
+        &.active:not(:last-child):after {
+            border-left:$tab-link-height-sm/2 solid $tabs-active-color;
+        }
+        &:not(:first-child):before {
+            border-top: $tab-link-height-sm/2 solid transparent;
+            border-bottom: $tab-link-height-sm/2 solid transparent;
+            border-left:$tab-link-height-sm/2 solid #fff; //this color should match with background to get transparency effect.
+        }
     }
     .tab-link-lg {
-      @extend .tab-link;
-      font-size: $tabs-font-size+10px;
+        @extend .tab-link;
+        width: $tab-link-width-lg;
+        font-size: $tabs-font-size+5px;
+        &:not(:last-child):after {
+            margin-left: $tab-link-width-lg - $tab-link-padding-horizontal;
+        }
     }
-    .tab-link-jb {
-      @extend .tab-link;
-      font-size: $tabs-font-size+20px;
-    }
-  }
-  .tabs-center{
+}
+.tabs-center{
     @extend .tabs;
     text-align: center;
-  }
-  .tabs-right{
+}
+.tabs-right{
     @extend .tabs;
     text-align: right;
-  }
-  .tabs-left{
+}
+.tabs-left{
     @extend .tabs;
     text-align: left;
-  }
+}
