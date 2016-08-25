@@ -12,10 +12,16 @@ export default class TabLink extends Component {
   }
 
   render() {
-    let { title } = this.props;
+    let { title, eventKey, activeKey } = this.props;
+    let active = '';
+    if (eventKey === activeKey){
+      active = 'active';
+    }
+    let wrapper = `link-wrapper ${active}`;
+    let classes = `${this.props.className} ${active}`;
     return (
-      <div className="link-wrapper">
-        <a className={this.props.className} onClick={this.onClick} href="#">{title}</a>
+      <div className={wrapper}>
+        <a className={classes} onClick={this.onClick} href="#">{title}</a>
       </div>
     );
   }

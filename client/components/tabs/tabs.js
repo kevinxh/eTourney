@@ -27,7 +27,7 @@ export default class Tabs extends Component {
     let bindedTabLinks = new Array();
     this.props.children.forEach(child => {
       if (child.type.name === 'TabLink') {
-        bindedTabLinks.push(React.cloneElement(child, { switchTab: this.switchTab }));
+        bindedTabLinks.push(React.cloneElement(child, { switchTab: this.switchTab, activeKey: this.state.activeKey }));
       }
     });
     return bindedTabLinks;

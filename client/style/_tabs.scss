@@ -1,25 +1,27 @@
 $tabs-font-size:15px;
 $tabs-inactive-color:#d9d9d9;
-$tabs-text-color: #000000;
-$tabs-underline-color: #ec1c24;
+$tabs-active-color:#262626;
+$tabs-text-color: #f2f2f2;
 $tab-link-height:56px;
-$tab-link-width:300px;
+$tab-link-width:400px;
 
   .tabs {
     margin-left: 0px;
+    margin-bottom: 20px;
+    margin-top: 40px;
     padding-left: 0px;
     .tab-link {
      width: $tab-link-width;
      height:$tab-link-height;
      display: inline-block;
      font-size: $tabs-font-size;
-     color:#000000;
+     color:     $tabs-text-color;
      background-color: $tabs-inactive-color;
      padding:10px 20px;
      margin-bottom: 20px;
      //transition: border-bottom 0.5s;
-     &:focus {
-       border-bottom: 2px solid $tabs-underline-color;
+     &.active {
+       background-color: $tabs-active-color;
      }
      &:hover{
        color: lighten($tabs-text-color, 20%);
@@ -44,6 +46,9 @@ $tab-link-width:300px;
       border-bottom: $tab-link-height/2 solid transparent;
       border-left:$tab-link-height/2 solid $tabs-inactive-color;
       z-index: 10;
+    }
+    .link-wrapper.active:not(:last-child):after {
+      border-left:$tab-link-height/2 solid $tabs-active-color;
     }
     .link-wrapper:not(:first-child):before {
       content: '';
