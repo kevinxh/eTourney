@@ -68,7 +68,7 @@ export function findTournamentByID(req, res) {
         }
         // if no such tournament
         if (!tournament) {
-          return res.status(401).json({
+          return res.status(400).json({
             success: false,
             msg: 'Request failed. Tournament not found.',
           });
