@@ -7,8 +7,9 @@
       "after" : true
     },
     "rules" : {
+      "semi": [2, "never"],
+      "comma-dangle": [1, "always-multiline"],
       "sort-imports": "off",
-      "comma-dangle": "off",
       "func-names": "off",
       "new-cap": "off",
       "react/prefer-stateless-function": "off",
