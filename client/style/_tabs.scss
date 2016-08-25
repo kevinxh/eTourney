@@ -19,6 +19,7 @@ $tab-link-width:400px;
      background-color: $tabs-inactive-color;
      padding:10px 20px;
      margin-bottom: 20px;
+     transition: $transition-fast;
      //transition: border-bottom 0.5s;
      &.active {
        background-color: $tabs-active-color;
@@ -46,6 +47,7 @@ $tab-link-width:400px;
       border-bottom: $tab-link-height/2 solid transparent;
       border-left:$tab-link-height/2 solid $tabs-inactive-color;
       z-index: 10;
+      transition: $transition-fast;
     }
     .link-wrapper.active:not(:last-child):after {
       border-left:$tab-link-height/2 solid $tabs-active-color;
