@@ -38,7 +38,7 @@ class HotTournament extends Component {
 
 HotTournament.propTypes = {
   fetchHotTournament: React.PropTypes.func.isRequired,
-  hotTournaments: React.PropTypes.object.isRequired,
+  hotTournaments: React.PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state) {
