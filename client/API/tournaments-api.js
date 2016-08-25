@@ -23,6 +23,19 @@ const fetchTournaments = function (gid = null) {
     .catch(err => err)
 };
 
+const createTournament = function (game, fields) {
+  return axios({
+    method: 'post',
+    url: `${API_ROOT}`,
+    data: {
+      game,
+      tournamentName: fields.tournamentName,
+    }
+  }).then(response => response.data);
+};
+
+
 export default {
-  fetchTournaments
+  fetchTournaments,
+  createTournament
 };

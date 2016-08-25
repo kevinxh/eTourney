@@ -18,6 +18,13 @@ export const SIGNUP_ERROR = 'SIGNUP_ERROR';
 
 export const SIGNOUT = 'SIGNOUT';
 
+<<<<<<< HEAD
+// Create Tournament Actions
+export const SELECT_GAME = 'SELECT_GAME';
+export const SELECT_TAB = 'SELECT_TAB';
+export const TOGGLE_TAB = 'TOGGLE_TAB';
+export const CREATE_TOURNAMENT = 'CREATE_TOURNAMENT';
+=======
 // Games Actions
 export const SELECT_GAME = 'SELECT_GAME';
 export const SELECT_GAME_SUCCESS = 'SELECT_GAME_SUCCESS';
@@ -31,3 +38,4 @@ export const HOT_SELECT = 'HOT_SELECT';
 // Tournament Actions
 export const FETCH_TOURNAMENTS = 'FETCH_TOURNAMENTS';
 export const FETCH_TOURNAMENTS_SUCCESS = 'FETCH_TOURNAMENTS_SUCCESS';
+>>>>>>> origin/master

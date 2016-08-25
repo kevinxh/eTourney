@@ -11,6 +11,15 @@ function* fetchTournaments() {
   }
 }
 
+function* createTournament() {
+  while (true) {
+    const { game, fields } = yield take(actionTypes.CREATE_TOURNAMENT);
+    const response = yield call(API.TOURNAMENT.createTournament, game, fields);
+    console.log(response);
+  }
+}
+
 export default function* tournamentsSagas() {
   yield fork(fetchTournaments);
+  yield fork(createTournament);
 }
