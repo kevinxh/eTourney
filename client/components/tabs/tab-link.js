@@ -14,7 +14,9 @@ export default class TabLink extends Component {
   render() {
     let { title } = this.props;
     return (
-      <a className={this.props.className} onClick={this.onClick} href="#">{title}</a>
+      <div className="link-wrapper">
+        <a className={this.props.className} onClick={this.onClick} href="#">{title}</a>
+      </div>
     );
   }
 }
