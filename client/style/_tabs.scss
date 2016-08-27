@@ -119,3 +119,9 @@ $tab-link-width-lg:400px;
     @extend .tabs;
     text-align: left;
 }
+
+.tab-content{
+    @include clearfix;
+    margin-top: 10px;
+    padding: 20px 200px;
+}

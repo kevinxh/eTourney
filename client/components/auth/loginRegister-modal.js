@@ -22,12 +22,12 @@ export default class LoginRegisterModal extends Component {
           <Tabs defaultTab="1" className="tabs-center">
             <TabLink title="登录" eventKey="1" className="tab-link-sm" />
             <TabLink title="注册" eventKey="2" className="tab-link-sm" />
-            <TabContent eventKey="1" className="tab-content content-custom-css">
+            <TabContent eventKey="1" className="tab-content">
               <div>
                 <SigninForm />
               </div>
             </TabContent>
-            <TabContent eventKey="2" className="tab-content content-custom-css">
+            <TabContent eventKey="2" className="tab-content">
               <div>
                 <SignupForm />
               </div>
