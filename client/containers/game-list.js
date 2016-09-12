@@ -1,17 +1,17 @@
-import React, { Component, PropTypes } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Grid, Row, Col } from 'react-bootstrap';
-import { fetchGames, fetchTopGames } from '../actions/games-actions';
+import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Grid, Row, Col } from 'react-bootstrap'
+import { fetchGames, fetchTopGames } from '../actions/games-actions'
 
-import GameListItem from '../components/game-list/game-list-item';
+import GameListItem from '../components/game-list/game-list-item'
 
 class GameList extends Component {
 
   componentWillMount() {
-    this.props.fetchTopGames();
-    console.log(this.props.games);
-  };
+    this.props.fetchTopGames()
+    console.log(this.props.games)
+  }
   renderGames() {
     if (!this.props.games) {
       return <div></div>
@@ -20,7 +20,7 @@ class GameList extends Component {
       <Col key={game.name} xs={6} md={4}>
         <GameListItem game={game} />
       </Col>
-    ));
+    ))
   }
   render() {
     return (
@@ -30,29 +30,38 @@ class GameList extends Component {
             What's Popular
           </h1>
 
-          <div className="text-center description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+          <div className="text-center description">Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+            labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+          </div>
           <Row>
             {this.renderGames()}
           </Row>
         </Grid>
       </section>
-    );
+    )
   }
 }
 
 GameList.propTypes = {
   games: PropTypes.array.isRequired,
-  fetchGames: PropTypes.func
-};
+  fetchGames: PropTypes.func,
+  fetchTopGames: PropTypes.func,
+}
 
 function mapStateToProps(state) {
   return {
-    games: state.Games.games
-  };
+    games: state.Games.games,
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchGames, fetchTopGames }, dispatch);
+  return bindActionCreators({ fetchGames, fetchTopGames }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GameList);
+export default connect(mapStateToProps, mapDispatchToProps)(GameList)

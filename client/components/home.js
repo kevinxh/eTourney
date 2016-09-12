@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import GameList from '../containers/game-list';
-import HotTournament from '../containers/hot-tournament';
-import Landing from './landing';
+import React, { Component } from 'react'
+import GameList from '../containers/game-list'
+import HotTournament from '../containers/hot-tournament'
+import Landing from './landing'
 
 export default class Home extends Component {
   render() {
@@ -13,6 +13,6 @@ export default class Home extends Component {
         />
         <GameList />
       </div>
-		);
+		)
   }
 }

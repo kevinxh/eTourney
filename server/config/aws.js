@@ -1,7 +1,7 @@
-import AWS from 'aws-sdk';
-AWS.config.loadFromPath('./server/config/aws-credentials.json');
-export default function(){
-  //Additional configs here...
+import AWS from 'aws-sdk'
+AWS.config.loadFromPath('./server/config/aws-credentials.json')
+export default function () {
+  // Additional configs here...
 
   // const fileStream = fs.createReadStream('./server/config/landing0613.png');
   // fileStream.on('error', (err) => { if (err) throw err; });
@@ -16,5 +16,5 @@ export default function(){
   // });
 }
 
-export const S3 = new AWS.S3();
-export const S3BUCKET = 'etourney-media';
+export const S3 = new AWS.S3()
+export const S3BUCKET = 'etourney-media'

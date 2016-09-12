@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { fetchHotTournament } from '../actions/hot-actions';
-import TournamentListItem from '../components/tournament/tournament-list-item';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchHotTournament } from '../actions/hot-actions'
+import TournamentListItem from '../components/tournament/tournament-list-item'
 
 class HotTournament extends Component {
   componentWillMount() {
-    this.props.fetchHotTournament();
+    this.props.fetchHotTournament()
   }
 
   render() {
-    const tournaments = this.props.hotTournaments;
+    const tournaments = this.props.hotTournaments
     return (
       <section id="hot-tournaments">
         <div className="container">
@@ -27,28 +27,28 @@ class HotTournament extends Component {
                     tournament={tournament}
                   />
                 </div>
-              );
+              )
             })}
           </div>
         </div>
       </section>
-    );
+    )
   }
 }
 
 HotTournament.propTypes = {
   fetchHotTournament: React.PropTypes.func.isRequired,
   hotTournaments: React.PropTypes.array.isRequired,
-};
+}
 
 function mapStateToProps(state) {
   return {
     hotTournaments: state.Tournaments.hotTournaments,
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchHotTournament }, dispatch);
+  return bindActionCreators({ fetchHotTournament }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HotTournament);
+export default connect(mapStateToProps, mapDispatchToProps)(HotTournament)

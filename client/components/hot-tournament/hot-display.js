@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import Row from 'react-bootstrap/lib/Row';
-import Col from 'react-bootstrap/lib/Col';
-import Grid from 'react-bootstrap/lib/Grid';
-import Thumbnail from 'react-bootstrap/lib/Thumbnail';
-import ResponsiveEmbed from 'react-bootstrap/lib/ResponsiveEmbed';
+import React, { Component } from 'react'
+import Row from 'react-bootstrap/lib/Row'
+import Col from 'react-bootstrap/lib/Col'
+import Grid from 'react-bootstrap/lib/Grid'
+import Thumbnail from 'react-bootstrap/lib/Thumbnail'
+import ResponsiveEmbed from 'react-bootstrap/lib/ResponsiveEmbed'
 
 export default class HotDisplay extends Component {
   render() {
@@ -22,6 +22,6 @@ export default class HotDisplay extends Component {
           </Row>
         </Grid>
       </div>
-    );
+    )
   }
 }

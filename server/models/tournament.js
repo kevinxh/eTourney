@@ -1,4 +1,4 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose, { Schema } from 'mongoose'
 
 export const TournamentSchema = new Schema({
   tournamentName: {
@@ -9,18 +9,18 @@ export const TournamentSchema = new Schema({
     validate: [
       (name) => (name.length >= 2 && name.length <= 32),
       'Name length should be between 2 and 32 characters',
-    ]
+    ],
   },
   game: {
     id: {
       type: Schema.Types.ObjectId,
       ref: 'Game',
-      required: 'Tournament game is required'
+      required: 'Tournament game is required',
     },
     name: {
       type: String,
-      required: 'Game name is required'
-    }
+      required: 'Game name is required',
+    },
   },
   creatorEmail: {
     type: String,
@@ -33,17 +33,17 @@ export const TournamentSchema = new Schema({
   },
   uploadedImage: {
     type: Boolean,
-    default: false
+    default: false,
   },
   created: {
     type: Date,
     default: Date.now,
   },
-}, { collection: 'Tournament' });
+}, { collection: 'Tournament' })
 
 TournamentSchema.pre('remove', function (next) {
-  mongoose.model('Game').update({ _id: this.game }, { $pullAll: {tournaments: [this._id]}});
-  next();
+  mongoose.model('Game').update({ _id: this.game }, { $pullAll: { tournaments: [this._id] } })
+  next()
   // mongoose.model('Game').findOne({ _id: this.game }, (err, game) => {
   //   const index = game.tournaments.indexOf(this._id);
   //   game.tournaments.splice(index,1);
@@ -53,4 +53,4 @@ TournamentSchema.pre('remove', function (next) {
   // });
 })
 // Registering the Tournament model
-export default mongoose.model('Tournament', TournamentSchema);
+export default mongoose.model('Tournament', TournamentSchema)

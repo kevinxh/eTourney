@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Col from 'react-bootstrap/lib/Col';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import { selectGame } from '../../actions/createTM-actions';
-import { LEAGUEOFLEGEND } from '../../constants/games';
-import { HEARTHSTONE } from '../../constants/games';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import Col from 'react-bootstrap/lib/Col'
+import FormGroup from 'react-bootstrap/lib/FormGroup'
+import FormControl from 'react-bootstrap/lib/FormControl'
+import ControlLabel from 'react-bootstrap/lib/ControlLabel'
+import { selectGame } from '../../actions/createTM-actions'
+import { LEAGUEOFLEGEND } from '../../constants/games'
+import { HEARTHSTONE } from '../../constants/games'
 
 class TabSelectGame extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.onChange = this.onChange.bind(this);
+    this.onChange = this.onChange.bind(this)
   }
 
   onChange() {
-    const game=document.getElementById('formControlsSelect').value;
-    this.props.selectGame(game);
+    const game = document.getElementById('formControlsSelect').value
+    this.props.selectGame(game)
   }
   render() {
     return (<div>
@@ -38,12 +38,12 @@ class TabSelectGame extends Component {
         </FormGroup>
       </Col>
 
-    </div>);
+    </div>)
   }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ selectGame }, dispatch);
+  return bindActionCreators({ selectGame }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(TabSelectGame);
+export default connect(null, mapDispatchToProps)(TabSelectGame)

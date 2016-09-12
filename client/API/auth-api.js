@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const API_ROOT = 'http://localhost:8080/auth';
+const API_ROOT = 'http://localhost:8080/auth'
 
 const userSignin = function (email, password) {
   return axios({
@@ -9,9 +9,9 @@ const userSignin = function (email, password) {
     data: {
       email,
       password,
-    }
-  }).then(response => response.data);
-};
+    },
+  }).then(response => response.data)
+}
 
 const userSignup = function (email, password) {
   return axios({
@@ -20,11 +20,11 @@ const userSignup = function (email, password) {
     data: {
       email,
       password,
-    }
-  }).then(response => response.data);
-};
+    },
+  }).then(response => response.data)
+}
 
 export default {
   userSignin,
   userSignup,
-};
+}

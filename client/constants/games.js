@@ -1,4 +1,4 @@
-//The file declears all the games
+// The file declears all the games
 
-export const LEAGUEOFLEGEND = 'LeagueOfLegend';
-export const HEARTHSTONE = 'HearthStone';
+export const LEAGUEOFLEGEND = 'LeagueOfLegend'
+export const HEARTHSTONE = 'HearthStone'

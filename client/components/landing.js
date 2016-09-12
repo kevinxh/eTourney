@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router';
+import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 export default class Landing extends Component {
   render() {
@@ -18,9 +18,9 @@ export default class Landing extends Component {
         <div className="bg-wrapper">
           <video preload="auto" autoPlay loop muted>
             <source src="https://d33jl3tgfli0fm.cloudfront.net/helix/videos/hero-loop-webm.webm" type="video/webm" />
-            </video>
+          </video>
         </div>
       </section>
-		);
+		)
   }
 }

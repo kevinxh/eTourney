@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Tabs from '../tabs/tabs.js';
-import TabLink from '../tabs/tab-link.js';
-import TabContent from '../tabs/tab-content.js';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import Tabs from '../tabs/tabs.js'
+import TabLink from '../tabs/tab-link.js'
+import TabContent from '../tabs/tab-content.js'
 // import Tabs from 'react-bootstrap/lib/Tabs';
 // import Tab from 'react-bootstrap/lib/Tab';
 // import TabSelectGame from './tab-select-game';
@@ -35,7 +35,7 @@ export default class CreateTMtabs extends Component {
           </TabContent>
         </Tabs>
       </div>
-    );
+    )
   }
 }
 

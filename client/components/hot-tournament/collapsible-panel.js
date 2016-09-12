@@ -1,12 +1,12 @@
-import { Button, Panel, Col, Row, Clearfix, Grid } from 'react-bootstrap';
-import React, { Component } from 'react';
+import { Button, Panel, Col, Row, Clearfix, Grid } from 'react-bootstrap'
+import React, { Component } from 'react'
 
 export default class CollapsiblePanel extends React.Component {
   constructor(...args) {
-    super(...args);
+    super(...args)
     this.state = {
-      open: false
-    };
+      open: false,
+    }
   }
   toggleLoading() {
     if (this.state.open === true) {
@@ -27,12 +27,12 @@ export default class CollapsiblePanel extends React.Component {
             <Panel className="collapsible-panel" collapsible expanded={this.state.open}>
           {this.props.secondhalf}
             </Panel>
-            <div className="text-center game-list-item" onClick={ ()=> this.setState({ open: !this.state.open })}>
+            <div className="text-center game-list-item" onClick={() => this.setState({ open: !this.state.open })}>
                 {this.toggleLoading()}
             </div>
           </Row>
         </Grid>
       </div>
-    );
+    )
   }
 }

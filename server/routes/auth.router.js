@@ -1,15 +1,15 @@
-import express from 'express';
-import { JWTAuthentication } from '../config/passport-jwt.js';
-import { Login, Logout, Register } from '../controllers/auth.controller';
+import express from 'express'
+import { JWTAuthentication } from '../config/passport-jwt.js'
+import { Login, Logout, Register } from '../controllers/auth.controller'
 
-const authRouter = express.Router();
-authRouter.post('/login', Login);
-authRouter.post('/logout', Logout); //we do not need this now, but might need it later
-authRouter.post('/register', Register);
+const authRouter = express.Router()
+authRouter.post('/login', Login)
+authRouter.post('/logout', Logout)
+authRouter.post('/register', Register)
 
 // for testing jwt
 authRouter.get('/test', JWTAuthentication, (req, res) => {
-  res.send(`It worked! you are: ${req.user.email}`);
-});
+  res.send(`It worked! you are: ${req.user.email}`)
+})
 
-export default authRouter;
+export default authRouter

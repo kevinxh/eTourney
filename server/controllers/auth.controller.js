@@ -2,6 +2,17 @@ import User from '../models/user'
 import jwt from 'jsonwebtoken'
 import config from '../config/secret'
 
+function parseValErr(err) {
+  if (err.code === 11000) {
+    return 'Email already in use.'
+  } else if (typeof err.errors.email !== 'undefined') {
+    return err.errors.email.message
+  } else if (typeof err.errors.password !== 'undefined') {
+    return err.errors.password.message
+  }
+  return 'Unknown error, please try again later'
+}
+
 export function Login(req, res) {
   let { email, password } = req.body
   if (!email || !password) {
@@ -25,7 +36,7 @@ export function Login(req, res) {
     if (!user) {
       return res.status(401).json({
         success: false,
-        msg: 'Authentication failed. User not found.'
+        msg: 'Authentication failed. User not found.',
       })
     }
 		// Check if password matches
@@ -80,15 +91,4 @@ export function Register(req, res) {
       access_token: `JWT ${token}`,
     })
   })
-}
-
-function parseValErr(err) {
-  if (err.code === 11000) {
-    return 'Email already in use.'
-  } else if (typeof err.errors.email !== 'undefined') {
-    return err.errors.email.message
-  } else if (typeof err.errors.password !== 'undefined') {
-    return err.errors.password.message
-  }
-  return 'Unknown error, please try again later'
 }

@@ -1,30 +1,30 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { push } from 'react-router-redux';
-import { Link } from 'react-router';
+import React, { Component, PropTypes } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { push } from 'react-router-redux'
+import { Link } from 'react-router'
 
 class TournamentListItem extends Component {
   constructor(props) {
-    super(props);
-    this.onClick = this.onClick.bind(this);
+    super(props)
+    this.onClick = this.onClick.bind(this)
   }
 
   onClick() {
-    this.props.push(`/${this.props.tournament._id}`);
+    this.props.push(`/${this.props.tournament._id}`)
   }
 
   image() {
-    let url;
+    let url
     if (this.props.tournament.uploadedImage === true) {
-      url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${this.props.tournament._id}.jpg)`;
+      url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/${this.props.tournament._id}.jpg)`
     } else {
-      url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/default/${this.props.tournament.game.id}.jpg)`;
+      url = `url(https://s3-us-west-2.amazonaws.com/etourney-media/images/tournaments/default/${this.props.tournament.game.id}.jpg)`
     }
     const img = {
       backgroundImage: url,
-    };
-    return img;
+    }
+    return img
   }
 
   render() {
@@ -34,8 +34,8 @@ class TournamentListItem extends Component {
       creatorEmail, // should be user nick name
       tournamentName,
       time,
-      type
-    } = this.props.tournament;
+      type,
+    } = this.props.tournament
     return (
       <div className="tournament-list-item" onClick={this.onClick}>
         <div className="image-box">
@@ -70,17 +70,17 @@ class TournamentListItem extends Component {
           </table>
         </div>
       </div>
-    );
+    )
   }
 }
 
 TournamentListItem.propTypes = {
   tournament: PropTypes.object.isRequired,
   push: PropTypes.func.isRequired,
-};
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ push }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(TournamentListItem);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ push }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(TournamentListItem)

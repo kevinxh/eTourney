@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import CreateTMtabs from './createTM/createTM-tabs';
+import React, { Component } from 'react'
+import CreateTMtabs from './createTM/createTM-tabs'
 
 export default class CreateTournament extends Component {
   render() {
@@ -14,6 +14,6 @@ export default class CreateTournament extends Component {
           <CreateTMtabs />
         </div>
       </section>
-		);
+		)
   }
 }

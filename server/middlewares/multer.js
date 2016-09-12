@@ -1,7 +1,7 @@
-import multer from 'multer';
+import multer from 'multer'
 
 export const upload = multer({
-  dest: 'server/temp/'
-});
+  dest: 'server/temp/',
+})
 
-export const imageUpload = upload.single('image', 1);
+export const imageUpload = upload.single('image', 1)

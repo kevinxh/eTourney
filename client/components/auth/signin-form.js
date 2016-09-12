@@ -1,39 +1,39 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import Form from 'react-bootstrap/lib/Form';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import Checkbox from 'react-bootstrap/lib/Checkbox';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Col from 'react-bootstrap/lib/Col';
-import HelpBlock from 'react-bootstrap/lib/HelpBlock';
-import { userSignin } from '../../actions/auth-actions';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import Form from 'react-bootstrap/lib/Form'
+import FormGroup from 'react-bootstrap/lib/FormGroup'
+import FormControl from 'react-bootstrap/lib/FormControl'
+import Checkbox from 'react-bootstrap/lib/Checkbox'
+import ControlLabel from 'react-bootstrap/lib/ControlLabel'
+import Col from 'react-bootstrap/lib/Col'
+import HelpBlock from 'react-bootstrap/lib/HelpBlock'
+import { userSignin } from '../../actions/auth-actions'
 
 class SigninForm extends Component {
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       email: '',
       password: '',
-    };
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    }
+    this.handleEmailChange = this.handleEmailChange.bind(this)
+    this.handlePasswordChange = this.handlePasswordChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   handleEmailChange(e) {
-    this.setState({ email: e.target.value });
+    this.setState({ email: e.target.value })
   }
 
   handlePasswordChange(e) {
-    this.setState({ password: e.target.value });
+    this.setState({ password: e.target.value })
   }
 
   handleClick(e) {
-    e.preventDefault();
-    this.props.userSignin(this.state.email, this.state.password);
+    e.preventDefault()
+    this.props.userSignin(this.state.email, this.state.password)
   }
 
   render() {
@@ -94,30 +94,30 @@ class SigninForm extends Component {
         </div>
       </Form>
 
-    );
+    )
   }
 }
 
 SigninForm.propTypes = {
   waiting: React.PropTypes.bool.isRequired,
   isAuthenticated: React.PropTypes.bool.isRequired,
-};
+}
 
 SigninForm.defaultProps = {
   waiting: false,
   isAuthenticated: false,
-};
+}
 
 function mapStateToProps(state) {
   return {
     waiting: state.Auth.signin.waiting,
     error: state.Auth.signin.error,
     isAuthenticated: state.Auth.isAuthenticated,
-  };
+  }
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ userSignin }, dispatch);
+  return bindActionCreators({ userSignin }, dispatch)
 }
 
- export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm)

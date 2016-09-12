@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Col from 'react-bootstrap/lib/Col';
+import React, { Component } from 'react'
+import FormGroup from 'react-bootstrap/lib/FormGroup'
+import FormControl from 'react-bootstrap/lib/FormControl'
+import ControlLabel from 'react-bootstrap/lib/ControlLabel'
+import Col from 'react-bootstrap/lib/Col'
 
 export default class TabSettingHS extends Component {
   render() {
@@ -28,6 +28,6 @@ export default class TabSettingHS extends Component {
         <Col sm={4}>
           <h>Instruction</h>
         </Col>
-      </div>);
+      </div>)
   }
 }
