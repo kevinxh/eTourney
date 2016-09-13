@@ -10,7 +10,7 @@ const fetchTournaments = function (gid = null) {
     headers: {
       Authorization: localStorage.access_token,
     },
-  }).then(response => response)
+  }).then(response => response.data)
     .catch(err => err)
 }
 

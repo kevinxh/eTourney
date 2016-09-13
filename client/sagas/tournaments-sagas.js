@@ -9,7 +9,7 @@ function* fetchTournaments() {
     console.log(response);
     // todo handle failed responses.
     // const response = API.GAMES.fetchGames();
-    yield put({ type: actionTypes.FETCH_TOURNAMENTS_SUCCESS, data: response.data })
+    yield put({ type: actionTypes.FETCH_TOURNAMENTS_SUCCESS, data: response })
   }
 }
 
