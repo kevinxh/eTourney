@@ -23,6 +23,7 @@ class FindTournament extends Component {
     ))
   }
   render() {
+    console.log(this.props.tournaments)
     if (!this.props.game) {
       return (<div></div>)
     }
