@@ -10,7 +10,6 @@ class GameList extends Component {
 
   componentWillMount() {
     this.props.fetchTopGames()
-    console.log(this.props.games)
   }
   renderGames() {
     if (!this.props.games) {

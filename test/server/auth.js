@@ -28,7 +28,6 @@ export default function () {
     // After completing all authentication tests
     after((done) => {
       User.remove({ email: config.validAuth.email }, () => {
-        console.log('Testing account removed');
         done();
       });
     });

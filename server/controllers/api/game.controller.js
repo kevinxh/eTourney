@@ -93,7 +93,6 @@ export function findGameByName(req, res) {
     .populate({
       path: 'tournaments',
     }).exec((err, game) => {
-      console.log(game)
       if (err) {
         return res.status(403).json({
           success: false,
