@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Tabs from '../tabs/tabs.js';
 import TabLink from '../tabs/tab-link.js';
 import TabContent from '../tabs/tab-content.js';
-import { Link } from 'react-router';
 // import CreateTournament from "../create-tournament";
 // import Tabs from 'react-bootstrap/lib/Tabs';
 // import Tab from 'react-bootstrap/lib/Tab';
@@ -12,9 +11,7 @@ import { Link } from 'react-router';
 // import TabSettingHS from './tab-setting-HS';
 // import { LEAGUEOFLEGEND, HEARTHSTONE } from '../../constants/games';
 
-
 export default class CreateTMtabs extends Component {
-
   render() {
     return (
       <div>

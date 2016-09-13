@@ -1,16 +1,7 @@
-// For now, just mock
 import axios from 'axios';
-import * as gameTypes from '../constants/tournaments';
 
 const API_ROOT = 'http://localhost:8080/api/tournaments';
-
-const tournaments = [
-  { id: 1, gid: 1, name: 'Just a tourney', time: 'May, 15th 2016 19:00', type: gameTypes.PREMADE_5P, prize: '10000' },
-  { id: 2, gid: 1, name: 'Just a tourney', time: 'May, 15th 2016 19:00', type: gameTypes.PREMADE_5P, prize: '10000' },
-  { id: 3, gid: 1, name: 'Just a tourney', time: 'May, 15th 2016 19:00', type: gameTypes.PREMADE_5P, prize: '10000' },
-  { id: 4, gid: 2, name: 'basdf', time: 'May, 15th 2016 19:00', type: gameTypes.PREMADE_5P, prize: '10000' },
-  { id: 5, gid: 3, name: 'aaa', time: 'May, 15th 2016 19:00', type: gameTypes.PREMADE_5P, prize: '10000' },
-];
+const FETCH_HOT_API = 'http://localhost:8080/api/tournaments/hot';
 
 const fetchTournaments = function (gid = null) {
   return axios({
@@ -20,9 +11,17 @@ const fetchTournaments = function (gid = null) {
       Authorization: localStorage.access_token
     }
   }).then(response => response.data.tournaments)
-    .catch(err => err)
+    .catch(err => err);
+};
+
+const fetchHotTournament = function () {
+  return axios({
+    method: 'get',
+    url: `${FETCH_HOT_API}`,
+  }).then(response => response.data);
 };
 
 export default {
-  fetchTournaments
+  fetchTournaments,
+  fetchHotTournament
 };
