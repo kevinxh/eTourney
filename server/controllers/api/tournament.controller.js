@@ -95,11 +95,8 @@ export function findTournaments(req, res) {
   **/
   const queryOpts = { }
   if (gid) queryOpts['game.id'] = gid
-
-  console.log(queryOpts)
-
+  
   Tournament.find(queryOpts, (err, tournaments) => {
-    console.log(tournaments)
     if (err) {
       return res.status(500).json({
         success: false,

@@ -6,7 +6,6 @@ function* fetchTournaments() {
   while (true) {
     const { gameID } = yield take(actionTypes.FETCH_TOURNAMENTS)
     const response = yield call(API.TOURNAMENTS.fetchTournaments, gameID)
-    console.log(response);
     // todo handle failed responses.
     // const response = API.GAMES.fetchGames();
     yield put({ type: actionTypes.FETCH_TOURNAMENTS_SUCCESS, data: response })
