@@ -18,7 +18,7 @@ import LoginRegisterModal from '../components/auth/loginRegister-modal'
 import { LOGIN_REGISTER_MODAL } from '../constants'
 import { MODAL_OPEN } from '../actions/action-types'
 
-class Header extends Component {
+export class Header extends Component {
   constructor(props) {
     super(props)
     this.state = {
