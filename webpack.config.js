@@ -46,7 +46,7 @@ module.exports = {
   },
   postcss: [autoprefixer({ remove: false, browsers: ['last 3 versions'] })],
   sassLoader: {
-    data: '@import "client/style/main.scss";',
-    includePaths: [path.resolve(__dirname, './client'),path.resolve(__dirname, './node_modules/compass-mixins/lib')]
+    //data: '@import "client/style/main.scss";',
+    includePaths: [path.resolve(__dirname, './node_modules/compass-mixins/lib')]
   },
 };

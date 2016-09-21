@@ -5,7 +5,6 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import configureStore from './store/configureStore';
 import Root from './containers/Root';
 import rootSaga from './sagas';
-import style from './style/main.scss'
 
 if (module.hot) {
     // accept itself
