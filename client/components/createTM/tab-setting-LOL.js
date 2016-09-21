@@ -1,52 +1,35 @@
 import React, { Component } from 'react'
 import Input from '../form-elements/input'
-import DatePicker from 'react-datepicker'
-import moment from 'moment'
+//import DatePicker from 'react-toolbox/lib/date_picker/DatePicker'
 
 export default class TabSettingLOL extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      startDate: moment(),
-      endDate: moment(),
+
     }
-    this.handleStartDateChange = this.handleStartDateChange.bind(this)
-    this.handleEndDateChange = this.handleEndDateChange.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
-  handleStartDateChange(startDate) {
-    this.setState({
-      startDate,
-    })
-  }
-
-  handleEndDateChange(endDate) {
-    this.setState({
-      endDate,
-    })
+  handleChange(item, value) {
+    this.setState({ [item]: value })
   }
 
   render() {
     return (
-      <div>
-        <Input
-          id="比赛名"
-          placeholder="请输入3-20位比赛名称"
-        />
-        <DatePicker
-          todayButton={"今天"}
-          selected={this.state.startDate}
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-          onChange={this.handleStartDateChange}
-        />
-        <DatePicker
-          todayButton={"今天"}
-          selected={this.state.endDate}
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
-          onChange={this.handleEndDateChange}
-        />
-      </div>)
+      <div id="LOL-form">
+        <div className="row">
+          <div className="col-md-6">
+            <Input
+              id="比赛名"
+              placeholder="请输入3-20位比赛名称"
+            />
+          </div>
+          <div className="col-md-6">
+            
+          </div>
+        </div>
+      </div>
+      )
   }
 }
