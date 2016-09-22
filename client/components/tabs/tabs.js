@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import Grid from 'react-bootstrap/lib/Grid';
 
 export default class Tabs extends Component {
   constructor(props) {
@@ -47,45 +50,72 @@ export default class Tabs extends Component {
     this.setState({ activeKey: this.state.activeKey+1});
   }
 
+
+  changeButtons(){
+  if (this.state.activeKey==1){
+    return (
+      <Grid>
+        <Row>
+          <Col xs={12} md={3}>
+            <Link to="/">
+              <button className="btn btn-link btn-large"><span>&#10096;</span>返回首页</button>
+            </Link>
+          </Col>
+          <Col xs={12} md={3} mdOffset={6}>
+            <button className="btn btn-link btn-large" onClick={this.nextTab} >
+              创建比赛细则<span>&#10097;</span>
+            </button>
+          </Col>
+        </Row>
+      </Grid>);
+  }
+
+    else if (this.state.activeKey==2) {
+    return(
+      <Grid>
+        <Row>
+          <Col xs={12} md={3}>
+            <button className="btn btn-link btn-large" onClick={this.previousTab}>
+              <span>&#10096;</span>返回选择游戏
+            </button>
+          </Col>
+          <Col xs={12} md={3} mdOffset={6}>
+            <button className="btn btn-link btn-large" onClick={this.nextTab} >
+              确认比赛信息<span>&#10097;</span>
+            </button>
+          </Col>
+        </Row>
+      </Grid>
+  );
+  }
+
+  else
+  {
+    return (
+      <Grid>
+        <Row>
+          <Col xs={12} md={3}>
+            <button className="btn btn-link btn-large" onClick={this.previousTab}>
+              <span>&#10096;</span>返回比赛细则
+            </button>
+          </Col>
+          <Col xs={12} md={3} mdOffset={6}>
+            <button className="btn btn-link btn-large">创建比赛<span>&#10097;</span></button>
+          </Col>
+        </Row>
+      </Grid>
+      );
+  }
+  }
   renderContent() {
     return this.props.children.find(child => {
-      if(child.type.name === 'TabLink'){
+      if (child.type.name === 'TabLink'){
         return false;
       } else {
         return child.props.eventKey === this.state.activeKey;
       }
     });
   }
-
-  changeButtons(){
-  if (this.state.activeKey==1){
-    return(
-    <div>
-    <Link to="/">
-    <button className="btn btn-large">返回首页</button>
-    </Link>
-    <button className="btn btn-large" onClick={this.nextTab} > 创建比赛细则 </button>
-    </div>);
-  }
-
-  else if (this.state.activeKey==2){
-    return(
-    <div>
-    <button className="btn btn-large" onClick={this.previousTab}>返回选择游戏</button>
-    <button className="btn btn-large" onClick={this.nextTab} > 确认比赛信息 </button>
-    </div>);
-  }
-
-  else
-  {
-    return(
-    <div>
-    <button className="btn btn-large" onClick={this.previousTab}>返回比赛细则</button>
-    <button className="btn btn-large"> 创建比赛 </button>
-    </div>);
-  }
-}
-
   render() {
     const bindedTabLinks = this.bindSwitchTab();
     const content = this.renderContent();
@@ -94,9 +124,9 @@ export default class Tabs extends Component {
       <ul className={this.props.className}>
               <div className="tab-links-wrapper">
                 {bindedTabLinks}
-              </div>
               {content}
               {this.changeButtons()}
+              </div>
             </ul>);
   }
 }

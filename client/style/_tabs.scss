@@ -119,3 +119,7 @@ $tab-link-width-lg:400px;
     @extend .tabs;
     text-align: left;
 }
+span{
+  position:relative;
+  top: -2px;
+}

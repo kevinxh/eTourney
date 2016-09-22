@@ -41,7 +41,7 @@ $unicorn-btn-font-family: $font-family-sans-serif;
 // (name background-color font-color) add as many as you like.
 $unicorn-btn-actions: ('passion-red' #eb2227 #eb2227) ('primary' #03a9f4 #FFFFFF) ('action' #7db500 #FFFFFF) ('highlight' #F18D05 #FFFFFF) ('passion-red' #eb2227 #eb2227) ('black' #000000 #000000);
 // Remove any type to omit from final CSS build
-$unicorn-btn-types: 'flat' 'rounded' '3d' 'border' 'pill' 'circle' 'dropdown';
+$unicorn-btn-types: 'flat' 'rounded' '3d' 'border' 'pill' 'circle' 'dropdown' 'link';
 $unicorn-btn-sizes: 'jumbo' 'large' 'small' 'tiny' !default;
 $unicorn-btn-circle-size: 120px !default; //radius for circle buttons, circles only have one size
 
@@ -68,6 +68,7 @@ $unicorn-btn-build-circle: false;
 $unicorn-btn-build-flat: false;
 $unicorn-btn-build-3d: false;
 $unicorn-btn-build-border: false;
+$unicorn-btn-build-link: false;
 
 // For all types provided by user we mark true
 @each $unicorn-btn-type in $unicorn-btn-types {
@@ -94,6 +95,9 @@ $unicorn-btn-build-border: false;
     }
     @else if $unicorn-btn-type == '3d' {
         $unicorn-btn-build-3d: true;
+    }
+    @else if $unicorn-btn-type == 'link' {
+        $unicorn-btn-build-link: true;
     }
 }
 
@@ -282,7 +286,31 @@ button#{$unicorn-btn-namespace}:disabled {
         }
     }
 }
+@if $unicorn-btn-build-link {
+    #{$unicorn-btn-namespace}-link {
+        @include box-shadow(none);
+        @include transition-property(all);
+        @include transition-duration(.3s);
+        color: black;
+        border: none;
+        background: transparent;
+        text-shadow: none;
 
+        &:hover, &:focus {
+            @include contrasted(black);
+            background: darken(white, 30%);
+        }
+        &:active, &.is-active, &.active {
+            @include transition-duration(0s);
+            background: transparent;
+            color: darken(white, 30%);
+        }
+        &.disabled {
+            @include box-shadow(none);
+            -webkit-appearance: none;
+        }
+    }
+}
 
 //////////////////////////////////////////////////////////
 // SHAPES ////////////////////////////////////////////////
