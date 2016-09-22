@@ -15,7 +15,6 @@ function setup() {
   }
 
   const enzymeWrapper = shallow(<GameListItem {...props} />)
-
   return {
     props,
     enzymeWrapper

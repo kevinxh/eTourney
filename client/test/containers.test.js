@@ -15,7 +15,12 @@ describe('Containers', () => {
   // })
   describe('Game List', () => {
     it('test', () => {
-      const gameListWrapper = mount(<Provider store={configureStore()}><GameList games={[]}/></Provider>)
+      const gameListWrapper = mount(
+        <Provider store={configureStore()}>
+          <GameList games={[]} />
+        </Provider>
+      )
+      console.log(gameListWrapper.props())
     })
   })
 })
