@@ -1,3 +1,4 @@
+
 import React, { Component, PropTypes } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -6,6 +7,7 @@ import { fetchGames, fetchTopGames } from '../actions/games-actions'
 
 import GameListItem from '../components/game-list/game-list-item'
 
+
 class GameList extends Component {
 
   componentWillMount() {
@@ -13,11 +15,11 @@ class GameList extends Component {
   }
   renderGames() {
     if (!this.props.games) {
-      return <div></div>
+      return <div></div>;
     }
     return this.props.games.map((game) => (
       <Col key={game.name} xs={6} md={4}>
-        <GameListItem game={game} />
+        <GameListItem link={`/find/${game._id}`} game={game} />
       </Col>
     ))
   }
@@ -50,7 +52,7 @@ class GameList extends Component {
 GameList.propTypes = {
   games: PropTypes.array.isRequired,
   fetchGames: PropTypes.func,
-  fetchTopGames: PropTypes.func,
+  fetchTopGames: PropTypes.func
 }
 
 function mapStateToProps(state) {

@@ -2,10 +2,10 @@ import axios from 'axios'
 
 const API_ROOT = 'http://localhost:8080/api/games'
 
-const fetchGames = function () {
+const fetchGames = function (gameName = '') {
   return axios({
     method: 'get',
-    url: `${API_ROOT}/`,
+    url: `${API_ROOT}/${gameName}`
   }).then(response => response.data.games)
 }
 
