@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Tabs from '../tabs/tabs.js'
 import TabLink from '../tabs/tab-link.js'
 import TabContent from '../tabs/tab-content.js'
+import TMSearch from '../../containers/create-TM-search'
 import TMconfirmation from './createTM-confirmation.js'
 // import Tabs from 'react-bootstrap/lib/Tabs';
 // import Tab from 'react-bootstrap/lib/Tab';
@@ -22,6 +23,7 @@ export default class CreateTMtabs extends Component {
           <TabContent eventKey="1" className="tab-content content-custom-css">
             <div>
              1. 选择游戏
+             <TMSearch />
             </div>
           </TabContent>
           <TabContent eventKey="2" className="tab-content content-custom-css">

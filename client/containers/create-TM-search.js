@@ -40,7 +40,7 @@ class CreateTournament extends Component {
   render() {
     return (
       <Grid>
-        <h2 className="text-center underlined-headings">Create Your Tournament</h2>
+        {/* <h2 className="text-center underlined-headings">Create Your Tournament</h2> */}
         <SearchBox inputHandler={this.handleSearchChange} placeholder="Find Game..." />
         <Row>
           {this.renderGames()}
