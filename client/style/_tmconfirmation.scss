@@ -1,0 +1,67 @@
+@import "./variables/_bootstrap";
+
+$footer-default-bg:                $black;
+$footer-padding:  70px 0 25px;
+$footer-copyright-padding:  25px 0;
+// links
+$footer-default-link-color:                $link-color;
+$footer-default-link-hover-color:          $link-hover-color;
+$footer-default-link-hover-bg:             transparent !default;
+$footer-default-link-active-color:         $link-active-color;
+
+// todo: Responsive Design
+
+.cftable{
+  @extend .table;
+  table-layout: fixed;
+  width: 100%;
+  .cftitle{
+    color: #9A9999;
+    font-size: 150%;
+    padding: 0 45px 0px 0;
+
+  }
+  .cfsubject{
+    text-align: left;
+    font-size: 90%;
+    padding: 5px 0 10px;
+  }
+  .noBorder{
+    border-style:hidden;
+    // border: solid;
+    // border-width: 1px 0;
+  }
+  .dividerBorder{
+    border-style:hidden;
+  }
+  .cfcontent{
+
+    font-weight: bold;
+    display: table-row;
+    font-size: 110%;
+    // margin: 0 50px ;
+    margin: 0 0 190em;
+    // padding: 25px 25px 25px 25px;
+    text-align: right;
+  }
+  .cfcol{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    column-width: 100px;
+    padding: 15px 0 0 75px;
+  }
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 0;
+    padding: 10px;
+}
+.cfdivider {
+  width:450%;
+  border-top: 1px solid black;
+}
+.content_block{
+  border: 1px solid black;
+}
