@@ -2,6 +2,13 @@ const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const postcss = require('postcss');
+
+var warnCleaner = postcss.plugin('postcss-warn-cleaner', function () {
+    return function (css, result) {
+        result.messages = [];
+    };
+});
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -44,7 +51,7 @@ module.exports = {
     ]
       //loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap') }]
   },
-  postcss: [autoprefixer({ remove: false, browsers: ['last 3 versions'] })],
+  postcss: [autoprefixer({ remove: false, browsers: ['last 3 versions'] }), warnCleaner],
   sassLoader: {
     //data: '@import "client/style/main.scss";',
     includePaths: [path.resolve(__dirname, './node_modules/compass-mixins/lib')]
