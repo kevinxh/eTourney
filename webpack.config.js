@@ -16,18 +16,10 @@ module.exports = {
     //'webpack-hot-middleware/client',
     './client/index.js'
   ],
-  watch: true,
   output: {
     path: path.join(__dirname, './client/build'),
     filename: 'bundle.js',
     publicPath: '/'
-  },
-  resolve: {
-    extensions: ['', '.scss', '.css', '.js', '.json'],
-    modulesDirectories: [
-      'node_modules',
-      path.resolve(__dirname, './node_modules')
-    ]
   },
   plugins: [
     //new webpack.optimize.OccurenceOrderPlugin(),
@@ -43,13 +35,19 @@ module.exports = {
         include: __dirname
       }, {
         test: /(\.scss|\.css)$/,
+        exclude: /node_modules/,
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
       }, {
+        test    : /(\.scss|\.css)$/,
+        include: [
+          path.resolve(__dirname, 'node_modules/react-toolbox'),
+        ],
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
+      },{
         test: /\.(jpe?g|png|gif|svg)$/,
         loader: 'url-loader?limit=10000&name=[path][name].[ext]'
       }
     ]
-      //loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!postcss-loader!sass-loader?sourceMap') }]
   },
   postcss: [autoprefixer({ remove: false, browsers: ['last 3 versions'] }), warnCleaner],
   sassLoader: {
