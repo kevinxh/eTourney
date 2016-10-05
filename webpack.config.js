@@ -6,7 +6,7 @@ const autoprefixer = require('autoprefixer');
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
-    'webpack-hot-middleware/client',
+    //'webpack-hot-middleware/client',
     './client/index.js'
   ],
   watch: true,
@@ -23,8 +23,8 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
+    //new webpack.optimize.OccurenceOrderPlugin(),
+    //new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin('style.css', { allChunks: true }),
   ],
   module: {

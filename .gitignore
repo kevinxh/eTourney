@@ -5,3 +5,4 @@ bundle.js.map
 secret.js
 aws-credentials.json
 .DS_Store
+/client/build
