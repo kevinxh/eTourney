@@ -13,6 +13,7 @@
     "Game",
     "tournaments"
   ],
+  "repository": "https://github.com/kevinxh/eTourney",
   "author": "eTourney Team",
   "license": "ISC",
   "dependencies": {
