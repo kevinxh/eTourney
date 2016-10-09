@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router'
+// import { Link } from 'react-router'
+import { LinkContainer } from 'react-router-bootstrap'
 import { modalAction } from '../actions/modal-actions'
 import { userSignout } from '../actions/auth-actions'
 
@@ -94,23 +95,29 @@ class Header extends Component {
       <Navbar bsClass="header" className={this.toggleTransparency()} fluid fixedTop>
         <NavbarHeader>
           <NavbarBrand>
-            <Link to="/">
-              <img src="http://placehold.it/40x40?text=logo" alt="Logo" />
-            </Link>
+            <LinkContainer to={{ pathname: '/' }}>
+              <img src="http://placehold.it/40x40?text=logo"   alt="Logo" />
+            </LinkContainer>
           </NavbarBrand>
           <NavbarToggle />
         </NavbarHeader>
         <NavbarCollapse>
           <Nav pullLeft className="header-link-group">
-            <li role="navigation">
-              <Link to="/find">寻找比赛</Link>
-            </li>
-            <li role="navigation">
-              <Link to="/create">创建属于你的比赛</Link>
-            </li>
-            <li role="navigation">
-              <Link to="/features">功能</Link>
-            </li>
+            <LinkContainer to={{ pathname: '/find' }}>
+              <NavItem>
+                寻找比赛
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={{ pathname: '/create' }}>
+              <NavItem>
+                创建属于你的比赛
+              </NavItem>
+            </LinkContainer>
+            <LinkContainer to={{ pathname: '/features' }}>
+              <NavItem>
+                功能
+              </NavItem>
+            </LinkContainer>
           </Nav>
             {this.renderUserNav()}
         </NavbarCollapse>

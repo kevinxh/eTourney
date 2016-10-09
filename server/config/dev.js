@@ -14,4 +14,11 @@ const dev = (app) => {
   return app
 }
 
+// const dev = (app) => {
+//   // const compiler = webpack(webpackConfig);
+//   // app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }));
+//   // app.use(webpackHotMiddleware(compiler));
+//   return app
+// }
+
 export default dev

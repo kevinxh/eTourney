@@ -5,3 +5,11 @@
 body {
   padding-top: $header-height;
 }
+
+ul {
+  -moz-padding-start: 0px;
+  -webkit-padding-start: 0px;
+  -khtml-padding-start: 0px;
+  -o-padding-start: 0px;
+  padding-start: 0px;
+}
