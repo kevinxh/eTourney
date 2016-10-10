@@ -15,7 +15,8 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'webpack-hot-middleware/client',
-    './client/index.js'
+    './client/index.js',
+    './client/style/main.scss'
   ],
   output: {
     path: path.join(__dirname, './client/build'),
@@ -34,20 +35,21 @@ module.exports = {
         loaders: ['babel'],
         exclude: /node_modules/,
         include: __dirname,
-      }, {
-
+      },
+      {
+        test: /\.scss$/,
+        exclude: path.resolve(__dirname,'node_modules/react-toolbox'),
+        loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+      },
+      {
         test: /(\.scss|\.css)$/,
-        exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
-      }, {
-        test    : /(\.scss|\.css)$/,
         include: [
           path.resolve(__dirname, 'node_modules/react-toolbox'),
         ],
         loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!sass')
-      }, {
+      },
+      {
         test: /\.(jpe?g|png|gif|svg)$/,
-
         loader: 'url-loader?limit=10000&name=[path][name].[ext]'
       }
     ]

@@ -5,8 +5,8 @@ import API from '../API'
 function* fetchGames() {
   while (true) {
 
-    yield take(actionTypes.FETCH_GAMES)
-    const response = yield call(API.GAMES.fetchGames)
+    const { gameName } = yield take(actionTypes.FETCH_GAMES)
+    const response = yield call(API.GAMES.fetchGames, gameName)
     // const response = API.GAMES.fetchGames();
     yield put({ type: actionTypes.FETCH_GAMES_SUCCESS, data: response })
   }

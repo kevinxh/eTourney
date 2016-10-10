@@ -6,6 +6,7 @@ import configureStore from './store/configureStore'
 import Root from './containers/Root'
 import rootSaga from './sagas'
 
+
 if (module.hot) {
   // accept itself
   module.hot.accept()

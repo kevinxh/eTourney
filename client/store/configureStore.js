@@ -14,9 +14,12 @@ export default function configureStore(initialState) {
                     window.devToolsExtension ? window.devToolsExtension() : f => f)
                 )
 
-
-  const nextReducer = rootReducer
-  store.replaceReducer(nextReducer)
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const nextReducer = rootReducer
+      store.replaceReducer(nextReducer)
+    })
+  }
   return {
     store,
     runSaga: sagaMiddleware.run,

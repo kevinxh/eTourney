@@ -48,6 +48,7 @@ export default class TabSettingLOL extends Component {
             <Input
               type='text'
               label='比赛名称'
+              multiline
               required
               value={this.state.name}
               onChange={this.handleChange.bind(this, 'name')}
