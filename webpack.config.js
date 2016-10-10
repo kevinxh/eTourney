@@ -13,20 +13,22 @@ const warnCleaner = postcss.plugin('postcss-warn-cleaner', () => {
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
-  entry: [
-    'webpack-hot-middleware/client',
-    './client/index.js',
-    './client/style/main.scss'
-  ],
+  entry: {
+    app: ['webpack-hot-middleware/client',
+      './client/index.js',
+      ],
+    vendor: ['react', 'react-toolbox', 'axios', 'underscore']
+  },
   output: {
     path: path.join(__dirname, './client/build'),
-    filename: 'bundle.js',
+    filename: '[name].js',
     publicPath: '/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin('style.css', { allChunks: true }),
+    new ExtractTextPlugin('[name].css', { allChunks: true }),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.bundle.js')
   ],
   module: {
     loaders: [

@@ -7,7 +7,7 @@
     "start": "./node_modules/nodemon/bin/nodemon.js --exec babel-node --presets=es2015 -- index.js",
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel-register ./test/server/index.js",
     "hot": "./node_modules/babel-cli/bin/babel-node.js --presets=es2015 -- index.js",
-    "analyze-build": "webpack --profile --json > logs/webpack.stats.json"
+    "build": "webpack --profile --json > logs/webpack.stats.json"
   },
   "keywords": [
     "eSports",
