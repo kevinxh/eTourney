@@ -20,9 +20,8 @@ class CreateTournament extends Component {
     this.debouncedFetchGames()
   }
 
-  handleSearchChange(event) {
-    const searchKey = event.target.value
-    this.debouncedFetchGames(searchKey)
+  handleSearchChange(key) {
+    this.debouncedFetchGames(key)
   }
 
   renderGames() {

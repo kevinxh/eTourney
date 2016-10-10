@@ -32,7 +32,7 @@ export default class TabSettingLOL extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-    handleChange (item, value) {
+  handleChange (item, value) {
     this.setState({...this.state, [item]: value});
   };
 

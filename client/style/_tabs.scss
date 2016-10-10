@@ -124,13 +124,13 @@ $tab-link-width-lg:400px;
     padding: 20px 50px;
     margin: 10px auto;
     @media (min-width: $screen-sm-min) {
-      width: $container-sm - 10px;
+      max-width: $container-sm - 10px;
     }
     @media (min-width: $screen-md-min) {
-      width: $container-md - 10px;
+      max-width: $container-md - 10px;
     }
     @media (min-width: $screen-lg-min) {
-      width: $container-lg  - 20px;
+      max-width: $container-lg  - 20px;
       padding: 20px;
     }
 }

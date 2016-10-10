@@ -7,6 +7,8 @@ import FormControl from 'react-bootstrap/lib/FormControl'
 import ControlLabel from 'react-bootstrap/lib/ControlLabel'
 import Col from 'react-bootstrap/lib/Col'
 import HelpBlock from 'react-bootstrap/lib/HelpBlock'
+import Input from 'react-toolbox/lib/input'
+
 import { userSignup } from '../../actions/auth-actions'
 
 class SignupForm extends Component {
@@ -22,12 +24,12 @@ class SignupForm extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleEmailChange(e) {
-    this.setState({ email: e.target.value })
+  handleEmailChange(value) {
+    this.setState({ email: value })
   }
 
-  handlePasswordChange(e) {
-    this.setState({ password: e.target.value })
+  handlePasswordChange(value) {
+    this.setState({ password: value })
   }
 
   handleClick(e) {
@@ -44,12 +46,12 @@ class SignupForm extends Component {
               <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
             </Col>
             <Col sm={6}>
-              <FormControl
-                bsClass="inputBox"
+              <Input
                 type="email"
                 value={this.state.email}
-                placeholder="邮箱"
+                label={'邮箱'}
                 onChange={this.handleEmailChange}
+
               />
             </Col>
           </div>
@@ -61,11 +63,10 @@ class SignupForm extends Component {
               <i className="fa fa-key fa-lg" aria-hidden="true"></i>
             </Col>
             <Col sm={6}>
-              <FormControl
-                bsClass="inputBox"
+              <Input
                 type="password"
                 value={this.state.password}
-                placeholder="密码"
+                label={"密码"}
                 onChange={this.handlePasswordChange}
               />
             </Col>

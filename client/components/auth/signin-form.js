@@ -4,10 +4,13 @@ import { bindActionCreators } from 'redux'
 import Form from 'react-bootstrap/lib/Form'
 import FormGroup from 'react-bootstrap/lib/FormGroup'
 import FormControl from 'react-bootstrap/lib/FormControl'
-import Checkbox from 'react-bootstrap/lib/Checkbox'
 import ControlLabel from 'react-bootstrap/lib/ControlLabel'
 import Col from 'react-bootstrap/lib/Col'
 import HelpBlock from 'react-bootstrap/lib/HelpBlock'
+import Input from 'react-toolbox/lib/input'
+import Checkbox from 'react-toolbox/lib/checkbox'
+import FontAwesome from 'react-fontawesome'
+
 import { userSignin } from '../../actions/auth-actions'
 
 class SigninForm extends Component {
@@ -17,18 +20,25 @@ class SigninForm extends Component {
     this.state = {
       email: '',
       password: '',
+      shouldRememberPassword: false
     }
     this.handleEmailChange = this.handleEmailChange.bind(this)
     this.handlePasswordChange = this.handlePasswordChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
   }
 
-  handleEmailChange(e) {
-    this.setState({ email: e.target.value })
+  handleEmailChange(value) {
+    this.setState({ email: value })
   }
 
-  handlePasswordChange(e) {
-    this.setState({ password: e.target.value })
+  handlePasswordChange(value) {
+    this.setState({ password: value })
+  }
+
+  handleRememberPassword(input) {
+    this.setState({
+      shouldRememberPassword: input
+    })
   }
 
   handleClick(e) {
@@ -40,50 +50,59 @@ class SigninForm extends Component {
     return (
       <Form horizontal>
         <FormGroup controlId="email">
-        <div className="formInput">
-          <Col componentClass={ControlLabel} smOffset={2} sm={1}>
-            <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
-          </Col>
-          <Col sm={6}>
-            <FormControl
-              bsClass="inputBox"
-              type="email"
-              value={this.state.email}
-              placeholder="邮箱"
-              onChange={this.handleEmailChange}
-            />
-          </Col>
+          <div className="formInput">
+            <Col componentClass={ControlLabel} smOffset={2} sm={1}>
+              {/* <i className="fa fa-envelope fa-lg" aria-hidden="true"></i> */}
+              <FontAwesome
+                name={'envelope'}
+                size={'2x'}
+              />
+            </Col>
+            <Col sm={8}>
+              <Input
+                type="email"
+                value={this.state.email}
+                label={'邮箱'}
+                onChange={this.handleEmailChange}
+
+              />
+            </Col>
           </div>
         </FormGroup>
 
         <FormGroup controlId="password">
           <div className="formInput">
-          <Col componentClass={ControlLabel} smOffset={2} sm={1}>
-            <i className="fa fa-key fa-lg" aria-hidden="true"></i>
-          </Col>
-          <Col sm={6}>
-            <FormControl
-              bsClass="inputBox"
-              type="password"
-              value={this.state.password}
-              placeholder="密码"
-              onChange={this.handlePasswordChange}
-            />
-          </Col>
+            <Col componentClass={ControlLabel} smOffset={2} sm={1}>
+              <FontAwesome
+                name={'key'}
+                size={'2x'}
+              />
+            </Col>
+            <Col sm={8}>
+              <Input
+                type="password"
+                value={this.state.password}
+                label={"密码"}
+                onChange={this.handlePasswordChange}
+              />
+            </Col>
           </div>
         </FormGroup>
         <FormGroup>
-        <Checkbox inline>
-         记住密码
-        </Checkbox>
+
+          <Checkbox
+            checked={this.state.shouldRememberPassword}
+            label="记住密码"
+            onChange={this.handleRememberPassword.bind(this)}
+          />
         </FormGroup>
-        <Col smOffset={3} sm={6}>
+        <Col smOffset={3} sm={8}>
           <div className="has-error">
             <HelpBlock>{this.props.error}</HelpBlock>
           </div>
         </Col>
         <FormGroup>
-          <Col smOffset={3} sm={6}>
+          <Col smOffset={3} sm={8}>
             <button className="btn btn-large btn-border-black" type="submit" onClick={this.handleClick}>
               登录
             </button>
