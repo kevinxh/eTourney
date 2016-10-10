@@ -31,8 +31,9 @@ class CreateTournament extends Component {
     return this.props.games.map((game) => (
       // TODO: Provide the proper direction to
       // next step of the process
+
       <Col key={game.name} xs={6} md={4}>
-        <GameListItem game={game} />
+        <GameListItem game={game} onClick={()=>{ console.log(game) }}/>
       </Col>
     ))
   }

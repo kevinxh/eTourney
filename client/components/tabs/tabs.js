@@ -50,11 +50,13 @@ export default class Tabs extends Component {
   render() {
     const bindedTabLinks = this.bindSwitchTab()
     const content = this.renderContent()
-    return (<div className={this.props.className}>
-      <div className="tab-links-wrapper">
-        {bindedTabLinks}
+    return (
+      <div className={this.props.className}>
+        <div className="tab-links-wrapper">
+          {bindedTabLinks}
+        </div>
+        {content}
       </div>
-      {content}
-    </div>)
+    )
   }
 }

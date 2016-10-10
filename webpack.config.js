@@ -12,7 +12,8 @@ const warnCleaner = postcss.plugin('postcss-warn-cleaner', () => {
 })
 
 module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+  // devtool: 'cheap-module-eval-source-map',
+  devtool: 'source-map',
   entry: {
     app: ['webpack-hot-middleware/client',
       './client/index.js',
@@ -41,7 +42,7 @@ module.exports = {
       {
         test: /\.scss$/,
         exclude: path.resolve(__dirname,'node_modules/react-toolbox'),
-        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass?sourceMap')
+        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap')
       },
       {
         test: /(\.scss|\.css)$/,

@@ -17,7 +17,6 @@ const store = configureStore()
 store.runSaga(rootSaga)
 const history = syncHistoryWithStore(browserHistory, store.store)
 
-
 ReactDom.render(
   <Root store={store.store} history={history} />,
 	document.getElementById('app')

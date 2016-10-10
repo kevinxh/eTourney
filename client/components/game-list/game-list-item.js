@@ -5,6 +5,10 @@ import { Link } from 'react-router'
 class GameListItem extends Component {
   componentWillMount() {
   }
+
+  static defaultProps = {
+    onClick : null
+  }
   render() {
     const { game, link } = this.props
     let area = <Image src={`https://s3-us-west-2.amazonaws.com/etourney-media/images/games/${game._id}.jpg`} responsive />
@@ -13,7 +17,7 @@ class GameListItem extends Component {
     }
     return (
       <div className="text-center game-list-item">
-        <div>
+        <div onClick={this.props.onClick}>
           {area}
         </div>
       </div>
