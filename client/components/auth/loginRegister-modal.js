@@ -19,20 +19,20 @@ export default class LoginRegisterModal extends Component {
         <div className="logo">
           <img src="http://media.techonline.com/img/tmp/logo-placeholder.png" alt="logo" />
         </div>
-          <Tabs defaultTab="1" className="tabs-center">
-            <TabLink title="登录" eventKey="1" className="tab-link-sm" />
-            <TabLink title="注册" eventKey="2" className="tab-link-sm" />
-            <TabContent eventKey="1" className="tab-content">
-              <div>
-                <SigninForm />
-              </div>
-            </TabContent>
-            <TabContent eventKey="2" className="tab-content">
-              <div>
-                <SignupForm />
-              </div>
-            </TabContent>
-          </Tabs>
+        <Tabs defaultTab="1" className="tabs-center">
+          <TabLink key="login" title="登录" eventKey="1" className="tab-link-sm" />
+          <TabLink key="signup" title="注册" eventKey="2" className="tab-link-sm" />
+          <TabContent eventKey="1" className="tab-content">
+            <div>
+              <SigninForm />
+            </div>
+          </TabContent>
+          <TabContent eventKey="2" className="tab-content">
+            <div>
+              <SignupForm />
+            </div>
+          </TabContent>
+        </Tabs>
       </Modal>
     )
   }

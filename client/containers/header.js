@@ -96,7 +96,7 @@ class Header extends Component {
         <NavbarHeader>
           <NavbarBrand>
             <LinkContainer to={{ pathname: '/' }}>
-              <img src="http://placehold.it/40x40?text=logo"   alt="Logo" />
+              <img src="http://placehold.it/50x50?text=logo"   alt="Logo" />
             </LinkContainer>
           </NavbarBrand>
           <NavbarToggle />
@@ -119,7 +119,7 @@ class Header extends Component {
               </NavItem>
             </LinkContainer>
           </Nav>
-            {this.renderUserNav()}
+          {this.renderUserNav()}
         </NavbarCollapse>
 
         <LoginRegisterModal

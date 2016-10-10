@@ -8,7 +8,7 @@ const dev = (app) => {
   if (process.env.NODE_ENV !== 'test') {
     const compiler = webpack(webpackConfig)
     app.use(webpackDevMiddleware(compiler,
-       { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+       { noInfo: false, publicPath: webpackConfig.output.publicPath }))
     app.use(webpackHotMiddleware(compiler))
   }
   return app

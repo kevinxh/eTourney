@@ -57,7 +57,11 @@ module.exports = {
   },
   postcss: [autoprefixer({ remove: false, browsers: ['last 3 versions'] }), warnCleaner],
   sassLoader: {
-    //data: '@import "client/style/main.scss";',
     includePaths: [path.resolve(__dirname, './node_modules/compass-mixins/lib')]
   },
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  }
 }
