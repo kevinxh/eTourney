@@ -1,5 +1,8 @@
 .formInput{
   margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .forgetPW{
   text-align: center;

@@ -8,6 +8,8 @@ import ControlLabel from 'react-bootstrap/lib/ControlLabel'
 import Col from 'react-bootstrap/lib/Col'
 import HelpBlock from 'react-bootstrap/lib/HelpBlock'
 import Input from 'react-toolbox/lib/input'
+import { FaEnvelope, FaKey } from 'react-icons/fa'
+
 
 import { userSignup } from '../../actions/auth-actions'
 
@@ -43,7 +45,7 @@ class SignupForm extends Component {
         <FormGroup controlId="email">
           <div className="formInput">
             <Col componentClass={ControlLabel} smOffset={2} sm={1}>
-              <i className="fa fa-envelope fa-lg" aria-hidden="true"></i>
+              <FaEnvelope />
             </Col>
             <Col sm={6}>
               <Input
@@ -60,7 +62,7 @@ class SignupForm extends Component {
         <FormGroup controlId="password">
           <div className="formInput">
             <Col componentClass={ControlLabel} smOffset={2} sm={1}>
-              <i className="fa fa-key fa-lg" aria-hidden="true"></i>
+              <FaKey />
             </Col>
             <Col sm={6}>
               <Input

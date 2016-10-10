@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/lib/Col'
 import HelpBlock from 'react-bootstrap/lib/HelpBlock'
 import Input from 'react-toolbox/lib/input'
 import Checkbox from 'react-toolbox/lib/checkbox'
-import FontAwesome from 'react-fontawesome'
+import { FaEnvelope, FaKey } from 'react-icons/fa'
 
 import { userSignin } from '../../actions/auth-actions'
 
@@ -53,12 +53,9 @@ class SigninForm extends Component {
           <div className="formInput">
             <Col componentClass={ControlLabel} smOffset={2} sm={1}>
               {/* <i className="fa fa-envelope fa-lg" aria-hidden="true"></i> */}
-              <FontAwesome
-                name={'envelope'}
-                size={'2x'}
-              />
+              <FaEnvelope />
             </Col>
-            <Col sm={8}>
+            <Col sm={6}>
               <Input
                 type="email"
                 value={this.state.email}
@@ -73,12 +70,9 @@ class SigninForm extends Component {
         <FormGroup controlId="password">
           <div className="formInput">
             <Col componentClass={ControlLabel} smOffset={2} sm={1}>
-              <FontAwesome
-                name={'key'}
-                size={'2x'}
-              />
+              <FaKey />
             </Col>
-            <Col sm={8}>
+            <Col sm={6}>
               <Input
                 type="password"
                 value={this.state.password}
@@ -96,13 +90,13 @@ class SigninForm extends Component {
             onChange={this.handleRememberPassword.bind(this)}
           />
         </FormGroup>
-        <Col smOffset={3} sm={8}>
+        <Col smOffset={3} sm={6}>
           <div className="has-error">
             <HelpBlock>{this.props.error}</HelpBlock>
           </div>
         </Col>
         <FormGroup>
-          <Col smOffset={3} sm={8}>
+          <Col smOffset={3} sm={6}>
             <button className="btn btn-large btn-border-black" type="submit" onClick={this.handleClick}>
               登录
             </button>
