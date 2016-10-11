@@ -1,26 +1,51 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { browserHistory } from 'react-router'
-import { Router, Route, IndexRoute } from 'react-router'
+import { browserHistory, Router, Route, IndexRoute } from 'react-router'
 import { Grid, Row, Col } from 'react-bootstrap'
 
-import SearchGame from './create-TM-search'
-import Tabs from '../components/tabs/tabs.js'
+import Tabs from '../components/tabs/tabs'
 import TabLink from '../components/tabs/tab-link.js'
 import TabContent from '../components/tabs/tab-content.js'
+
+import { selectGame, fetchGames, fetchTopGames } from '../actions/games-actions'
 
 class CreateTournament extends Component {
   constructor(props) {
     super(props)
   }
 
+
   static propTypes = {
     children: React.PropTypes.node.isRequired,
+    selectGame: React.PropTypes.function,
+    fetchGames: React.PropTypes.function,
+    fetchTopGames: React.PropTypes.function,
+    games: React.PropTypes.array
   }
 
+  componentWillReceiveProps(props){
+    console.log(props);
+  }
 
   render() {
+    const { games, selectedGame, selectGame, fetchGames, fetchTopGames } = this.props
+    const childrenWithPropsFromStore = React.Children.map(this.props.children,
+      (child) => React.cloneElement(child, {
+        // states
+        games,
+        selectedGame,
+        // dispatch
+        selectGame,
+        fetchGames,
+        fetchTopGames,
+      })
+    )
+    const links = [
+      '/create',
+      (selectedGame ? `/create/${selectedGame._id}` : '/create/#'),
+      '/create/confirm'
+    ]
     return (
       <section id="create-tournament">
         <Grid>
@@ -30,11 +55,23 @@ class CreateTournament extends Component {
             </h1>
           </div>
           <Tabs defaultTab="1" className="tabs-center">
-            <TabLink title="1. 选择游戏" className="tab-link" />
-            <TabLink title="2. 创建比赛细则" className="tab-link disabled" />
-            <TabLink title="3. 确认比赛信息" className="tab-link disabled" />
+            <TabLink
+              title="1. 选择游戏"
+              className="tab-link"
+              link={links[0]}
+            />
+            <TabLink
+              title="2. 创建比赛细则"
+              className="tab-link disabled"
+              link={links[1]}
+            />
+            <TabLink
+              title="3. 确认比赛信息"
+              className="tab-link disabled"
+              link={links[2]}
+            />
             <TabContent className="tab-content">
-              {this.props.children}
+              {childrenWithPropsFromStore}
             </TabContent>
           </Tabs>
         </Grid>
@@ -44,8 +81,17 @@ class CreateTournament extends Component {
     )
   }
 }
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
+    games: state.Games.games,
+    selectedGame: state.Games.selectedGame
   }
 }
-export default connect(mapStateToProps,null)(CreateTournament)
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    selectGame,
+    fetchGames,
+    fetchTopGames
+  }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTournament)

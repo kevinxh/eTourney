@@ -24,10 +24,13 @@ export default class Tabs extends Component {
   }
 
   bindSwitchTab() {
-    let bindedTabLinks = new Array()
+    const bindedTabLinks = []
     this.props.children.forEach(child => {
       if (child.type.name === 'TabLink') {
-        bindedTabLinks.push(React.cloneElement(child, { switchTab: this.switchTab, activeKey: this.state.activeKey }))
+        bindedTabLinks.push(React.cloneElement(child, {
+          switchTab: this.switchTab,
+          activeKey: this.state.activeKey
+        }))
       }
     })
     return bindedTabLinks
@@ -38,13 +41,14 @@ export default class Tabs extends Component {
   }
 
   renderContent() {
-    return this.props.children.find(child => {
-      if (child.type.name === 'TabLink') {
-        return false
-      } else {
-        return child.props.eventKey === this.state.activeKey
-      }
-    })
+    // return this.props.children.find(child => {
+    //   if (child.type.name === 'TabLink') {
+    //     return false
+    //   } else {
+    //     return child.props.eventKey === this.state.activeKey
+    //   }
+    // })
+    return this.props.children.find(child => child.type.name === 'TabContent')
   }
 
   render() {

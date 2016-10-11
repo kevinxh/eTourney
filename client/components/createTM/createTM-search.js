@@ -1,23 +1,23 @@
 import React, { Component, PropTypes } from 'react'
-import { bindActionCreators } from 'redux'
 import { Grid, Row, Col } from 'react-bootstrap'
-import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import _ from 'underscore'
 
-import SearchBox from '../components/misc/search-box'
-import GameListItem from '../components/game-list/game-list-item'
-import { fetchGames, fetchTopGames } from '../actions/games-actions'
+import SearchBox from '../misc/search-box'
+import GameListItem from '../game-list/game-list-item'
 
-class CreateTournament extends Component {
+export default class CreateTournament extends Component {
+  static propTypes = {
+    games: PropTypes.array.isRequired,
+    fetchGames: PropTypes.func,
+    selectGame: PropTypes.func,
+  }
   constructor(props) {
     super(props)
-    console.log(props);
     this.handleSearchChange = this.handleSearchChange.bind(this)
     // The following creates a 200ms debounced fetchGames func
     this.debouncedFetchGames = _.debounce(this.props.fetchGames, 200)
   }
-
   componentWillMount() {
     this.debouncedFetchGames()
   }
@@ -31,11 +31,16 @@ class CreateTournament extends Component {
       return <div></div>
     }
     return this.props.games.map((game) => (
-      // TODO: Provide the proper direction to
-      // next step of the process
+      // TODO: Put Select Game here
 
       <Col key={game.name} xs={6} md={4}>
-        <GameListItem game={game} onClick={() => { browserHistory.push(`/create/${game._id}`) }} />
+        <GameListItem
+          game={game}
+          onClick={() => {
+            browserHistory.push(`/create/${game._id}`)
+            this.props.selectGame(game._id)
+          }}
+        />
       </Col>
     ))
   }
@@ -53,20 +58,3 @@ class CreateTournament extends Component {
     )
   }
 }
-
-CreateTournament.propTypes = {
-  games: PropTypes.array.isRequired,
-  fetchGames: PropTypes.func,
-}
-
-function mapStateToProps(state) {
-  return {
-    games: state.Games.games,
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchGames }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CreateTournament)

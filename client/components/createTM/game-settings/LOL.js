@@ -20,7 +20,7 @@ const server = [
   { value: 'Europe', label: '欧服' },
 ];
 
-export default class TabSettingLOL extends Component {
+export default class GameSettingsLOL extends Component {
   constructor(props) {
     super(props)
     this.state = {

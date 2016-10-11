@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
+
 
 export default class TabLink extends Component {
   constructor(props) {
     super(props)
+    console.log(this.props);
     this.onClick = this.onClick.bind(this)
   }
 
   onClick() {
-    this.props.switchTab(this.props.eventKey)
+    // this.props.switchTab(this.props.eventKey)
+    // TODO: Manually perform click animations here
+    browserHistory.push(this.props.link)
   }
 
   render() {
