@@ -5,17 +5,22 @@ export default class Tabs extends Component {
     super(props)
     this.state = {
       activeKey: props.defaultTab,
+      disabledKeys: [],
     }
     this.switchTab = this.switchTab.bind(this)
+    this.getDisabledKeys = this.getDisabledKeys.bind(this)
   }
 
   componentWillMount() {
-    this.setState({ totalTabs: this.getTotalTabs(this.props.children) })
+    this.setState({
+      totalTabs: this.getTotalTabs(),
+      disabledKeys: this.getDisabledKeys(),
+    })
   }
 
-  getTotalTabs(children) {
+  getTotalTabs() {
     let totalTabs = 0
-    children.forEach(child => {
+    this.props.children.forEach(child => {
       if (child.type.name === 'TabLink') {
         totalTabs++
       }
@@ -23,13 +28,34 @@ export default class Tabs extends Component {
     return totalTabs
   }
 
+  getDisabledKeys() {
+    let disabledKeys = []
+    if (this.props.autoDisable) {
+      this.props.children.forEach(child => {
+        if (child.type.name === 'TabLink') {
+          if (child.props.eventKey !== this.props.defaultTab) {
+            disabledKeys.push(child.props.eventKey)
+          }
+        }
+      })
+    }
+    return disabledKeys
+  }
+
   bindSwitchTab() {
     const bindedTabLinks = []
     this.props.children.forEach(child => {
       if (child.type.name === 'TabLink') {
+        let disable = false
+        this.state.disabledKeys.forEach(key => {
+          if (key === child.props.eventKey) {
+            disable = true
+          }
+        })
         bindedTabLinks.push(React.cloneElement(child, {
           switchTab: this.switchTab,
-          activeKey: this.state.activeKey
+          activeKey: this.state.activeKey,
+          disable,
         }))
       }
     })
@@ -37,18 +63,22 @@ export default class Tabs extends Component {
   }
 
   switchTab(eventKey) {
-    this.setState({ activeKey: eventKey })
+    this.setState({
+      activeKey: eventKey,
+      disabledKeys: this.state.disabledKeys.filter(item => item !== eventKey),
+    })
   }
 
   renderContent() {
-    // return this.props.children.find(child => {
-    //   if (child.type.name === 'TabLink') {
-    //     return false
-    //   } else {
-    //     return child.props.eventKey === this.state.activeKey
-    //   }
-    // })
-    return this.props.children.find(child => child.type.name === 'TabContent')
+    const bindedTabContents = []
+    this.props.children.forEach(child => {
+      if (child.type.name === 'TabContent') {
+        bindedTabContents.push(React.cloneElement(child, {
+          switchTab: this.switchTab,
+        }))
+      }
+    })
+    return bindedTabContents
   }
 
   render() {

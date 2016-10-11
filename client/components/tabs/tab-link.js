@@ -10,21 +10,29 @@ export default class TabLink extends Component {
   }
 
   onClick() {
-    // this.props.switchTab(this.props.eventKey)
+    this.props.switchTab(this.props.eventKey)
     // TODO: Manually perform click animations here
     browserHistory.push(this.props.link)
   }
 
   render() {
-    let { title, eventKey, activeKey } = this.props
-    let active = ''
-    if (eventKey === activeKey) {
-      active = 'active'
+    let { title, className, eventKey, activeKey, disable } = this.props
+    let customClass = ''
+    let activeClass = ''
+    let disableClass = ''
+    if (className) {
+      customClass = className
     }
-    let classes = `${this.props.className} ${active}`
+    if (eventKey === activeKey) {
+      activeClass = 'active'
+    }
+    if (disable) {
+      disableClass = 'disabled'
+    }
+    let classes = `tab-link ${customClass} ${activeClass} ${disableClass}`
     return (
-      <div className={classes}>
-        <a onClick={this.onClick} href="#">{title}</a>
+      <div onClick={this.onClick} className={classes}>
+        <a href="#">{title}</a>
       </div>
     )
   }

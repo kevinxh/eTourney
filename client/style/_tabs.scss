@@ -64,6 +64,9 @@ $tab-link-width-lg:400px;
         &.active:not(:last-child):after {
             border-left:$tab-link-height/2 solid $tabs-active-color;
         }
+        &.disabled:not(:last-child):after {
+            border-left:$tab-link-height/2 solid $tabs-disabled-color;
+        }
         &:not(:first-child):before {
             display: block;
             content: '';

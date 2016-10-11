@@ -29,7 +29,7 @@ class CreateTournament extends Component {
   }
 
   render() {
-    const { games, selectedGame, selectGame, fetchGames, fetchTopGames } = this.props
+    const { games, selectedGame, selectGame, fetchGames, fetchTopGames, switchTab } = this.props
     const childrenWithPropsFromStore = React.Children.map(this.props.children,
       (child) => React.cloneElement(child, {
         // states
@@ -39,6 +39,8 @@ class CreateTournament extends Component {
         selectGame,
         fetchGames,
         fetchTopGames,
+        // tab functions
+        switchTab,
       })
     )
     const links = [
@@ -54,20 +56,20 @@ class CreateTournament extends Component {
               创建你的比赛
             </h1>
           </div>
-          <Tabs defaultTab="1" className="tabs-center">
+          <Tabs defaultTab="1" autoDisable={true} className="tabs-center">
             <TabLink
               title="1. 选择游戏"
-              className="tab-link"
+              eventKey="1"
               link={links[0]}
             />
             <TabLink
               title="2. 创建比赛细则"
-              className="tab-link disabled"
+              eventKey="2"
               link={links[1]}
             />
             <TabLink
               title="3. 确认比赛信息"
-              className="tab-link disabled"
+              eventKey="3"
               link={links[2]}
             />
             <TabContent className="tab-content">

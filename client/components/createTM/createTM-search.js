@@ -6,7 +6,7 @@ import _ from 'underscore'
 import SearchBox from '../misc/search-box'
 import GameListItem from '../game-list/game-list-item'
 
-export default class CreateTournament extends Component {
+export default class CreateTournamentSearchGame extends Component {
   static propTypes = {
     games: PropTypes.array.isRequired,
     fetchGames: PropTypes.func,
@@ -39,6 +39,7 @@ export default class CreateTournament extends Component {
           onClick={() => {
             browserHistory.push(`/create/${game._id}`)
             this.props.selectGame(game._id)
+            this.props.switchTab("2")
           }}
         />
       </Col>
