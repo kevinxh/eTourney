@@ -15,6 +15,7 @@
       "new-cap": "off",
       "react/prefer-stateless-function": "off",
       "consistent-return": "off",
-      "no-unused-vars" : 1
+      "no-unused-vars" : 1,
+      "jsx-quotes": "off"
     }
 }

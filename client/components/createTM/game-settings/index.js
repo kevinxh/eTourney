@@ -1,18 +1,21 @@
 import React, { Component } from 'react'
 import HS from './HS'
 import LOL from './LOL'
+import OW from './OW'
 
 export default class CreateTournamentSettings extends Component {
+  static gamesWithPredefinedSettings = {
+    // TODO: Do something with these ids so they can work on newly generated ids
+    '5754ada0e38fa8652ba9c2ee': LOL,
+    '5754ad9ce38fa8652ba9c2ed': HS,
+    '5754adb5e38fa8652ba9c2f1': OW
+  }
+  
   constructor(props) {
     super(props)
     console.log(props);
   }
 
-  static gamesWithPredefinedSettings = {
-    // Do something with these ids so they can work on newly generated ids
-    '5754ada0e38fa8652ba9c2ee': LOL,
-    '5754ad9ce38fa8652ba9c2ed': HS
-  }
 
   componentWillReceiveProps(props){
     console.log(props);
