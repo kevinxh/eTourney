@@ -1,0 +1,12 @@
+$form-input-height : 79px;
+
+.form-input-height {
+  display: flex;
+  justify-content: flex-start;
+  height: $form-input-height;
+}
+
+.checkbox-margin {
+  margin-top: $form-input-height/2 - 5px;
+  margin-right: 25px;
+}

@@ -8,17 +8,17 @@ import Checkbox from 'react-toolbox/lib/checkbox'
 
 const mode = [
   { value: '1v1', label: '单挑' },
-  { value: '3v3', label: '3v3'},
+  { value: '3v3', label: '3v3' },
   { value: '5v5', label: '5v5' },
-];
+]
 
 const server = [
   { value: 'China', label: '国服' },
   { value: 'Taiwan', label: '台服' },
-  { value: 'US', label: '美服'},
+  { value: 'US', label: '美服' },
   { value: 'Korea', label: '韩服' },
   { value: 'Europe', label: '欧服' },
-];
+]
 
 export default class GameSettingsLOL extends Component {
   constructor(props) {
@@ -32,12 +32,12 @@ export default class GameSettingsLOL extends Component {
     this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange (item, value) {
-    this.setState({...this.state, [item]: value});
-  };
+  handleChange(item, value) {
+    this.setState({ ...this.state, [item]: value })
+  }
 
   render() {
-    let {capacityCheck, passwordCheck} = this.state
+    const { capacityCheck, passwordCheck } = this.state
     let capacityVisibility = (capacityCheck) ? {} : { display: 'none' }
     let passwordVisibility = (passwordCheck) ? {} : { display: 'none' }
     return (
@@ -107,39 +107,45 @@ export default class GameSettingsLOL extends Component {
         </div>
         <div className="row">
           <div className="col-md-6">
-            <Checkbox
-              checked={this.state.capacityCheck}
-              label="是否有人数限制"
-              onChange={this.handleChange.bind(this, 'capacityCheck')}
-            />
+            <div className="form-input-height">
+              <div className="checkbox-margin">
+                <Checkbox
+                  checked={this.state.capacityCheck}
+                  label="是否有人数限制"
+                  onChange={this.handleChange.bind(this, 'capacityCheck')}
+                />
+              </div>
+              <div style={capacityVisibility}>
+                <Input
+                  type='text'
+                  label='人数'
+                  required
+                  value={this.state.capacity}
+                  onChange={this.handleChange.bind(this, 'capacity')}
+                  maxLength={4}
+                />
+              </div>
+            </div>
           </div>
-          <div className="col-md-2" style={capacityVisibility}>
-            <Input
-              type='text'
-              label='人数'
-              required
-              value={this.state.capacity}
-              onChange={this.handleChange.bind(this, 'capacity')}
-              maxLength={4}
-            />
-          </div>
-        </div>
-        <div className="row">
           <div className="col-md-6">
-            <Checkbox
-              checked={this.state.passwordCheck}
-              label="是否加密"
-              onChange={this.handleChange.bind(this, 'passwordCheck')}
-            />
-          </div>
-          <div className="col-md-6" style={passwordVisibility}>
-            <Input
-              type='password'
-              label='密码'
-              required
-              value={this.state.password}
-              onChange={this.handleChange.bind(this, 'password')}
-            />
+            <div className="form-input-height">
+              <div className="checkbox-margin">
+                <Checkbox
+                  checked={this.state.passwordCheck}
+                  label="是否加密"
+                  onChange={this.handleChange.bind(this, 'passwordCheck')}
+                />
+              </div>
+              <div style={passwordVisibility}>
+                <Input
+                  type='password'
+                  label='密码'
+                  required
+                  value={this.state.password}
+                  onChange={this.handleChange.bind(this, 'password')}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
