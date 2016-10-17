@@ -1,15 +1,15 @@
 export const OVERWATCH_MAPS = {
-  assault: ['Hanamura', 'Temple of Anubis', 'Volskaya Industries'],
-  escort: ['Dorado', 'Route 66', 'Watchpoint: Gibraltar'],
-  hybrid: ['Hollywood', 'King\'s Row', 'Numbani', 'Eichenwalde'],
-  control: ['Ilios', 'Lijiang Tower', 'Nepal'],
+  Assault: ['Hanamura', 'Temple of Anubis', 'Volskaya Industries'],
+  Escort: ['Dorado', 'Route 66', 'Watchpoint: Gibraltar'],
+  Hybrid: ['Hollywood', 'King\'s Row', 'Numbani', 'Eichenwalde'],
+  Control: ['Ilios', 'Lijiang Tower', 'Nepal'],
 }
 
 export const OVERWATCH_CHARACTERS = {
-  offense: ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier: 76', 'Tracer'],
-  defense: ['Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjörn', 'Widowmaker'],
-  tank: ['D.Va', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya'],
-  support: ['Ana', 'Lúcio', 'Mercy', 'Symmetra', 'Zenyatta']
+  Offense: ['Genji', 'McCree', 'Pharah', 'Reaper', 'Soldier: 76', 'Tracer'],
+  Defense: ['Bastion', 'Hanzo', 'Junkrat', 'Mei', 'Torbjörn', 'Widowmaker'],
+  Tank: ['D.Va', 'Reinhardt', 'Roadhog', 'Winston', 'Zarya'],
+  Support: ['Ana', 'Lúcio', 'Mercy', 'Symmetra', 'Zenyatta']
 }
 export const OVERWATCH_REGIONS = [
   { value: 'NA', label: 'NA' },

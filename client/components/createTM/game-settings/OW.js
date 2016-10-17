@@ -32,6 +32,7 @@ class BansForm extends Component {
     return _.map(this.props.dictionary, (group, type) => {
       return (
         <Col md={3} xs={6} className="ban-form">
+          <h1>{type}</h1>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
             {group.map(
               key =>
